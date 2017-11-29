@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://josephmorgan.github.io">
+  <title>用JMeter测数据库 | DAMON&#39;S BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JDBC Request:这个Sampler可以向数据库发送一个jdbc请求(sql语句)，它经常需要和JDBC Connection Configuration 配置元件一起配合使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用JMeter测数据库">
+<meta property="og:url" content="http://josephmorgan.github.io/JMeterJDBCRequest/index.html">
+<meta property="og:site_name" content="DAMON'S BLOG">
+<meta property="og:description" content="JDBC Request:这个Sampler可以向数据库发送一个jdbc请求(sql语句)，它经常需要和JDBC Connection Configuration 配置元件一起配合使用。">
+<meta property="og:updated_time" content="2016-11-03T07:40:21.351Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用JMeter测数据库">
+<meta name="twitter:description" content="JDBC Request:这个Sampler可以向数据库发送一个jdbc请求(sql语句)，它经常需要和JDBC Connection Configuration 配置元件一起配合使用。">
+  
+    <link rel="alternative" href="/atom.xml" title="DAMON&#39;S BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Joseph Morgan</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Stay hungry,Stay foolish</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+		        
+					<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Joseph Morgan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Joseph Morgan</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Stay hungry,Stay foolish</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-JMeterJDBCRequest" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      用JMeter测数据库
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JDBC Request:这个Sampler可以向数据库发送一个jdbc请求(sql语句)，它经常需要和<a href="http://jmeter.apache.org/usermanual/component_reference.html#JDBC_Connection_Configuration" target="_blank" rel="external">JDBC Connection Configuration</a> 配置元件一起配合使用。<br><a id="more"></a></p>
+<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><p><strong>建数据库</strong></p>
+<p>新建一个数据库及测试用的表，插入几条数据。</p>
+<p><strong>配置JDBC Connection Configuration</strong></p>
+<p>先复制数据库的JDBC驱动JAR包文件（如oracle的：D:\oracle\product\10.2.0\db_1\jdbc\lib\ojdbc14.jar）到JMeter的lib目录下。</p>
+<p>参数说明：</p>
+<ul>
+<li>Variable Name：数据库连接池的名称，可以配多个jdbc connection configuration，每个起不同的名称，在jdbc request中可以通过这个名称选择合适的连接池进行使用。</li>
+<li>Database URL：数据库url，jdbc:oracle:thin:@host_ip or machine_name：Oracle 监听器监听的端口：Oracle实例的名 (可在oracel安装目录下tnsnames.ora文件中找到这些信息)</li>
+<li>JDBC Driver class：JDBC驱动</li>
+<li>username：数据库登录的用户名</li>
+<li>passwrod：数据库登录的密码</li>
+</ul>
+<p><strong>配置JDBC Request</strong></p>
+<p>参数说明：</p>
+<ul>
+<li><p>Variable Name：数据库连接池的名字，需要与JDBC Connection Configuration的Variable Name Bound Pool名字保持一致</p>
+</li>
+<li><p>Query：填写的sql语句未尾不要加“;”</p>
+</li>
+<li><p>Parameter valus：参数值</p>
+</li>
+<li><p>Parameter types：参数类型，可参考： <a href="http://docs.oracle.com/javase/6/docs/api/java/sql/Types.html" target="_blank" rel="external">Javadoc for java.sql.Types</a></p>
+</li>
+<li><p>Variable names：保存sql语句返回结果的变量名</p>
+</li>
+<li><p>Result variable name：创建一个对象变量，保存所有返回的结果</p>
+</li>
+<li><p>Query timeout：查询超时时间</p>
+</li>
+<li><p>Handle result set：定义如何处理由callable statements语句返回的结果</p>
+</li>
+</ul>
+<p>添加察看结果树，看运行结果。</p>
+<p><strong>JDBC Request参数化</strong></p>
+<p><strong>方法（一）</strong></p>
+<p><strong>1.</strong>定义变量，在sql quety中使用变量：</p>
+<p>在<strong>测试计划</strong>中定义需要的变量（当然也可以使用参数化：JMeter参数化,如用CSV Data Set Config；用JMeter函数助手中的 _CSVRead 函数）。</p>
+<p><strong>2.</strong>在<strong>请求</strong>中使用 ${变量名} 的方式引用变量。</p>
+<p><strong>方法（二）</strong></p>
+<p>在sql quety中使用“？”作为占位符，并传递参数值和参数类型</p>
+<p>select * from test where no=? and name=? and city=?</p>
+<p><strong>1.</strong>传递的参数值是常量，传递3个常量：5,David,Beijing</p>
+<p>Parameter values:5,David,Beijing</p>
+<p>Parameter types:VARCHAR,VARCHAR,VARCHAR</p>
+<p><strong>2.</strong>传递的参数值是变量，如${NAME}：</p>
+<p>Parameter values:5,${NAME},Beijing</p>
+<p>Parameter types:VARCHAR,VARCHAR,VARCHAR</p>
+<p><strong>Variables names参数</strong></p>
+<p>如果给这个参数设置了值，如，a,b,c，它会保存sql语句返回的数据，还有返回数据的总行数。</p>
+<p><strong>Result variable name参数</strong></p>
+<p>如果给这个参数设置值，如results，它会创建一个对象变量，保存所有返回的结果。</p>
+<p><strong>数据库驱动类和URL格式</strong></p>
+<pre><code>Datebase              Driver class                                       Database URL
+MySQL                 com.mysql.jdbc.Driver                              jdbc:mysql://host:port/{dbname}
+Oracle                oracle.jdbc.driver.OracleDriver                    jdbc:oracle:thin:@//host:port/service
+MSSQL                 com.microsoft.sqlserver.jdbc.SQLServerDriver       jdbc:sqlserver://IP:port;databaseName=DBname
+PostgreSQL            org.postgresql.Driver                              jdbc:postgresql:{dbname}
+Ingres (2006)         ingres.jdbc.IngresDriver                           jdbc:ingres://host:port/db[;attr=value]
+</code></pre><p>官网例子<a href="http://jmeter.apache.org/usermanual/build-db-test-plan.html" target="_blank" rel="external">MySQL</a></p>
+<p>[末]</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/JMeterJDBCRequest/" class="archive-article-date">
+  	<time datetime="2016-11-03T01:57:09.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-03</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JMeter/">JMeter</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/性能测试/">性能测试</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/JMeterReport/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JMeter测试结果的理解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/JMeterAndWebService/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">用JMeter测WebService</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="JMeterJDBCRequest" data-title="用JMeter测数据库" data-url="http://josephmorgan.github.io/JMeterJDBCRequest/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"litten-hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Joseph Morgan
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/JMeter/" style="font-size: 20px;">JMeter</a> <a href="/tags/NexT/" style="font-size: 10px;">NexT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/SoapUI/" style="font-size: 10px;">SoapUI</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">面朝大海，春暖花开&lt;br&gt;&lt;br&gt;从明天起，做一个幸福的人&lt;br&gt;喂马、劈柴，周游世界&lt;br&gt;从明天起，关心粮食和蔬菜&lt;br&gt;我有一所房子，面朝大海，春暖花开&lt;br&gt;从明天起，和每一个亲人通信&lt;br&gt;告诉他们我的幸福&lt;br&gt;那幸福的闪电告诉我的&lt;br&gt;我将告诉每一个人&lt;br&gt;给每一条河每一座山取一个温暖的名字&lt;br&gt;陌生人，我也为你祝福&lt;br&gt;愿你有一个灿烂的前程&lt;br&gt;愿你有情人终成眷属&lt;br&gt;愿你在尘世获得幸福&lt;br&gt;我只愿面朝大海，春暖花开&lt;br&gt;&lt;br&gt;         --海子《面朝大海，春暖花开》</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

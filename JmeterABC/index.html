@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://josephmorgan.github.io">
+  <title>JMeter的基础概念 | DAMON&#39;S BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="测试计划元件Test Plan(测试计划)：用来描述一个测试，包含与本次测试所有相关的功能，作用于整个测试。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JMeter的基础概念">
+<meta property="og:url" content="http://josephmorgan.github.io/JmeterABC/index.html">
+<meta property="og:site_name" content="DAMON'S BLOG">
+<meta property="og:description" content="测试计划元件Test Plan(测试计划)：用来描述一个测试，包含与本次测试所有相关的功能，作用于整个测试。">
+<meta property="og:updated_time" content="2016-11-02T08:54:27.595Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JMeter的基础概念">
+<meta name="twitter:description" content="测试计划元件Test Plan(测试计划)：用来描述一个测试，包含与本次测试所有相关的功能，作用于整个测试。">
+  
+    <link rel="alternative" href="/atom.xml" title="DAMON&#39;S BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Joseph Morgan</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Stay hungry,Stay foolish</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+		        
+					<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Joseph Morgan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Joseph Morgan</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Stay hungry,Stay foolish</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-JmeterABC" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JMeter的基础概念
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="测试计划元件"><a href="#测试计划元件" class="headerlink" title="测试计划元件"></a>测试计划元件</h3><p><strong>Test Plan(测试计划)：</strong>用来描述一个测试，包含与本次测试所有相关的功能，作用于整个测试。<br><a id="more"></a><br><strong>Threads（Users）线程用户：</strong>有三个添加线程组的选项，名字不一样， 创建后，其界面是完全一样的。</p>
+<ul>
+<li>setup thread group：一种特殊类型的ThreadGroup，用于执行测试前的操作。</li>
+<li>teardown thread group：一种特殊类型的ThreadGroup，用于执行测试后的操作。</li>
+<li>thread group(线程组)：一般用到的线程组，一个线程组,，可以看做一个虚拟用户组，线程组中的每个线程都可以理解为一个虚拟用户。</li>
+<li>Test Fragmen（测试片段）：一种特殊的线程组，它在测试树上与线程组处于一个层级。它与线程组有所不同，因为它不被执行，除非它是一个模块控制器或者是被控制器所引用时才会被执行。</li>
+</ul>
+<p><strong>控制器</strong>，<br>JMeter有两种类型的控制器：采样器（Sampler）和逻辑控制器（Logic Controller），这些元件是用来驱动处理一个测试。</p>
+<p><strong>Sampler：</strong>采样器（Sampler）是测试中向服务器发送请求，记录响应信息，记录响应时间的最小单元，JMeter 原生支持多种不同的Sampler ，如 HTTP Request Sampler 、 FTP Request Sampler 、TCP Request Sampler 、JDBC Request Sampler等，每一种不同类型的Sampler可以根据设置的参数向服务器发出不同类型的请求。另外还有Java Request Sampler 和 Beanshell Request Sampler。</p>
+<p><strong>逻辑控制器：</strong>有两类元件，一类是控制测试计划执行过程中节点的逻辑执行顺序，常用的有，如果（If）控制器 、switch Controller 、Runtime Controller、循环控制器等。另一类是对测试计划中的脚本进行分组、方便JMeter统计执行结果以及进行脚本的运行时控制，如事务控制器、吞吐量控制器等。</p>
+<p><strong>配置元件：</strong>配置元件（config element）用于提供对静态数据配置的支持。CSV Data Set config 可以将本地数据文件形成数据池（Data Pool），而对应于HTTP Request Sampler和 TCP Request Sampler等类型的配置元件则可以修改Sampler的默认数据。如，HTTP Cookie Manager 可以用于对HTTP Request Sampler的cookie进行管理。</p>
+<p><strong>定时器：</strong>定时器（Timer）用于操作之间设置等待时间，等待时间是测试中常用的控制客户端QPS的手端。类似于LoadRunner里面的“思考时间”。JMeter 定义了Bean Shell Timer、Constant Throughput Timer、固定定时器等不同类型的Timer。</p>
+<p><strong>前置处理器：</strong>用于在实际的请求发出之前对即将发出的请求进行特殊处理。例如，HTTP URL重写修复符则可以实现URL重写，当URL中有sessionID 一类的session信息时，可以通过该处理器填写发出请求的实际的sessionID 。</p>
+<p><strong>后置处理器：</strong>用于对Sampler发出请求后得到的服务器响应进行处理。一般用来提取响应中的特定数据（类似LoadRunner测试工具中的关联概念）。例如，XPath  Extractor则可以用于提取响应数据中通过给定XPath值获得的数据。</p>
+<p><strong>断言：</strong>用于检查测试中得到的相应数据等是否符合预期，断言一般用来设置检查点，用以保证测试过程中的数据交互是否与预期一致。</p>
+<p><strong>监听器：</strong>用来对测试结果数据进行处理和可视化展示的一系列元件。 图形结果、察看结果树、聚合报告。都是经常会用到的元件。</p>
+<h3 id="线程组中"><a href="#线程组中" class="headerlink" title="线程组中"></a>线程组中</h3><p><strong>线程数：</strong>虚拟用户数。一个虚拟用户占用一个进程或线程。设置多少虚拟用户数在这里也就是设置多少个线程数。</p>
+<p><strong>Ramp-Up Period(in seconds)：</strong>准备时间，设置的虚拟用户数需要多长时间全部启动。如果线程数为20 ，准备时间为10 ，那么需要10秒钟启动20个线程。也就是每秒启动2个线程。若要立刻全部启动，则设为0。</p>
+<p><strong>循环次数：</strong>每个线程发送请求的次数。如果线程数为20 ，循环次数为100 ，那么每个线程发送100次请求。总请求数为20*100=2000 。如果勾选了“永远”，那么所有线程会一直发送请求，直到选择停止运行脚本。</p>
+<p>另外，还可以灵活的选择设定测试运行时间。勾选“调度器”，进行调度器配置。</p>
+<h3 id="发送json数据"><a href="#发送json数据" class="headerlink" title="发送json数据"></a>发送json数据</h3><p><strong>1.</strong>用CSV Data set Config,进行参数化。</p>
+<p><strong>2.</strong>直接在请求Sampler当中，把json字符串写在Post　Body。</p>
+<p><strong>3.</strong>直接写在Parameters中。</p>
+<p><strong>注意：</strong>发送json格式的请求的时候，需要在信息头管理器设置Content-Type=application/json 。</p>
+<h3 id="插件下载"><a href="#插件下载" class="headerlink" title="插件下载"></a>插件下载</h3><p><strong>下载地址：</strong><a href="https://jmeter-plugins.org/" target="_blank" rel="external">https://jmeter-plugins.org/</a> 。另外，插件管理还有 <a href="http://www.jmeter-plugins.org/wiki/PluginsManager/" target="_blank" rel="external">Plugins Manager</a>。</p>
+<pre><code>用于服务器性能监视的PerfMon Metrics Collector
+用于建立压力变化模型的Stepping Thread Group
+用于Json解析的JSON Path Extractor
+用于展示响应时间曲线的Response Times Over Time
+用于展示TPS曲线的Transactions per Second
+</code></pre><p><strong>集合点：</strong>请求—–&gt;定时器——-&gt;Synchronizing Timer，“Number of Simulated Users to Group by: 5”，表示并发量是5。也就是说，JMeter会等到5个线程都运行到此处时，这5个线程才开始执行后面的操作，先到达的线程将会在此等候。注意，这个值不能大于该线程组的线程数。</p>
+<p>后续更新。。。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/JmeterABC/" class="archive-article-date">
+  	<time datetime="2016-11-02T01:09:26.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-02</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JMeter/">JMeter</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/接口测试/">接口测试</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/JMeterAndWebService/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          用JMeter测WebService
+        
+      </div>
+    </a>
+  
+  
+    <a href="/JMeterIntroduce/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JMeter的入门介绍</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="JmeterABC" data-title="JMeter的基础概念" data-url="http://josephmorgan.github.io/JmeterABC/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"litten-hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Joseph Morgan
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/JMeter/" style="font-size: 20px;">JMeter</a> <a href="/tags/NexT/" style="font-size: 10px;">NexT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/SoapUI/" style="font-size: 10px;">SoapUI</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">面朝大海，春暖花开&lt;br&gt;&lt;br&gt;从明天起，做一个幸福的人&lt;br&gt;喂马、劈柴，周游世界&lt;br&gt;从明天起，关心粮食和蔬菜&lt;br&gt;我有一所房子，面朝大海，春暖花开&lt;br&gt;从明天起，和每一个亲人通信&lt;br&gt;告诉他们我的幸福&lt;br&gt;那幸福的闪电告诉我的&lt;br&gt;我将告诉每一个人&lt;br&gt;给每一条河每一座山取一个温暖的名字&lt;br&gt;陌生人，我也为你祝福&lt;br&gt;愿你有一个灿烂的前程&lt;br&gt;愿你有情人终成眷属&lt;br&gt;愿你在尘世获得幸福&lt;br&gt;我只愿面朝大海，春暖花开&lt;br&gt;&lt;br&gt;         --海子《面朝大海，春暖花开》</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

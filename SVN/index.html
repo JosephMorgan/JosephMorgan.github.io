@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://josephmorgan.github.io">
+  <title>SVN的使用 | DAMON&#39;S BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SVN百科：SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVN的使用">
+<meta property="og:url" content="http://josephmorgan.github.io/SVN/index.html">
+<meta property="og:site_name" content="DAMON'S BLOG">
+<meta property="og:description" content="SVN百科：SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。">
+<meta property="og:updated_time" content="2016-12-18T08:26:16.369Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SVN的使用">
+<meta name="twitter:description" content="SVN百科：SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。">
+  
+    <link rel="alternative" href="/atom.xml" title="DAMON&#39;S BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Joseph Morgan</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Stay hungry,Stay foolish</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+		        
+					<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Joseph Morgan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Joseph Morgan</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Stay hungry,Stay foolish</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-SVN" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SVN的使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>SVN百科：</strong>SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。<br><a id="more"></a><br><strong>搭建SVN服务器</strong></p>
+<p>1.下载<a href="http://subversion.apache.org/packages.html" target="_blank" rel="external">SVN服务器</a>，打开网页，在到浏览器最底部，选Windows版的VisualSVN。</p>
+<p>2.一路点Next安装，选Standard Edition。</p>
+<p>Location是指VisualSVN Server的安装目录,Repositorys是指定你的版本库目录.Server Port指定一个端口,Use secure connection表示使用安全连接。</p>
+<p>直到点击【Finish】可完成安装。安装完成后,启动VisualSVN Server Manager。</p>
+<p>可以在窗口的右边看到版本库的一些信息,比如状态,日志,用户认证,版本库等。</p>
+<p>要建立版本库,需要右键单击左边窗口的Repositores,在弹出的右键菜单中选择Create New Repository或者新建-&gt;Repository。点下一步，到创建完成。</p>
+<p>3.建立用户和组，并分配权限。</p>
+<p>在VisualSVN Server Manager窗口的左侧右键单击用户组,选择Create User或者新建-&gt;User，点击User后，填写Username和password后，点击OK。</p>
+<p>点击【Add】按钮，就成功增加了一个用户。</p>
+<p>建立用户组,在VisualSVN Server Manager窗口的左侧右键单击用户组,选择Create Group或者新建-&gt;Group，点击【Group】按钮。</p>
+<p>填写Group name,然后点Add按钮,在弹出的窗口中选择要添加的用户,加入到这个组,然后点OK。</p>
+<p>给用户组设置权限，在已建立的版本库上单击右键,选择属性，在弹出的对话框中,选择Security选项卡,</p>
+<p>点击Add按钮,选中某个用户,然后添加进来,权限设置为Read/Write，点击【确定】按钮即可。</p>
+<p><strong>安装客户端</strong></p>
+<p>1.下载<a href="https://tortoisesvn.net/downloads.html" target="_blank" rel="external">TortoiseSVN</a>。安装完成后，选中自己的某个项目文件夹，右键，出现TortoiseSVN，即安装成功。</p>
+<p>2.Checkout项目文件，在自己的项目文件夹下，右键 –&gt; Svn Checkout –&gt; 。</p>
+<p>其中URL，可以在SVN服务器获取到，Repositories下的文件，右键，有Copy URL…。填完URL，点OK，完成Checkout。</p>
+<p>注意事项：</p>
+<p>.svn这个隐藏目录记录着两项关键信息：工作文件的基准版本和一个本地副本最后更新的时间戳，千万不要手动修改或者删除这个.svn隐藏目录和里面的文件!!,否则将会导致你本地的工作拷贝(静态试图)被破坏，无法再进行操作。</p>
+<p>TortoiseSVN图标介绍</p>
+<p>一个新检出的工作复本使用绿色的对勾重载，表示Subversion状态正常。</p>
+<p>在你开始编辑一个文件之后，状态就变成了已修改，而图标重载已变成了红色感叹号。通过这种方式，你可以很容易地看出那些文件从你上次更新工作复本被修改过，且需要提交。</p>
+<p>如果在提交的过程中出现了冲突，图标就会变成了黄色感叹号。</p>
+<p>加号告诉你有一个文件或者目录已经被计划加入到版本控制中。</p>
+<p><strong>TortoiseSVN Client基础操作</strong></p>
+<p>1.Checkout检出：在项目文件夹下，右键 –&gt; 选择SVN Checkout，填URL，即版本库的目录地址，填用户名、密码，验证成功，项目文件开始从远程服务器下载到本地工作目录中。</p>
+<p>2.Add增加：在test项目文件下，新建一个b.txt文件，提交到版本库的方法如下2种：</p>
+<p>(1)先提到变更列表中，再commit到配置库中，选择新增文件，右键SVN菜单执行“Add“操作提交到”变更列表中”，然后右键SVN菜单执行”SVN Commit”提交到版本库中。</p>
+<p>(2)不提交到变更列表中，而是直接commit配置库中，选择该文件，右键svn菜单执行”SVN Commit”操作。</p>
+<p>3.Delete删除：如果被删除的文件还未入版本库，则可以直接使用操作系统的删除操作删除该文件。</p>
+<p>如果被删除的文件已入版本库，则删除的方法如下：</p>
+<p>选择被删除文件，右键svn菜单执行”delete”操作，然后选择被删除文件的父目录，右键svn菜单执行”SVN Commit”。</p>
+<p>4.Rename改名：修改文件名，选中需要重命名的文件或文件夹，然后右键“TortoiseSVNàRename“，在弹出的对话框中输入新名称，点击”ok”按钮，并将修改文件名后的文件或文件夹通过 “SVN Commit”提交到SVN服务器上。</p>
+<p>5.SVN Revert，SVN还原：右击想要回退的文件或者文件夹，在TortoiseSVN弹出菜单中选择”Update to reversion…” 然后会弹出一个窗口，比如说我们要回退到第10个版本只需要在Revision中填写相应的版本号，然后点击OK即可。</p>
+<p>6.Check for modifications检查更新：此功能可以显示你所做的修改有哪些还没有提交的，此功能不光能看到对文件的修改变化，所有的变化都能看到，包括增加文件或者目录，删除文件或者目录，移动文件或者目录等，如果你点击了检查版本库，那你还可以看到版本库里的改动，既别人提交了哪些文件的改动，你还没更新到本地。</p>
+<p>7.SVN Update，SVN更新：更新本地代码与SVN服务器上最新的版本一致，只要在需要更新的文件夹上点击右键或者在文件下空白处点击右键，选择”SVN Update” (获取指定版本中的内容，点击右键执行SVN菜单中的“Update to reversion“)，就可以了。</p>
+<p>有冲突，就先revert(回滚)，再把自己要更新的代码，自己动手复制进去即可，提交commit。</p>
+<p>8.SVN Commit，SVN提交：SVN的提交是将在工作空间做的修改进行提交，包括文件内容的修改，文件或目录的添加，删除，命名，移动等操作。</p>
+<p>9.Show log显示日志：通过此功能可以查到谁，什么时候，对那个目录下的那些文件进行了那些操作。</p>
+<p>10.Repo-browser版本库浏览： 此功能是用来浏览需要查看的资料库，在本地文件夹下点击右键，选择TortoiseSVNàRepo-browser,在弹出的对话框中输入资料库地址，再输入用户名和密码，就能查看到你需要查看到版本库的内容，在这你还能看到那些文件被谁锁定了。</p>
+<p><strong>创建分支、合并</strong></p>
+<p>项目中为何要创建分支，及合并？</p>
+<p>比如我现在项目所有的文件放在主干上(trunk)中，由于需求的变更，需要增加新的需求，但是我们主干上还要继续往下开发，在此我们可以新建一个分支，来做增加新的需求那一块，主干上继续开发，等分支上代码没有问题的时候，再合并到主干上来。</p>
+<p>创建分支的最大的目的就是跟主线进行并行开发时候不影响主线的开发。</p>
+<p>假如我本地新建一个文件夹test下有2个文件夹trunk(存放主干上的代码)和branch(存放分支上的代码)。</p>
+<p>1.先提取主干上的代码：点击trunk –&gt; 鼠标右键 –&gt; 点击SVN Checkout –&gt; 弹出一个对话框，其中上面的URL是从服务器VisualSVN Server上获取的，就可以在主干上把代码从远程服务器上获取到。</p>
+<p>2.新建分支：从trunk（主干上）创建分支(branch)，右键trunk –&gt; branch/Tag，点击OK按钮后，就可以在VisualSVN Serval服务器上新增newBranch。</p>
+<p>现在我们可以再来看看本地branch文件夹了，我现在直接进入branch文件下，右键 –&gt; Chenckout下，就可以把newBranch下的所有文件提取出来了。</p>
+<p>分支目前建立在svn的服务器端，本地并没有更新，对本地branch文件夹，右键–&gt; update即可，就可以更新到分支代码。</p>
+<p>3.合并分支到主干上：比如我现在对branch分支上新增3.txt文件，然后提交上去，现在想把分支上的代码3.txt合并到主干上trunk，现在要怎么合并呢？</p>
+<p>回到我们刚刚的主干（trunk）文件夹下，鼠标右键该文件夹 –&gt; TortoiseSVN –&gt; Merge ，选”Merge two different trees”。from为主干url，to为分支url。<br>点Merge，就可以看到主干trunk上多加了一个3.txt，就是从分支上合并过来的。</p>
+<p>4.合并主干到分支：如果主干上有一些更新，比如说jar包更新等等，那么这些要更新到分支上去，如何操作呢？比如我现在在主干上新建一个4.txt文件，现在是想把主干上的4.txt合并到分支上来，要如何操作？</p>
+<p>我们在分支点击branch –&gt; 右键TortoiseSVN –&gt; Merge ，选”Merge two different trees”。from为分支url，to为主干url。</p>
+<p>最后直接Merge，就可以看到分支branch上也有主干上的4.txt文件了，也就是说，合并主干到分支上也是可以的。</p>
+<p><strong>Eclipse与SVN</strong></p>
+<p>1.下载<a href="http://subclipse.tigris.org/servlets/ProjectDocumentList?folderID=2240" target="_blank" rel="external">SVN安装包</a>，根据Eclipse版本进行下载。</p>
+<p>2.启动Eclipse，找到Help-&gt;Install new software…，单击Add，输入Name，Location选择刚才下载的安装包的位置，</p>
+<p>或者输入地址<a href="http://subclipse.tigris.org/update_1.8.x" target="_blank" rel="external">http://subclipse.tigris.org/update_1.8.x</a> 。两个全选中，点击next，选择I accept….，点击Finish。</p>
+<p>3.另外一种安装方法：解压刚才下载的SVN安装包，找到features和plugins文件夹，将这两个文件夹里面的内容全复制到Eclipse安装路径下对应的文件夹中，重启Eclipse即可。</p>
+<p>[末]<!--http://www.cnblogs.com/armyfai/p/3985660.html  http://huihai.iteye.com/category/299384--></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/SVN/" class="archive-article-date">
+  	<time datetime="2016-12-18T08:20:55.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-18</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SVN/">SVN</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/版本管理/">版本管理</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/SoapUIApply/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SoapUI的使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SVN" data-title="SVN的使用" data-url="http://josephmorgan.github.io/SVN/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"litten-hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Joseph Morgan
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/JMeter/" style="font-size: 20px;">JMeter</a> <a href="/tags/NexT/" style="font-size: 10px;">NexT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/SoapUI/" style="font-size: 10px;">SoapUI</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">面朝大海，春暖花开&lt;br&gt;&lt;br&gt;从明天起，做一个幸福的人&lt;br&gt;喂马、劈柴，周游世界&lt;br&gt;从明天起，关心粮食和蔬菜&lt;br&gt;我有一所房子，面朝大海，春暖花开&lt;br&gt;从明天起，和每一个亲人通信&lt;br&gt;告诉他们我的幸福&lt;br&gt;那幸福的闪电告诉我的&lt;br&gt;我将告诉每一个人&lt;br&gt;给每一条河每一座山取一个温暖的名字&lt;br&gt;陌生人，我也为你祝福&lt;br&gt;愿你有一个灿烂的前程&lt;br&gt;愿你有情人终成眷属&lt;br&gt;愿你在尘世获得幸福&lt;br&gt;我只愿面朝大海，春暖花开&lt;br&gt;&lt;br&gt;         --海子《面朝大海，春暖花开》</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
