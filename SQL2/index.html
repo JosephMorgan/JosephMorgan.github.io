@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://josephmorgan.github.io">
+  <title>SQL简单操作（二） | DAMON&#39;S BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SQL 约束用于规定表中的数据规则。如果存在违反约束的数据行为，行为会被约束终止。约束可以在创建表时规定（通过 CREATE TABLE 语句），或者在表创建之后规定（通过 ALTER TABLE 语句）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL简单操作（二）">
+<meta property="og:url" content="http://josephmorgan.github.io/SQL2/index.html">
+<meta property="og:site_name" content="DAMON'S BLOG">
+<meta property="og:description" content="SQL 约束用于规定表中的数据规则。如果存在违反约束的数据行为，行为会被约束终止。约束可以在创建表时规定（通过 CREATE TABLE 语句），或者在表创建之后规定（通过 ALTER TABLE 语句）。">
+<meta property="og:updated_time" content="2016-12-08T02:59:19.660Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL简单操作（二）">
+<meta name="twitter:description" content="SQL 约束用于规定表中的数据规则。如果存在违反约束的数据行为，行为会被约束终止。约束可以在创建表时规定（通过 CREATE TABLE 语句），或者在表创建之后规定（通过 ALTER TABLE 语句）。">
+  
+    <link rel="alternative" href="/atom.xml" title="DAMON&#39;S BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Joseph Morgan</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Stay hungry,Stay foolish</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+		        
+					<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Joseph Morgan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Joseph Morgan</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Stay hungry,Stay foolish</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-SQL2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SQL简单操作（二）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>SQL 约束用于规定表中的数据规则。如果存在违反约束的数据行为，行为会被约束终止。约束可以在创建表时规定（通过 CREATE TABLE 语句），或者在表创建之后规定（通过 ALTER TABLE 语句）。<br><a id="more"></a><br>CREATE TABLE table_name (column_name1 data_type(size) constraint_name,column_name2 data_type(size) constraint_name,column_name3 data_type(size) constraint_name,….);</p>
+<p>在 SQL 中，我们有如下约束：NOT NULL - 指示某列不能存储 NULL 值。UNIQUE - 保证某列的每行必须有唯一的值。PRIMARY KEY - NOT NULL 和 UNIQUE 的结合。确保某列（或两个列多个列的结合）有唯一标识，有助于更容易更快速地找到表中的一个特定的记录。FOREIGN KEY - 保证一个表中<br>的数据匹配另一个表中的值的参照完整性。CHECK - 保证列中的值符合指定的条件。DEFAULT - 规定没有给列赋值时的默认值。</p>
+<p>NOT NULL 约束强制列不接受 NULL 值。NOT NULL 约束强制字段始终包含值。这意味着，如果不向字段添加值，就无法插入新记录或者更新记录。</p>
+<p>强制 “P_Id” 列和 “LastName” 列不接受 NULL 值：CREATE TABLE Persons (P_Id int NOT NULL,LastName varchar(255) NOT NULL,FirstName varchar(255),Address varchar(255),City varchar(255))</p>
+<p>在 “Persons” 表创建时在 “P_Id” 列上创建 UNIQUE 约束：MySQL：CREATE TABLE Persons(P_Id int NOT NULL,LastName varchar(255) NOT NULL,FirstName varchar(255),Address varchar(255),City varchar(255),UNIQUE (P_Id))</p>
+<p>SQL Server / Oracle / MS Access：CREATE TABLE Persons(P_Id int NOT NULL UNIQUE,LastName varchar(255) NOT NULL,FirstName varchar(255),Address varchar(255),City varchar(255))</p>
+<p>如需命名 UNIQUE 约束，并定义多个列的 UNIQUE 约束，请使用下面的 SQL 语法：CREATE TABLE Persons (P_Id int NOT NULL,LastName varchar(255) NOT NULL,FirstName varchar(255),Address varchar(255),City varchar(255),CONSTRAINT uc_PersonID UNIQUE (P_Id,LastName))</p>
+<p>当表已被创建时，如需在 “P_Id” 列创建 UNIQUE 约束，请使用下面的 SQL：ALTER TABLE Persons ADD UNIQUE (P_Id)</p>
+<p>如需命名 UNIQUE 约束，并定义多个列的 UNIQUE 约束，请使用下面的 SQL 语法：ALTER TABLE Persons ADD CONSTRAINT uc_PersonID UNIQUE (P_Id,LastName)</p>
+<p>如需撤销 UNIQUE 约束，请使用下面的 SQL：MySQL： ALTER TABLE Persons DROP INDEX uc_PersonID</p>
+<p>SQL Server / Oracle / MS Access：ALTER TABLE Persons DROP CONSTRAINT uc_PersonID</p>
+<p>PRIMARY KEY 约束唯一标识数据库表中的每条记录。主键必须包含唯一的值。主键列不能包含 NULL 值。每个表都应该有一个主键，并且每个表只能有一个主键。</p>
+<p>在 “Persons” 表创建时在 “P_Id” 列上创建 PRIMARY KEY 约束：MySQL：CREATE TABLE Persons (P_Id int NOT NULL,LastName varchar(255) NOT NULL,FirstName varchar(255),Address varchar(255),City varchar(255),PRIMARY KEY (P_Id))</p>
+<p>SQL Server / Oracle / MS Access：CREATE TABLE Persons (P_Id int NOT NULL PRIMARY KEY,LastName varchar(255) NOT NULL,FirstName varchar(255),Address varchar(255),City varchar(255))</p>
+<p>如需命名 PRIMARY KEY 约束，并定义多个列的 PRIMARY KEY 约束，可使用下面的 SQL ：CREATE TABLE Persons (P_Id int NOT NULL,LastName varchar(255) NOT NULL,FirstName varchar(255),Address varchar(255),City varchar(255),CONSTRAINT pk_PersonID PRIMARY KEY<br>(P_Id,LastName))</p>
+<p>在上面的实例中，只有一个主键 PRIMARY KEY（pk_PersonID）。然而，pk_PersonID 的值是由两个列（P_Id 和 LastName）组成的。</p>
+<p>当表已被创建时，如需在 “P_Id” 列创建 PRIMARY KEY 约束，请使用下面的 SQL：ALTER TABLE Persons ADD PRIMARY KEY (P_Id)</p>
+<p>如需命名 PRIMARY KEY 约束，并定义多个列的 PRIMARY KEY 约束，可使用下面的 SQL ：ALTER TABLE Persons ADD CONSTRAINT pk_PersonID PRIMARY KEY (P_Id,LastName)</p>
+<p>如需撤销 PRIMARY KEY 约束，请使用下面的 SQL：MySQL：ALTER TABLE Persons DROP PRIMARY KEY</p>
+<p>SQL Server / Oracle / MS Access：ALTER TABLE Persons DROP CONSTRAINT pk_PersonID</p>
+<p>一个表中的 FOREIGN KEY 指向另一个表中的 PRIMARY KEY。</p>
+<p>“Orders” 表中的 “P_Id” 列指向 “Persons” 表中的 “P_Id” 列。”Persons” 表中的 “P_Id” 列是 “Persons” 表中的 PRIMARY KEY。”Orders” 表中的 “P_Id” 列是 “Orders” 表中的 FOREIGN KEY。FOREIGN KEY 约束用于预防破坏表之间连接的行为。FOREIGN KEY 约束也能防止非法数据插入外键<br>列，因为它必须是它指向的那个表中的值之一。</p>
+<p>在 “Orders” 表创建时在 “P_Id” 列上创建 FOREIGN KEY 约束：MySQL：CREATE TABLE Orders (O_Id int NOT NULL,OrderNo int NOT NULL,P_Id int,PRIMARY KEY (O_Id),FOREIGN KEY (P_Id) REFERENCES Persons(P_Id))</p>
+<p>SQL Server / Oracle / MS Access：CREATE TABLE Orders(O_Id int NOT NULL PRIMARY KEY,OrderNo int NOT NULL,P_Id int FOREIGN KEY REFERENCES Persons(P_Id))</p>
+<p>如需命名 FOREIGN KEY 约束，并定义多个列的 FOREIGN KEY 约束，使用下面的 SQL ：CREATE TABLE Orders (O_Id int NOT NULL,OrderNo int NOT NULL,P_Id int,PRIMARY KEY (O_Id),CONSTRAINT fk_PerOrders FOREIGN KEY (P_Id)REFERENCES Persons(P_Id))</p>
+<p>当 “Orders” 表已被创建时，如需在 “P_Id” 列创建 FOREIGN KEY 约束，请使用下面的 SQL：ALTER TABLE Orders ADD FOREIGN KEY (P_Id) REFERENCES Persons(P_Id)</p>
+<p>如需命名 FOREIGN KEY 约束，并定义多个列的 FOREIGN KEY 约束，使用下面的 SQL：ALTER TABLE Orders ADD CONSTRAINT fk_PerOrders FOREIGN KEY (P_Id) REFERENCES Persons(P_Id)</p>
+<p>如需撤销 FOREIGN KEY 约束，使用下面的 SQL：MySQL：ALTER TABLE Orders DROP FOREIGN KEY fk_PerOrders</p>
+<p>SQL Server / Oracle / MS Access：ALTER TABLE Orders DROP CONSTRAINT fk_PerOrders</p>
+<p>CHECK 约束用于限制列中的值的范围。如果对单个列定义 CHECK 约束，那么该列只允许特定的值。如果对一个表定义 CHECK 约束，那么此约束会基于行中其他列的值在特定的列中对值进行限制。</p>
+<p>在 “Persons” 表创建时在 “P_Id” 列上创建 CHECK 约束。CHECK 约束规定 “P_Id” 列必须只包含大于 0 的整数。MySQL：CREATE TABLE Persons (P_Id int NOT NULL,LastName varchar(255) NOT NULL,FirstName varchar(255),Address varchar(255),City varchar(255),CHECK (P_Id&gt;0))</p>
+<p>SQL Server / Oracle / MS Access：CREATE TABLE Persons (P_Id int NOT NULL CHECK (P_Id&gt;0),LastName varchar(255) NOT NULL,FirstName varchar(255),Address varchar(255),City varchar(255))</p>
+<p>如需命名 CHECK 约束，并定义多个列的 CHECK 约束，使用下面的 SQL：CREATE TABLE Persons (P_Id int NOT NULL,LastName varchar(255) NOT NULL,FirstName varchar(255),Address varchar(255),City varchar(255),CONSTRAINT chk_Person CHECK (P_Id&gt;0 AND City=’Sandnes’))</p>
+<p>当表已被创建时，如需在 “P_Id” 列创建 CHECK 约束，使用下面的 SQL：ALTER TABLE Persons ADD CHECK (P_Id&gt;0)</p>
+<p>如需命名 CHECK 约束，并定义多个列的 CHECK 约束，使用下面的 SQL：ALTER TABLE Persons ADD CONSTRAINT chk_Person CHECK (P_Id&gt;0 AND City=’Sandnes’)</p>
+<p>如需撤销 CHECK 约束，使用下面的 SQL：SQL Server / Oracle / MS Access：ALTER TABLE Persons DROP CONSTRAINT chk_Person</p>
+<p>MySQL：ALTER TABLE Persons DROP CHECK chk_Person</p>
+<p>DEFAULT 约束用于向列中插入默认值。如果没有规定其他的值，那么会将默认值添加到所有的新记录。</p>
+<p>在 “Persons” 表创建时在 “City” 列上创建 DEFAULT 约束：CREATE TABLE Persons (P_Id int NOT NULL,LastName varchar(255) NOT NULL,FirstName varchar(255),Address varchar(255),City varchar(255) DEFAULT ‘Sandnes’)</p>
+<p>当表已被创建时，如需在 “City” 列创建 DEFAULT 约束，使用下面的SQL：MySQL：ALTER TABLE Persons ALTER City SET DEFAULT ‘SANDNES’</p>
+<p>SQL Server / MS Access：ALTER TABLE Persons ALTER COLUMN City SET DEFAULT ‘SANDNES’</p>
+<p>Oracle：ALTER TABLE Persons MODIFY City DEFAULT ‘SANDNES’</p>
+<p>如需撤销 DEFAULT 约束，使用下面的 SQL：<br>MySQL：ALTER TABLE Persons ALTER City DROP DEFAULT</p>
+<p>SQL Server / Oracle / MS Access：ALTER TABLE Persons ALTER COLUMN City DROP DEFAULT</p>
+<p>在表中创建索引，以便更加快速高效地查询数据。用户无法看到索引，它们只能被用来加速搜索/查询。</p>
+<p>更新一个包含索引的表需要比更新一个没有索引的表花费更多的时间，这是由于索引本身也需要更新。因此，理想的做法是仅仅在常常被搜索的列（以及表）上面创建索引。</p>
+<p>在表上创建一个简单的索引。允许使用重复的值：CREATE INDEX index_name ON table_name (column_name)</p>
+<p>在表上创建一个唯一的索引。不允许使用重复的值：唯一的索引意味着两个行不能拥有相同的索引值。CREATE UNIQUE INDEX index_name ON table_name (column_name)</p>
+<p>在 “Persons” 表的 “LastName” 列上创建一个名为 “PIndex” 的索引：</p>
+<p>希望索引不止一个列，您可以在括号中列出这些列的名称，用逗号隔开：CREATE INDEX PIndex ON persons (LastName, FirstName)</p>
+<p>通过使用 DROP 语句，可以轻松地删除索引、表和数据库。</p>
+<p>SQL Server 的 DROP INDEX ：DROP INDEX table_name.index_name</p>
+<p>DB2/Oracle 的 DROP INDEX：DROP INDEX index_name</p>
+<p>MySQL 的 DROP INDEX：ALTER TABLE table_name DROP INDEX index_name</p>
+<p>DROP DATABASE 语句用于删除数据库：DROP DATABASE database_name</p>
+<p>DROP TABLE 语句用于删除表：DROP TABLE table_name</p>
+<p>仅仅需要删除表内的数据，但并不删除表本身：TRUNCATE TABLE table_name</p>
+<p>ALTER TABLE 语句用于在已有的表中添加、删除或修改列。</p>
+<p>在表中添加列：ALTER TABLE table_name ADD column_name datatype</p>
+<p>删除表中的列：ALTER TABLE table_name DROP COLUMN column_name</p>
+<p>改变表中列的数据类型，SQL Server / MS Access：ALTER TABLE table_name ALTER COLUMN column_name datatype</p>
+<p>My SQL / Oracle：ALTER TABLE table_name MODIFY COLUMN column_name datatype</p>
+<p>ALTER TABLE Persons ADD DateOfBirth date<br>ALTER TABLE Persons MODIFY COLUMN DateOfBirth year</p>
+<p>Auto-increment 会在新记录插入表中时生成一个唯一的数字。我们通常希望在每次插入新记录时，自动地创建主键字段的值。</p>
+<p>把 “Persons” 表中的 “ID” 列定义为 auto-increment 主键字段。MySQL：CREATE TABLE Persons (ID int NOT NULL AUTO_INCREMENT,LastName varchar(255) NOT NULL,FirstName varchar(255),Address varchar(255),City varchar(255),PRIMARY KEY (ID))</p>
+<p>要让 AUTO_INCREMENT 序列以其他的值起始，使用下面的 SQL ：ALTER TABLE Persons AUTO_INCREMENT=100</p>
+<p>把 “Persons” 表中的 “ID” 列定义为 auto-increment 主键字段。 SQL Server：CREATE TABLE Persons (ID int IDENTITY(1,1) PRIMARY KEY,LastName varchar(255) NOT NULL,FirstName varchar(255),Address varchar(255),City varchar(255))</p>
+<p>SQL Server 使用 IDENTITY 关键字来执行 auto-increment 任务。在上面的实例中，IDENTITY 的开始值是 1，每条新记录递增 1。提示：要规定 “ID” 列以 10 起始且递增 5，请把 identity 改为 IDENTITY(10,5)。</p>
+<p>在 SQL 中，视图是基于 SQL 语句的结果集的可视化的表。视图包含行和列，就像一个真实的表。视图中的字段就是来自一个或多个数据库中的真实的表中的字段。您可以向视图添加 SQL 函数、WHERE 以及 JOIN 语句，也可以呈现数据，就像这些数据来自于某个单一的表一样。</p>
+<p>CREATE VIEW view_name AS SELECT column_name(s) FROM table_name WHERE condition</p>
+<p>视图总是显示最新的数据！每当用户查询视图时，数据库引擎通过使用视图的 SQL 语句重建数据。</p>
+<p>建一个视图，选取 “Products” 表中所有单位价格高于平均单位价格的产品：CREATE VIEW [Products Above Average Price] AS SELECT ProductName,UnitPrice FROM Products WHERE UnitPrice&gt;(SELECT AVG(UnitPrice) FROM Products)</p>
+<p>查询上面这个视图：SELECT * FROM [Products Above Average Price</p>
+<p>更新视图：CREATE OR REPLACE VIEW view_name AS SELECT column_name(s) FROM table_name WHERE condition</p>
+<p>向 “Current Product List” 视图添加 “Category” 列：CREATE VIEW [Current Product List] AS SELECT ProductID,ProductName,Category FROM Products WHERE Discontinued=No</p>
+<p>删除视图：DROP VIEW view_name</p>
+<p>MySQL 中最重要的内建日期函数：</p>
+<p>NOW() 返回当前的日期和时间 ；CURDATE()    返回当前的日期； CURTIME()    返回当前的时间； DATE()    提取日期或日期/时间表达式的日期部分； EXTRACT()    返回日期/时间的单独部分</p>
+<p>DATE_ADD()   向日期添加指定的时间间隔； DATE_SUB()    从日期减去指定的时间间隔； DATEDIFF()    返回两个日期之间的天数； DATE_FORMAT()    用不同的格式显示日期/时间</p>
+<p>SQL Server 中最重要的内建日期函数：</p>
+<p>GETDATE()    返回当前的日期和时间； DATEPART()    返回日期/时间的单独部分； DATEADD()    在日期中添加或减去指定的时间间隔； DATEDIFF()    返回两个日期之间的时间； CONVERT()    用不同的格式显示日期/时间</p>
+<p>MySQL 使用下列数据类型在数据库中存储日期或日期/时间值：</p>
+<p>DATE - 格式：YYYY-MM-DD  ； DATETIME - 格式：YYYY-MM-DD HH:MM:SS   ； TIMESTAMP - 格式：YYYY-MM-DD HH:MM:SS  ；  YEAR - 格式：YYYY 或 YY</p>
+<p>SQL Server 使用下列数据类型在数据库中存储日期或日期/时间值：</p>
+<p>DATE - 格式：YYYY-MM-DD  ； DATETIME - 格式：YYYY-MM-DD HH:MM:SS  ； SMALLDATETIME - 格式：YYYY-MM-DD HH:MM:SS  ； TIMESTAMP - 格式：唯一的数字</p>
+<p>NULL 值代表遗漏的未知数据。NULL 值的处理方式与其他值不同。NULL 用作未知的或不适用的值的占位符。</p>
+<p>选取在 “Address” 列中带有 NULL 值的记录：SELECT LastName,FirstName,Address FROM Persons WHERE Address IS NOT NULL</p>
+<p>如果 “UnitsOnOrder” 是 NULL，则不会影响计算，因为如果值是 NULL 则 ISNULL() 返回 0：</p>
+<p>SQL Server / MS Access： SELECT ProductName,UnitPrice*(UnitsInStock+ISNULL(UnitsOnOrder,0)) FROM Products </p>
+<p>Oracle，Oracle 没有 ISNULL() 函数。不过，我们可以使用 NVL() 函数达到相同的结果： SELECT ProductName,UnitPrice*(UnitsInStock+NVL(UnitsOnOrder,0)) FROM Products</p>
+<p>MySQL，MySQL 也拥有类似 ISNULL() 的函数。在 MySQL 中，我们可以使用 IFNULL() 函数，如下所示： SELECT ProductName,UnitPrice*(UnitsInStock+IFNULL(UnitsOnOrder,0)) FROM Products</p>
+<p>[末]</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/SQL2/" class="archive-article-date">
+  	<time datetime="2016-12-08T02:57:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-08</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/数据库/">数据库</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/SQLFunction/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SQL函数简单操作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/SQL1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SQL简单操作（一）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SQL2" data-title="SQL简单操作（二）" data-url="http://josephmorgan.github.io/SQL2/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"litten-hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Joseph Morgan
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/Ant/" style="font-size: 10px;">Ant</a> <a href="/tags/JMeter/" style="font-size: 20px;">JMeter</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/NexT/" style="font-size: 10px;">NexT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/SQL/" style="font-size: 12.5px;">SQL</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Selenium/" style="font-size: 15px;">Selenium</a> <a href="/tags/SoapUI/" style="font-size: 10px;">SoapUI</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/个人理解/" style="font-size: 10px;">个人理解</a> <a href="/tags/性能测试/" style="font-size: 17.5px;">性能测试</a> <a href="/tags/性能监控/" style="font-size: 10px;">性能监控</a> <a href="/tags/接口分析/" style="font-size: 10px;">接口分析</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">面朝大海，春暖花开&lt;br&gt;&lt;br&gt;从明天起，做一个幸福的人&lt;br&gt;喂马、劈柴，周游世界&lt;br&gt;从明天起，关心粮食和蔬菜&lt;br&gt;我有一所房子，面朝大海，春暖花开&lt;br&gt;从明天起，和每一个亲人通信&lt;br&gt;告诉他们我的幸福&lt;br&gt;那幸福的闪电告诉我的&lt;br&gt;我将告诉每一个人&lt;br&gt;给每一条河每一座山取一个温暖的名字&lt;br&gt;陌生人，我也为你祝福&lt;br&gt;愿你有一个灿烂的前程&lt;br&gt;愿你有情人终成眷属&lt;br&gt;愿你在尘世获得幸福&lt;br&gt;我只愿面朝大海，春暖花开&lt;br&gt;&lt;br&gt;         --海子《面朝大海，春暖花开》</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://josephmorgan.github.io">
+  <title>什么叫性能测试 | DAMON&#39;S BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、    性能测试的重要性1.1    性能测试背景">
+<meta property="og:type" content="article">
+<meta property="og:title" content="什么叫性能测试">
+<meta property="og:url" content="http://josephmorgan.github.io/PerformanceConcept/index.html">
+<meta property="og:site_name" content="DAMON'S BLOG">
+<meta property="og:description" content="一、    性能测试的重要性1.1    性能测试背景">
+<meta property="og:image" content="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13OTJPUlA1UFpOT0RPaEZIMDJqRkFEbkpPSFNDV0ptblF3PT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13OUtRUXNIdTc5MEpVT0lhK2krY3pOU2tsaDRoY3diWU13PT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13NEFERkxpelpnQWxLd1ZDanBvMkx5Mkh3ck10R1piTit3PT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13K09SbytHQmVvMlBoczkvTXNFT3YxOGlWaUxWUlpHNTl3PT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13d3luVlhUY0owUFdST1p2RXROWVE5LzFiNG9ZZmI5bWR3PT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13L2c3bjk2aVNPa1NiUU1BUnp3YVpML2J6MUFWbk5pQnZ3PT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13L1lCWXRVU1NsbVFrWTJXR2dMTEZQZGtMdlJQWVFzK1NnPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13NGRrYnZ2d3RQWGxPVExLQTlYL2krTGI4aitJajR3YzBRPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf1.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13MGRMQXphT1R1cG83TlpybHpyUFZITmhheExZeEhpOSt3PT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13NlU4UEZSTlpBcmYyOE8xendoaVlMYnBjbkhXRFhMb0lnPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13M3pUdFRTS0RiM3U3VW03OGJFRlBER2JZeUx6VzVSZzFnPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13d3NpZ3YzWk5JeTBXVUdtR3VoeDh3Y1RIL1h3Vk1lOGZnPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13MWlhVHluVTIrQllGcVJ6WlVuMEp3bE91WlNHN2FpYVlRPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:updated_time" content="2016-11-10T01:27:01.208Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="什么叫性能测试">
+<meta name="twitter:description" content="一、    性能测试的重要性1.1    性能测试背景">
+<meta name="twitter:image" content="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13OTJPUlA1UFpOT0RPaEZIMDJqRkFEbkpPSFNDV0ptblF3PT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="DAMON&#39;S BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Joseph Morgan</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Stay hungry,Stay foolish</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+		        
+					<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Joseph Morgan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Joseph Morgan</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Stay hungry,Stay foolish</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-PerformanceConcept" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      什么叫性能测试
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、-性能测试的重要性"><a href="#一、-性能测试的重要性" class="headerlink" title="一、    性能测试的重要性"></a>一、    性能测试的重要性</h3><p><strong>1.1    性能测试背景</strong><br><a id="more"></a><br>随着社会的发展，科技的进步，信息技术的飞速发展，计算机的普及，软件产品已经应用到社会的各个行业领域，加上网络的发展，信息的共享性等，人们对计算机及网络的依赖性越来越大。软件产品的使用者对高质量、高效率的工作方式的要求越来越高，因此对于工作和生活中息息相关的IT系统服务，他们也要求提供更快、更高效的服务品质。</p>
+<p>网络的发展，让人们对网络的依赖越来越大，对外界新事物的好奇心等也越来越强烈，成千上万的用户在庞大的网络系统中游转。网络时代的到来，也给提供服务的系统带来严重的系统负荷，这就是系统网络发展中最明显的特征：”高并发”、”数据集中”。</p>
+<p>数据越来越集中于后台系统服务器中，众多系统同时为成千上万的网络用户提供服务，如银行、电信、社交网站等公司的软件系统随处可见，影响着我们生活的方 方面面。随着各个企业的业务发展、用户访问量的增加，其服务系统承载的负荷也会随着增加，系统性能的好坏将严重影响企业的利益，因此对于IT服务系统的性 能测试与优化也越来越受业界的重视。</p>
+<p><strong>1.2    性能测试的起因</strong></p>
+<p>目前典型的企业信息服务系统的架构，一般是由客户端、网络、防火墙、负载均衡服务器（硬件如F5、软件Apache等）、Web服务器、应用服务器（中间件WebLogic、Tomcat等）、数据库服务器等各个环节组成。</p>
+<p>在交付给客户上线使用之前，业务系统的每个环节都要进行性能测试和优化，才能保证上线后的质量。每个环节都要有专业人士协助性能的诊断和优化，这些专业人士包括：性能测试工程师、系统管理员、网络工程师、DBA、程序设计人员等。</p>
+<p>IT服务系统的性能测试与优化是一项复杂、富有挑战性的工作，对于一个专业的测试人员而言，性能优化技术的学习和研究有利于性能测试工作的顺利、深入开展。</p>
+<p><strong>1.3    功能测试和性能测试</strong></p>
+<p>功能测试主要根据产品业务需求、产品行业特征、模拟用户操作方式来测试一个产品的特性以确定它们是否满足用户需求。</p>
+<p>性能测试则是通过某种特定的方式对被测试系统按照一定的测试策略进行施压，获取该系统的响应时间、运行效率、资源利用情况等各项性能指标，来评价系统是否满足用户性能需求的过程。</p>
+<p>通俗地说，功能测试用于确保软件系统做了正确的事情，性能测试则用于确保软件系统快速地完成了任务。</p>
+<p><strong>1.4    不同角色眼中的软件性能</strong></p>
+<p>1)    系统管理员眼中的软件性能：</p>
+<p>系统管理员作为软件系统的运维人员，主要关注服务器的资源使用状况、系统的扩展性、系统支持的最大用户量、系统稳定性，以及系统可能出现的瓶颈、出现异常的情况下如何处理等。</p>
+<p>2)    研发人员眼中的软件性能：</p>
+<p>作为研发人员，他们会更关注软件系统架构设计的合理性、数据库的设计是否存在问题、代码是否存在性能方面问题、内存使用方式是否正确、线程同步方式是否合理、是否存在不合理的资源竞争等。</p>
+<p>3)    测试人员眼中的软件性能：</p>
+<p>测试人员是软件性能质量的把关者，在软件性能生命周期中占据至关重要的位置，软件性能测试工程师要对性能问题进行监控、分析及模拟实际使用过程中所出现 的性能问题。还要跟各个角色做好沟通工作，对测试出的各种性能问题，要提供充分有力的数据，为后续的分析和定位性能问题、性能优化工作做好充分的准备。</p>
+<p><strong>1.5    一秒钟的性能意味着什么</strong></p>
+<p>根据2008年Aberdeen Group的研究报告，对于Web网站，1秒的页面加载延迟相当于少了11%的PV（page view），相当于降低了16%的顾客满意度。如果从金钱的角度计算，就意味着：如果一个网站每天挣10万元，那么一年下来，由于页面加载速度比竞争对手 慢1秒，可能导致总共损失25万元的销售额。</p>
+<p>Compuware公司分析了超过150个网站和150万个浏览页面，发现页面响应时间从2秒增长到10秒，会导致38%的页面浏览放弃率。</p>
+<p>由此可见，网站性能与业务目标有着直接的关系，对网站进行负载测试非常重要。</p>
+<h3 id="二、-性能测试的几个术语"><a href="#二、-性能测试的几个术语" class="headerlink" title="二、    性能测试的几个术语"></a>二、    性能测试的几个术语</h3><p>接触过软件性能测试的人，会经常听到这样一些词汇：响应时间、并发用户数、吞吐量、性能计数器，在使用性能测试工具进行测试时，还会接触到“思考时间（Think Time）”的概念，那么，这些术语的确切含义究竟是什么呢？<br><br>本节重点介绍以上的各个术语。</p>
+<p><strong>2.1    响应时间</strong></p>
+<p>在1.1节和1.1.1节中都提到了“响应时间”的概念，响应时间是“对请求作出响应所需要的时间”，而且，我们把响应时间作为用户视角的软件性能的主要体现。</p>
+<p>可将用户所感受到的软件性能（响应时间）划分为“呈现时间”和“系统响应时间”两个部分，其中“呈现时间”取决于数据在被客户端收到响应数据后呈现页面所消耗的时间，例如，对一个Web应用，呈现时间就是浏览器接收到数据后用户把数据呈现出来的时间；而“系统响应时间”指应用系统从请求发出开始到客户端接收到数据所消耗的时间。在一般的性能测试中，我们并不关注“呈现时间”，这是因为呈现时间在很大程度上取决于客户端的表现，例如，一台内存不足的客户端机器在处理复杂页面的时候，其呈现时间可能就很长，而这并不能说明整个系统的性能。在后续的软件性能测试的讨论中，我们不会区分“系统响应时间”和“响应时间”，直接把这里的“系统响应时间”等同于“响应时间”。</p>
+<p>响应时间可以被进一步分解。图1.2描述了一个Web应用的页面响应时间的构成。从图中可以看到，页面的响应时间可被分解为“网络传输时间”（N1+N2+N3+N4）和“应用延迟时间”（A1+A2+A3），而“应用延迟时间”又可以分解为“数据库延迟时间”（A2）和“应用服务器延迟时间”（A1+A3）。之所以要对响应时间进行这些分解，主要目的是为了能更好定位性能瓶颈的所在。在后续的实例讨论中，读者将会看到如何应用这些响应时间的分解进行性能问题的定位。</p>
+<p><img src="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13OTJPUlA1UFpOT0RPaEZIMDJqRkFEbkpPSFNDV0ptblF3PT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="performance17"></p>
+<p>图1.2  Web应用的页面响应时间分解</p>
+<p>关于响应时间，要特别说明的一点是，对客户来说，该值是否能够被接受是带有一定的用户主观色彩，也就是说，响应时间的“长”和“短”没有绝对的区别。</p>
+<p>例如，对一个电子商务网站来说，在美国和欧洲，一个普遍被接受的响应时间标准为2/5/10秒，也就是说，在2秒之内给客户响应被用户认为是“非常有吸引力的”，在5秒之内响应客户被认为是“比较不错的”，而10秒是客户能接受的响应的上限。</p>
+<p>但考虑一个税务报账系统，该系统的用户每月使用一次该系统，一次花费2小时以上进行数据的录入，当用户单击“提交”按钮后，即使系统在20分钟后才给出“处理成功”的消息，用户仍然不会认为该系统的响应时间不能接受——毕竟，相对于一个月才进行一次的操作来说，20分钟确实是一个可以接受的等待时间。</p>
+<p>因此，在进行性能测试时，“合理的响应时间”取决于实际的用户需求，而不能依据测试人员自己的设想来决定。</p>
+<p><strong>2.2    并发用户数</strong></p>
+<p>在阐述这个术语之前，先来看看为什么在性能测试中需要关注这个“并发用户数”。</p>
+<p>首先，如果性能测试的目标是验证当前系统能否支持现有用户的访问，最好的办法就是弄清楚会有多少用户会在同一个时间段内访问被测试的系统，如果使用性能测试工具模拟出与系统的访问用户数相同的用户，并模拟用户的行为，那得到的测试结果就能够真实反映实际用户访问时的系统性能表现，这样一来，也就能够通过性能测试了解到当系统处于实际用户访问时，会具有怎样的性能表现。这里提到的在同一个时间段内访问系统的用户数量，也就是我们说的并发用户数的一个概念，这种并发的概念通常在性能测试（Performance Testing）方法中使用，用于从业务的角度模拟真实的用户访问，体现的是业务并发用户数。</p>
+<p>如果抛开业务的层面，仅从服务器端承受的压力来考虑，那么，对C/S或是B/S结构的应用来说，系统的性能表现毫无疑问地主要由“服务端”决定。在什么时候“服务端”会承受最大的压力，或者说，在什么时候“服务端”表现为最差的性能呢？毫无疑问，肯定是在大量用户同时对这个系统进行访问的时候。为了说明这个“同时”，参见图1.3。</p>
+<p><img src="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13OUtRUXNIdTc5MEpVT0lhK2krY3pOU2tsaDRoY3diWU13PT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="performance18"></p>
+<p>图1.3  用排球击打墙面</p>
+<p>图1.3用“排球击打墙面”说明这种“同时”，毫无疑问，越多的球同时击打到墙面，墙面承受的压力也就越大。如果把击打排球的人看成是系统的使用者，墙壁代表了我们可怜的服务端，显然，当越多的用户同时使用系统，系统承受的压力越大，系统的性能表现也就越差，而且，此时很可能出现由于用户的同时访问导致的资源争用等问题。我们在这里提到了“并发用户数”的另一个概念，该概念不从业务角度出发，而是从服务端承受的压力出发，描述的是同时向客户端发出请求的客户，该概念一般结合并发测试（Concurrency Testing）使用，体现的是服务端承受的最大并发访问数。</p>
+<p>下面我们用一个更接近实际的例子来说明这两个并发概念之间的不同。<br><br>图1.4所示是实际应用系统的演示</p>
+<p><img src="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13NEFERkxpelpnQWxLd1ZDanBvMkx5Mkh3ck10R1piTit3PT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="performance18"></p>
+<p>图1.4所示是实际应用系统的演示。</p>
+<p>对服务端来说，每个用户和服务端的交互都是离散的。如果仅考虑一个单独的用户对系统的使用，过程大致如下：用户每隔一段时间向服务端发送一个请求或是命令，服务端按照用户的请求执行某些操作，然后将结果返回给用户。</p>
+<p>从用户的角度来看，在一个相当长的时间段内（例如1天），都会有基本固定数量的使用者使用该系统，虽然每个使用者的行为不同，但从业务的角度来说，如果所有这些用户的操作都没有遇到性能障碍，则可以说该系统能够承受该数量的并发用户访问，这里的并发概念就是前面讨论的业务并发用户数。</p>
+<p>然而，如果考虑整个系统运行过程中服务器所承受的压力，情况就会不同了：在该系统的运行过程中，把整个运行过程划分为离散的时间点，在每个点上，都有一个“同时向服务端发送请求的客户数”，这个就是所称的服务端承受的最大并发访问数。如果能找到运行过程中可能出现的最大可能的服务端承受的最大并发访问数，则在该用户数下，服务器承受的压力最大，资源承受的压力也最大，在这种状态下，可以考虑通过并发测试（Concurrency Testing）发现系统中存在的并发引起的资源争用等问题。</p>
+<p>在实际的性能测试中，经常接触到的与并发用户数相关的概念还包括“并发用户数”、“系统用户数”和“同时在线用户人数”，下面用一个实际的例子来说明它们之间的差别。</p>
+<p>假设有一个OA系统，该系统有2000个使用用户——这就是说，可能使用该OA系统的用户总数是2000名，这个概念就是“系统用户数”，该系统有一个“在线统计”功能（系统用一个全局变量计数所有已登录的用户），从在线统计功能中可以得到，最高峰时有500人在线（这个500就是一般所说的“同时在线人数”），那么，系统的并发用户数是多少呢？</p>
+<p>根据我们对业务并发用户数的定义，这500就是整个系统使用时最大的业务并发用户数。当然，500这个数值只是表明在最高峰时刻有500个用户登录了系统，并不表示实际服务器承受的压力。因为服务器承受的压力还与具体的用户访问模式相关。例如，在这500个“同时使用系统”的用户中，考察某一个时间点，在这个时间上，假设其中40%的用户在饶有兴致地看系统公告（注意：“看”这个动作是不会对服务端产生任何负担的），20%的用户在填写复杂的表格（对用户填写的表格来说，只有在“提交”的时刻才会向服务端发送请求，填写过程是不对服务端构成压力的），20%部分用户在发呆（也就是什么也没有做），剩下的20%用户在不停地从一个页面跳转到另一个页面——在这种场景下，可以说，只有20%的用户真正对服务器构成了压力。因此，从上面的例子中可以看出，服务器实际承受的压力不只取决于业务并发用户数，还取决于用户的业务场景。</p>
+<p>那么，该系统的服务端承受的最大并发访问数是多少呢？这个取决于业务并发用户数和业务场景，一般可以通过对服务器日志的分析得到。</p>
+<p>在实际的性能测试工作中，测试人员一般比较关心的是业务并发用户数，也就是从业务角度关注究竟应该设置多少个并发数比较合理，因此，在后面的讨论中，也是主要针对业务并发用户数进行讨论，而且，为了方便，直接将业务并发用户数称为并发用户数。</p>
+<p>那么，究竟应该如何获得测试人员关心的并发用户数的具体数值呢？<br><br>下面给出了一些用于估算并发用户数的公式。</p>
+<p><img src="http://imglf.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13K09SbytHQmVvMlBoczkvTXNFT3YxOGlWaUxWUlpHNTl3PT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="performance19"></p>
+<p>在公式（1）中，C是平均的并发用户数；n是login session 的数量；L是login session的平均长度；T指考察的时间段长度。例如，对一个典型的OA应用，考察的时间段长度应该为8小时的工作时间。</p>
+<p>公式（2）则给出了并发用户数峰值的计算方式，其中， 指并发用户数的峰值，C就是公式（1）中得到的平均的并发用户数。该公式的得出是假设用户的login session产生符合泊松分布而估算得到的。</p>
+<p>下面根据上述给出的方法进行实例计算。</p>
+<p>实例：假设有一个OA系统，该系统有3000个用户，平均每天大约有400个用户要访问该系统，对一个典型用户来说，一天之内用户从登录到退出该系统的平均时间为4小时，在一天的时间内，用户只在8小时内使用该系统。<br><br>则根据公式（1）和公式（2），可以得到：</p>
+<p><img src="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13d3luVlhUY0owUFdST1p2RXROWVE5LzFiNG9ZZmI5bWR3PT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="performance20"></p>
+<p>当然，这是种可行的方法，但仔细考究起来，其并不是惟一，甚至说不上是最精确的方法，因为在公式中仍然需要估算“平均用户数”和“login session的长度”，而要精确估算这两个值并不容易。另外，考虑到用户的业务操作存在一定的时间集中性（也就是说，用户对系统业务的访问往往不是平均分布在整个考察时间段内，而是相对集中地分布在某几个时间段内），采用公式（1）和公式（2）进行计算仍然存在一定的偏差。</p>
+<p>我们给出对该公式使用的一些建议，遵循这些建议，可以更精确地计算得到并发用户数：</p>
+<p>（1）以更细的时间粒度进行考察：例如，可以设定1个小时为考察时间的粒度，对一个典型的OA系统，将一天的上班时间划分为8个区间，这样可以解决前面提到的业务操作存在的时间集中性的问题。</p>
+<p>（2）考虑典型的业务模式：不同的应用有不同的业务模式，例如，一个内部系统一般在上班开始后的30分钟至1个小时集中出现用户的登录；一个账务系统在每月的结账日前几天会比较繁忙；一个门户网站在重大消息发布的前后会有访问高峰；一个旅游的网站在节假日前夕会有大量用户的访问……因此，在考虑计算并发用户数时，可以结合应用的业务模式，多考虑一些可能发生的场景，基于这些场景进行估算。</p>
+<p>除了这种介绍的方法之外，对于企业内部使用的Web系统来说，一个更一般的（当然精度更差）经验公式是：</p>
+<p><img src="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13L2c3bjk2aVNPa1NiUU1BUnp3YVpML2J6MUFWbk5pQnZ3PT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="performance21"></p>
+<p>也就是说，用每天访问系统用户数的10%作为平均的并发用户数，并发用户数的最大值由并发用户数乘上一个调整因子r得到，r的取值一般为2～3。</p>
+<p>公式（3）和公式（4）可以在要求不太严格的性能测试，或是只有很少数据支持分析的性能测试中使用。</p>
+<p>在本节的前面部分提到了“日志分析”方法。所谓“日志分析”方法是指通过对应用服务器的日志进行分析，从而了解系统用户的使用状态，从日志中计算出“服务器承受的最大并发用户访问数”数据。这种方式得到的数据准确度和可信度都比较高，对于Internet应用等无法估计用户数量和用户行为模式的应用，这种方式最为可信。</p>
+<p><strong>2.3    吞吐量</strong></p>
+<p>吞吐量是指“单位时间内系统处理的客户请求的数量”，直接体现软件系统的性能承载能力。一般来说，吞吐量用请求数/秒或是页面数/秒来衡量，从业务的角度，吞吐量也可以用访问人数/天或是处理的业务数/小时等单位来衡量。当然，从网络的角度来说，也可以用字节数/天来考察网络流量。</p>
+<p>例如，对一个Web应用系统来说，从系统的处理能力考虑，可以以页面数/秒作为吞吐量的标准；对一个银行的业务前台系统来说，可以以其处理的业务数/小时作为吞吐量的标准。</p>
+<p>在本章的开始部分，已经讨论过，对于交互式应用，用户直接的体验是“响应时间”，通过“并发用户数”和“响应时间”可以确定系统的性能规划；但对于非交互式应用，用“吞吐量”来描述我们对系统性能的期望可能更加合理。</p>
+<p>对于交互式应用来说，吞吐量指标反映的是服务器承受的压力。在容量规划的测试中，吞吐量是一个重点关注的指标，因为它能够说明系统级别的负载能力；另外，在性能调优的过程中，吞吐量指标也有重要的价值，例如，Empirix公司在报告中声称，在他们所发现的性能问题中，有80%是因为吞吐量的限制导致的。</p>
+<p>在对Web系统的性能测试过程中，吞吐量主要以请求数（单击数）/秒、页面数/秒或是字节数/秒来体现，吞吐量指标可以在两个方面发挥作用：</p>
+<p>（1）用于协助设计性能测试场景，以及衡量性能测试场景是否达到了预期的设计目标：在设计性能测试场景时，吞吐量可被用于协助设计性能测试场景，根据估算的吞吐量数据，可以对应到测试场景的事务发生频率、事务发生次数等；另外，在测试完成后，根据实际的吞吐量可以衡量测试是否达到了预期的目标。</p>
+<p>（2）用于协助分析性能瓶颈：吞吐量的限制是性能瓶颈的一种重要表现形式，因此，有针对性地对吞吐量设计测试，可以协助尽快定位到性能瓶颈所在位置。例如，RBI（Rapid Bottleneck Identify）方法就主要通过吞吐量测试发现性能<br>瓶颈。</p>
+<p>以不同方式表达的吞吐量可以说明不同层次的问题。例如，以字节数/秒方式表示的吞吐量主要受网络基础设施、服务器架构、应用服务器制约；以单击数/秒方式表示的吞吐量主要受应用服务器和应用代码的制约。</p>
+<p>作为性能测试时的主要关注指标，吞吐量和并发用户数之间存在一定的联系。在没有遇到性能瓶颈的时候，吞吐量可以采用如下公式计算：</p>
+<p><img src="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13L1lCWXRVU1NsbVFrWTJXR2dMTEZQZGtMdlJQWVFzK1NnPT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="performance22"></p>
+<p>其中，F表示吞吐量；Nvu表示VU（Virtuae User，虚拟用户）的个数；R表示每个VU发出的请求（单击）数量；T表示性能测试所用的时间。但如果遇到了性能瓶颈，此时吞吐量和VU数量之间就不再符合公式（5）给出的关系。</p>
+<p>常用于分析吞吐量的图形是“吞吐量——VU数量”的关联图。图1.5给出了两个“吞吐量——VU数量”关联图的示例。<br><br>从图中可以看到，吞吐量在VU数量增长到一定程度的时候产生了性能  瓶颈。</p>
+<p>最后，必须要说明的是，虽然吞吐量指标可被看作是系统承受压力的体现，但在不同并发用户数量的情况下，对同一个系统施加相同的吞吐量压力，很可能会得到不同的测试结果。本文给出了一个示例。</p>
+<p><img src="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13NGRrYnZ2d3RQWGxPVExLQTlYL2krTGI4aitJajR3YzBRPT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="performance23"></p>
+<p>图1.5  “吞吐量——VU数量”关联图示例</p>
+<p>对同一个应用进行两次不同的性能测试，测试A采用100个并发，每个VU间隔1秒发出一个请求；测试B采用1000个并发，每个VU间隔10秒发出一个请求；对测试A，测试时的吞吐量（页/秒）为100×1/1=100；对测试B来说，吞吐量（页/秒）为1000×1/10=100，仍然是100。但从测试结果来看，执行测试A时，应用在50页/秒出现性能瓶颈，而测试B在25页/秒出现性能瓶颈。</p>
+<p><strong>2.4    性能计数器</strong></p>
+<p>性能计数器（Counter）是描述服务器或操作系统性能的一些数据指标。例如，对Windows系统来说，使用内存数（Memory In Usage），进程时间（Total Process Time）等都是常见的计数器。</p>
+<p>计数器在性能测试中发挥着“监控和分析”的关键作用，尤其是在分析系统的可扩展性、进行性能瓶颈的定位时，对计数器取值的分析非常关键。但必须说明的是，单一的性能计数器只能体现系统性能的某一个方面，对性能测试结果的分析必须基于多个不同的计数器。</p>
+<p>与性能计数器相关的另一个术语是“资源利用率”。该术语指的是系统各种资源的使用状况。为了方便比较，一般用“资源的实际使用/总的资源可用量”形成资源利用率的数据，用以进行各种资源使用的比较。</p>
+<p>例如，我们会说到，“某某系统在承受10000用户的并发访问时，Web服务器的CPU占用率为68%，平均的内存占用率为55%”，这其中，68%和55%就是典型的资源利用率的数值。</p>
+<p>在性能测试中常用资源利用率进行横向的对比，例如，在进行测试时会发现，资源A的使用率达到了接近100%的数值，而其他的资源利用率都处于比较低的水平，则可以很清楚地知道，资源A就很有可能是系统的一个性能瓶颈。当然，资源利用率在通常的情况下需要结合响应时间变化曲线、系统负载曲线等各种指标进行分析。</p>
+<p>性能计数器是性能测试分析的主要参考值，本书的第3章对其进行了详细的解释说明，并说明了如何利用这些计数器分析系统性能瓶颈。</p>
+<p><strong>2.5    思考时间</strong></p>
+<p>思考时间（Think Time），也被称为“休眠时间”，从业务的角度来说，这个时间指的是用户在进行操作时，每个请求之间的间隔时间。前面已经讨论过，对交互式应用来说，用户在使用系统时，不大可能持续不断地发出请求，更一般的模式应该是用户在发出一个请求后，等待一段时间，再发出下一个请求。</p>
+<p>因此，从自动化测试实现的角度来说，要真实地模拟用户操作，就必须在测试脚本中让各个操作之间等待一段时间，体现在脚本中，具体而言，就是在操作之间放置一个Think的函数，使得脚本在执行两个操作之间等待一段时间。</p>
+<p>在测试脚本中，思考时间体现为脚本中两个请求语句之间的间隔时间。不同的测试工具提供了不同的函数或者方法来实现思考时间，本书附录A中对思考时间进行了的详细描述，另外，本书实践篇也有一些使用思考时间的实际   例子。</p>
+<p>在实际的测试中，设置多长的思考时间最为合理是许多性能测试工程师关心的问题。其实，思考时间与迭代次数、并发用户数和吞吐量之间存在一定的关系。<br><br>公式（5）说明吞吐量是VU数量Nvu、每个用户发出请求数R和时间T的函数，而其中的R又可以用时间T和用户的思考时间Ts来计算：</p>
+<p><img src="http://imglf1.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13MGRMQXphT1R1cG83TlpybHpyUFZITmhheExZeEhpOSt3PT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="performance24"></p>
+<p>用公式（5）和公式（6）进行化简运算可得，吞吐量与Nvu成正比，而与Ts成反比。</p>
+<p>不少性能测试工程师在实际的应用中都对如何给定合适的思考时间存在疑问，那么，在具体的测试实践中，究竟该怎样选择合适的思考时间呢？下面给出一个计算思考时间的一般步骤：<br><br>1．首先计算出系统的并发用户数；<br><br>2．统计出系统平均的吞吐量；<br><br>3．统计出平均每个用户发出的请求数量；<br><br>4．根据公式（6）计算出思考时间。</p>
+<p>当然，为了让性能测试场景更加符合实际情况，可以考虑以步骤4计算得出的思考时间为基准，让实际的思考时间在一定幅度内随机变动。LoadRunner和Segue Silk Performer等工具都支持以这种方式设置思考时间。</p>
+<p>最后要说明的是“0思考时间”。有些文章建议在测试中使用“0”作为思考时间，以给系统更大的压力。在本人的实际性能测试过程中，对于交互式的应用系统，很少遇到这样的要求。因为从业务的角度考虑，思考时间用于更真实地模拟用户操作，设置思考时间为0，基本上不具有实际的业务含义。</p>
+<p>但在非交互式应用的性能测试过程中，有时候确实会将思考时间设置为0，这时候是模拟一种尽可能大的压力，研究系统在巨大压力下的表现。</p>
+<p>可以说，如果测试的目的是为了“验证应用系统具有预期的能力”（也就是所说的“能力验证”的应用领域），就应该尽量模拟用户在使用业务时的真实思考时间；如果目的是进行更一般的研究，例如“了解系统在压力下的性能水平”或是“了解系统承受压力的能力”（也就是所说的“规划能力”的应用领域），则可以采用0思考时间。</p>
+<h2 id="三、-性能测试流程"><a href="#三、-性能测试流程" class="headerlink" title="三、    性能测试流程"></a>三、    性能测试流程</h2><p><strong>3.1    性能测试流程全景图</strong></p>
+<p><img src="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13NlU4UEZSTlpBcmYyOE8xendoaVlMYnBjbkhXRFhMb0lnPT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="performance25"></p>
+<p>性能测试的工作可以分为三大部分：<br><br>1)    前期准备阶段<br><br>2)    执行和调优阶段<br><br>3)    总结阶段<br><br>各阶段具体介绍内容如下：</p>
+<p><strong>3.2    前期准备阶段</strong></p>
+<ul>
+<li>性能需求调研：<br><br>客户能接受的响应时间，每日单交易处理能力，系统资源利用率，系统环境搭建方式、并发用户数、日交易数量等。</li>
+<li>确定业务模型：<br><br>根据需求调研，分析哪些交易是每日需要处理使用的功能，哪些交易是月底或者年底需要批量处理，来划分测试交易的等级。</li>
+<li>确定测试方案：<br><br>测试方案的目的是确定此次系统测试的目的，定义一个性能测试的入口准则，出口准则，并确定测试的交易业务模型、业务指标、测试模型、测试指标，以及发起测试的测试策略、执行策略、监控分析策略、以及测试内容、测试环境、工具、数据、脚本的准备、测试风险策略等。</li>
+<li>确定测试计划：<br><br>制定测试计划的目的是为了约束测试各个活动的起止时间，为性能测试的准备、执行、分析与报告、总结等环节给出合理时间估算。</li>
+<li>建立测试环境：<br><br>建立测试环境主要是在需求调研后根据实际上线系统环境的网络拓扑结构搭建模拟测试环境，准备测试数据等。</li>
+<li>准备测试工具、脚本及测试数据：<br><br>根据分析系统架构模式对自动化测试工具选型、对脚本的录制调试以及测试系统存量数据的准备。</li>
+<li>准备测试监控工具：<br><br>在性能测试的开始前，需要配置完成监控工具，用于监控每个虚拟用户的状态，及时采集交易的响应时间、吞吐量，以及各主机的CPU、I/O和内存等硬件资源利用率信息。</li>
+</ul>
+<p><img src="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13M3pUdFRTS0RiM3U3VW03OGJFRlBER2JZeUx6VzVSZzFnPT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="performance26"></p>
+<ul>
+<li>测试环境预热：<br><br>环境预热就是在环境搭建完成后录制调试完脚本对录制好的脚本都执行一次，因为一些程序在服务器重启时期需要编译。</li>
+<li>各个服务器参数化调整：<br><br>环境搭建好后根据硬件配置，软件配置对系统各个环境进行系统参数调整、WEB服务器参数调整、应用服务器参数调整、数据库服务器参数调整，并将调整好的参数进行备份。<br><br>（此处加入各环节参数配置建议值，并以此建立环境参数基线）</li>
+</ul>
+<p><strong>3.3   测试执行阶段</strong></p>
+<p><strong>3.3.1测试执行思路</strong></p>
+<p>执行测试包括以下六个部分：单交易基准测试、单交易负载测试、混合场景测试、稳定性测试、异常测试、极限测试。</p>
+<p>1)    单交易基准测试<br><br>测试原理：<br><br>在测试环境经过确认，脚本预验证之后，针对每支选定的交易或操作，在系统无压力的情况下，单交易用户迭代若干次，获取每个交易或操作的平均响应时间，以此作为多用户并发测试的基准和参考。<br><br>测试方法：<br><br>使用性能测试工具LR模拟客户端向目标系统发送交易请求，在系统无压力的情况下重复50-100次（或10分钟），每次迭代间等待1秒，获取交易的平均响应时间、TPS、点击率作为衡量指标。</p>
+<p>2)    单交易负载测试<br><br>测试原理：<br><br>在完成单交易基准测试后，针对测试模型中的每一支交易或每一个操作，采用多（5-10，是具体情况而定）虚拟用户数进行负载测试，获取业务处理性能和系统资源利用率等数据，并验证交易是否存在并发性问题。<br><br>测试方法：<br><br>实用LR模拟客户端向目标用户发送业务请求，并接受返回结果的脚本。采用梯度发送的方式逐步增加系统请求的压力，每个梯度测试持续运行10-15分钟并记录测试相关数据，获取该交易最大处理能力，同时进行资源监控，问题定位测试结果分析。</p>
+<p>3)    混合场景<br><br>测试原理：<br><br>在既定的测试模型下，在给定的测试限制条件下，通过在被测试系统上逐步增加的并发用户数，梯度增加压力，获得系统响应时间、吞吐量、CPU和内存的使用等性能数据。确定在各种工作负载下系统的性能指标，直到突破限定条件。获取在不同压力下的性能表现，以及交易的TPS、响应时间、系统资源利用率等指标数据。经过测试分析获取应用系统在该测试环境下的最大处理能力。<br><br>测试方法:<br><br>根据测试模型中的交易比例构成测试场景，使用LR模拟客户端向目标系统发起交易请求。按照并发梯度的方法，逐步提升并发用户数的压力，每组梯队运行15-20分钟。观察并收集应用系统的CPU、内存、磁盘的占用情况、交易响应情况、交易成功率等指标。直到系统出现容量拐点或瓶颈后结束测试。（若在各项参数指标满足参考预设值，同时交易响应时间，TPS指标满足业务需求即可记录和结束测试；若在测试过程中，某项指标未达到预期，随即进入调优过程，直至达标后记录最后测试结果；若因时间等原因无法完成最终调优过程，详细描述测试过程，并记录当前系统的最高性能处理能力）</p>
+<p>4)    稳定性测试<br><br>测试原理：<br><br>根据混合场景负载测试结果，采用系统容量峰值的60%-80%的压力负载，稳定运行8-12小时，检验应用系统在测试环境下的稳定运行能力，获取系统长时间运行的稳定性指标。根据应用系统的操作习惯或业务处理规律，必要时采用变化的交易压力的方式，进行稳定性测试。主要方式是随机和定时的变更交易压力，有益于根据业务运行规律模拟真实状况下的系统运行状况。<br><br>测试方法：<br><br>根据单交易场景负载测试结果，结合生产实际业务量的统计，推算负载测试模型系统峰值的压力60-80%的并发压力。使用LR连续发起并发压力8-12小时，主要监控系统的CPU、内存、磁盘的占用情况和交易响应情况，主要是检查内存泄漏、网络处理能力、负载均衡等问题，检验系统在持续压力状况下的稳定运行能力。</p>
+<p>5)    异常测试<br><br>测试原理：<br><br>在单节点故障或者网络故障等问题发生时，系统的处理能力，数据的完整性。<br><br>测试方法： <br><br>通过一定方法（如断开网线，停掉服务器）模拟服务中断、网络终端、硬件故障等异常情况，测试故障发生时对在线交易的影响。</p>
+<p>6)    极限测试<br><br>测试原理：<br><br>分为单交易极限负载测试和混合场景极限负载测试两类。在一定的测试环境中，获取单交易或混合场景在极限或苛刻的环境中系统的性能表现。关注系统在超越极限后的表现。测试过程中，不必严格按照梯度增加的方法。应用系统运行可以据此设置预案，软件开发可以按照此优化设计。<br><br>测试方法：<br><br>上述两类测试方法基本相同，只是执行策略和测试目的略有不同。根据测试模型中的交易比例构建测试场景，即混合负载测试场景。使用LR模拟客户端向目标系统发起交易请求，以混合负载容器值所处的并发用户数为起点，较大幅度提升并发用户数压力，观察应用系统的CPU、内存、磁盘的占用情况，交易响应情况，交易成功率等指标。尝试找出使用上述指标出现异常的梯度，并运行15-30分钟，监控系统的性能表现。</p>
+<p><strong>3.3.2测试的主要策略</strong></p>
+<p>1)    测试模型的维护策略</p>
+<p>测试模型由业务模型而来，是全部测试活动的逻辑基础，贯穿整个测试过程，务必保持模型相对稳定和交易配比的准确。对于测试模型的定义要关注TPS/HPS的区分。务必于应用系统用户关注目标统一。对于测试模型中的配比关系，首先源于生产的统计分析，务必重视统计口径和粒度；其次源于经验判断分析，必须遵循一般交易习惯和操作规律。</p>
+<p>2)    梯度并发的策略</p>
+<p>在混合负载测试中，以预设的测试模型逐步增加并发用户数量，获得TPS等性能容量指标。对于获取最大并发用户数或接入能力的测试，以TPS/HPS为变化梯度。</p>
+<p>3)    极限策略</p>
+<p>在混合负载测试中，必须找出系统“瓶颈”和处理能力的“拐点”。可能情形：测试环境资源类某项性能指标达到了阀值，例如CPU，I/O，Memory等；应用系统某项设定的指标达到临界值，例如队列深度、并发进程数量等；交易或操作定义的限制条件，例如响应时间、交易处理成功率等。<br>4)    冗余策略</p>
+<p>在混合负载测试中，梯度增加是个不断尝试，反复调整的过程，即便找到了所谓的“拐点”或“瓶颈”，也须向前继续测试2-3个梯度，查看应用系统能够的性能表现。</p>
+<p>5)    “拐点”或“瓶颈”的判定策略</p>
+<p>对于应用系统的性能容量，通常有3个限定条件：环境资源类，交易业务类，应用系统类。其应用策略如下：</p>
+<ul>
+<li>环境资源类：例如I/O低于80%，如果超过此指标，或是核查原因或是中止测试。</li>
+<li>交易业务类：除了受用户体验约束外，更多来源于经验判断，存在较大弹性误差，例如查询交易相应时间3s，5s，8s技术误差和感受误差都需要考虑。</li>
+<li>应用系统类：应用系统类条件既包括应用系统本身，也包括OS，DB、中间件等，可以随时调配或优化。</li>
+<li>综合系统性能测试指标：</li>
+</ul>
+<p><img src="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13d3NpZ3YzWk5JeTBXVUdtR3VoeDh3Y1RIL1h3Vk1lOGZnPT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="performance27"></p>
+<p>执行测试时，并发用户采取从小到大逐渐递增的方式，给系统施加压力，观察系统的吞吐量和交易响应时间随并发用户数和交易数增加的变化，如下图所示。</p>
+<p><img src="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU94NlBualV2Zk13MWlhVHluVTIrQllGcVJ6WlVuMEp3bE91WlNHN2FpYVlRPT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="performance28"></p>
+<p>性能测试发起时，按照业务模型，通过LoadRunner压力测试软件，使用不同并发用户数，梯度发送交易请求压力，每次测试持续运行一定时间并记录测试相关性能数据，获取系统处理能力变化值，形成处理能力梯度变化曲线。</p>
+<p><strong>3.4    测试总结阶段</strong></p>
+<p><strong>3.4.1记录和分析测试结果</strong></p>
+<p>1)    业务处理能力<br><br>2)    交易响应时间<br><br>3)    系统资源监控情况<br><br>4)    瓶颈和拐点分析</p>
+<p><strong>3.4.2 测试结论</strong></p>
+<p>在测试环境下，根据响应时间、成功率、资源使用的各项指标等综合分析，得出目前系统的性能情况，并对仍然存在的性能问题进行说明，对可能存在的风险进行分析，并提出改善性能意见、规避风险策略。</p>
+<h3 id="四、-性能测试的应用领域"><a href="#四、-性能测试的应用领域" class="headerlink" title="四、    性能测试的应用领域"></a>四、    性能测试的应用领域</h3><p>概括来说，性能测试可分为以下五个不同的领域：</p>
+<p><strong>4.1    能力验证</strong></p>
+<p>一个典型的能力验证的问题会采用这样的描述方式：“某系统能否在A条件下具有B能力？”例如，我们为客户进行系统上线后的验收测试，或是作为第三方对一个已部署的性能进行验证，都属于这种性能测试应用领域内的测试。</p>
+<p>特点：</p>
+<ul>
+<li>要求在已确定的环境下运行。</li>
+<li>需要根据典型场景设计测试方案和用例。</li>
+<li>一般采用的测试方法包括性能测试、可靠性测试、压力测试和失效恢复测试方法。</li>
+</ul>
+<p>也就是说，关心的是“在给定条件下，系统是否具有预期的能力表现”。</p>
+<p><strong>4.2    规划能力</strong></p>
+<p>常被描述为：“某系统能否支持未来一段时间内的用户增长”或是“应该如何调整系统配置，使系统能够满足增长的用户数的需要”。</p>
+<p>特点：</p>
+<ul>
+<li>它是一种探索性的测试。</li>
+<li>它可被用于了解系统的性能以及获得扩展性能的方法。</li>
+<li>一般采用的测试方法包括负载测试、配置测试和压力测试方法。</li>
+</ul>
+<p>也就是说，关心的是“应该如何使系统具有我们要求的性能能力”或是“在某种可能发生的条件下，系统具有如何的性能能力”。</p>
+<p><strong>4.3    性能调优</strong></p>
+<p>调优可以在多种不同的测试阶段和场合下使用。对已经部署在实际生产环境中的应用系统来说，对其进行的性能调优可能会首先关注硬件环境和系统设置上，例如，对服务器的调整、对数据库参 数的调整及对应用服务器的参数调整，此时的性能调优需要在生产环境这个确定的环境下进行；但对正在开发中的应用来说，性能调优会更多地关注应用逻辑的实现 方法、应用中涉及的算法、数据库访问层的设计等因素，此时并不要求测试环境是实际的生产环境，只要整个调优过程中具有一个可用于比较的测试基准测试环境即可。</p>
+<p>特点：</p>
+<ul>
+<li>确定基准环境、基准负载和基准性能指标。</li>
+<li>调整系统运行环境和实现方法，执行测试。</li>
+</ul>
+<p>a）硬件环境的调整：</p>
+<p>主要是对系统运行的硬件环境进行调整，包括改变系统运行的服务器、主机设备环境（改用具有更高性能的机器，或是调整某些服务器的物理内存总量、CPU总量等）、调整网络环境（更换快速的网络设备，或是采用更高的带宽的组网技术）等。</p>
+<p>b）系统设置的调整：</p>
+<p>主要是对系统运行的基础平台设置进行调整，例如，根据应用需要调整UNIX系统的核心参数，调整数据库的内存池大小，调整应用服务器使用的内存大小，或是采用更高版本的JVM环境等。</p>
+<p>c）应用级别的调整：</p>
+<p>主要是对应用实现本身进行调整，包括选用新的架构、采用新的数据访问方式或修改业务逻辑的实现方式等。<br>需要说明的是，在本步骤中，不要一次调过多的参数或是应用实现方法，否则很难判断具体是哪个调整对系统性能产生了较为有利的影响。</p>
+<ul>
+<li>记录测试结果，进行分析。循环的出口是“达到预期的性能调优目标”。</li>
+<li>一般采用的测试方法包括配置测试、负载测试、压力测试和失效恢复测试。</li>
+</ul>
+<p><strong>4.4    缺陷发现</strong></p>
+<p>通过性能测试的手段来发现系统中存在的缺陷。</p>
+<p>特点：</p>
+<ul>
+<li>一般采用的测试方法包括并发测试，压力测试和失效恢复测试。</li>
+<li>也就是说，发现缺陷，并没有可以参照的性能指标或是需要达到的性能目标。</li>
+</ul>
+<p><strong>4.5    性能基准比较</strong></p>
+<p>通常应用在敏捷开发过程中。就是在不设定明确的性能目标的情况下，通过比较得到每次迭代中的性能表现的变化，根据这些变化决定迭代是否达到了预期的目标。</p>
+<p>[末]</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/PerformanceConcept/" class="archive-article-date">
+  	<time datetime="2016-11-09T08:38:18.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-09</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能测试/">性能测试</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/性能测试/">性能测试</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/SeleniumUse/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Selenium的使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/TuningHow/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">性能测试应该怎么做</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="PerformanceConcept" data-title="什么叫性能测试" data-url="http://josephmorgan.github.io/PerformanceConcept/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"litten-hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Joseph Morgan
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/Ant/" style="font-size: 10px;">Ant</a> <a href="/tags/JMeter/" style="font-size: 20px;">JMeter</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/NexT/" style="font-size: 10px;">NexT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/SQL/" style="font-size: 12.5px;">SQL</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Selenium/" style="font-size: 15px;">Selenium</a> <a href="/tags/SoapUI/" style="font-size: 10px;">SoapUI</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/个人理解/" style="font-size: 10px;">个人理解</a> <a href="/tags/性能测试/" style="font-size: 17.5px;">性能测试</a> <a href="/tags/性能监控/" style="font-size: 10px;">性能监控</a> <a href="/tags/接口分析/" style="font-size: 10px;">接口分析</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">面朝大海，春暖花开&lt;br&gt;&lt;br&gt;从明天起，做一个幸福的人&lt;br&gt;喂马、劈柴，周游世界&lt;br&gt;从明天起，关心粮食和蔬菜&lt;br&gt;我有一所房子，面朝大海，春暖花开&lt;br&gt;从明天起，和每一个亲人通信&lt;br&gt;告诉他们我的幸福&lt;br&gt;那幸福的闪电告诉我的&lt;br&gt;我将告诉每一个人&lt;br&gt;给每一条河每一座山取一个温暖的名字&lt;br&gt;陌生人，我也为你祝福&lt;br&gt;愿你有一个灿烂的前程&lt;br&gt;愿你有情人终成眷属&lt;br&gt;愿你在尘世获得幸福&lt;br&gt;我只愿面朝大海，春暖花开&lt;br&gt;&lt;br&gt;         --海子《面朝大海，春暖花开》</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

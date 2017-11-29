@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://josephmorgan.github.io">
+  <title>Ant的使用 | DAMON&#39;S BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、概述Ant是一个将软件编译、测试、部署等步骤联系在一起加以自动化的一个工具，大多用于Java环境中的软件开发。在实际软件开发中，有很多地方可以用到Ant。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ant的使用">
+<meta property="og:url" content="http://josephmorgan.github.io/AntIntroduce/index.html">
+<meta property="og:site_name" content="DAMON'S BLOG">
+<meta property="og:description" content="一、概述Ant是一个将软件编译、测试、部署等步骤联系在一起加以自动化的一个工具，大多用于Java环境中的软件开发。在实际软件开发中，有很多地方可以用到Ant。">
+<meta property="og:image" content="http://imglf.nosdn.127.net/img/NGVCMTB5YXRScU9RRTRpOFlqMkJuNTRiZU1YYm5KYWhRNWcxUkNZV3dYU0V3S1dIRFNXOEFnPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU9RRTRpOFlqMkJud3NxczJKQlI1elNERW4zVzRESStGa0dxTGlnYzhTTS9RPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf1.nosdn.127.net/img/NGVCMTB5YXRScU9RRTRpOFlqMkJuK2JNSVNjSUpNZ3NSaDN6RDdpczRkMTVZL0ZBQVVrTDJ3PT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU9RRTRpOFlqMkJuOGJCYnhUc1M4eTk3aE1rWTJHRVZsYnhKM01xNlZUYnZ3PT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf1.nosdn.127.net/img/NGVCMTB5YXRScU9RRTRpOFlqMkJuN2tWVEJuYWk2OWRjTGVyNkhuVTBvMkFsWExvTXVIekhRPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf.nosdn.127.net/img/NGVCMTB5YXRScU9RRTRpOFlqMkJuK0VFTnJxRnBVaVFmNWVyeHBSNm4wL2t6c1lrK3Z1K1FRPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU9RRTRpOFlqMkJuNkQ5dER3bnRRTzltcjRPTG1JbjNOejJvY2N0NEFBaWhBPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU9RRTRpOFlqMkJuOG1DdGJrWUJURDlmVFRuQmg2d0FyQ1R3SlRXT2tCQmRBPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:updated_time" content="2016-11-14T01:43:44.606Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ant的使用">
+<meta name="twitter:description" content="一、概述Ant是一个将软件编译、测试、部署等步骤联系在一起加以自动化的一个工具，大多用于Java环境中的软件开发。在实际软件开发中，有很多地方可以用到Ant。">
+<meta name="twitter:image" content="http://imglf.nosdn.127.net/img/NGVCMTB5YXRScU9RRTRpOFlqMkJuNTRiZU1YYm5KYWhRNWcxUkNZV3dYU0V3S1dIRFNXOEFnPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="DAMON&#39;S BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Joseph Morgan</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Stay hungry,Stay foolish</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+		        
+					<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Joseph Morgan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Joseph Morgan</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Stay hungry,Stay foolish</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-AntIntroduce" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ant的使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>一、概述</strong><br><a href="http://ant.apache.org/" target="_blank" rel="external">Ant</a>是一个将软件编译、测试、部署等步骤联系在一起加以自动化的一个工具，大多用于Java环境中的软件开发。在实际软件开发中，有很多地方可以用到Ant。<br><a id="more"></a><br>    这个工具的名称是another neat tool(另一个整洁的工具)的首字母的缩写。</p>
+<p>开发环境：</p>
+<p>System：Windows</p>
+<p>JDK：1.6+</p>
+<p>IDE：eclipse</p>
+<p>ant：1.9.1</p>
+<p><strong>二、优点</strong></p>
+<p>Ant是Apache软件基金会JAKARTA目录中的一个子项目，它有以下的优点： <br><br>1、跨平台性：Ant是纯Java语言编写的，所以具有很好的跨平台性。 <br><br>2、操作简单：Ant是由一个内置任务和可选任务组成的，用ant任务就像是在dos中写命令行一样。Ant运行时需要一个XML文件(构建文件)。 Ant通过调用target树，就可以执行各种task。每个task实现了特定接口对象。 <br><br>3、维护简单、可读性好、集成简单：由于Ant构建文件 时XML格式的文件，所以很容易维护和书写，而且结构很清晰。Ant可以集成到开发环境中。由于Ant的跨平台性和操作简单的特点，它很容易集成到一些开发环境中去。</p>
+<p><strong>三、安装和配置</strong></p>
+<p>1、下载<a href="http://ant.apache.org/bindownload.cgi" target="_blank" rel="external">Ant</a></p>
+<p>2、解压zip压缩包，将压缩包放置你要放置的目录。我这里放置在D:\apache-ant-1.9.1，目录结构如下：</p>
+<p><img src="http://imglf.nosdn.127.net/img/NGVCMTB5YXRScU9RRTRpOFlqMkJuNTRiZU1YYm5KYWhRNWcxUkNZV3dYU0V3S1dIRFNXOEFnPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="Ant1"></p>
+<p>bin是Ant的程序运行入口，如果没有配置ANT_HOME的情况下，可以通过bin目录中的bat程序进行运行build任务。</p>
+<p>如：在cmd中运行ant.bat就可以执行程序，当然你选择要当前目录中存在一个build.xml（build.xml是默认的ant执行文件，当然你可以指定其他文件）</p>
+<p><img src="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU9RRTRpOFlqMkJud3NxczJKQlI1elNERW4zVzRESStGa0dxTGlnYzhTTS9RPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="Ant2"></p>
+<p>etc目录中存放的都是一些xsl的输出模板，创建一个加强的导出各种任务的XML输出，使你的build文件摆脱过时的警告</p>
+<p>lib目录中存放的是Ant程序需要依赖的jar包</p>
+<p>manual目录是Ant程序的帮助文档</p>
+<p>3、在<strong>我的电脑 –&gt; 右键属性 –&gt; 高级系统配置 -&gt; 环境变量</strong>中配置Ant</p>
+<p>新建系统变量 ANT_HOME = D:\apache-ant-1.9.1</p>
+<p><img src="http://imglf1.nosdn.127.net/img/NGVCMTB5YXRScU9RRTRpOFlqMkJuK2JNSVNjSUpNZ3NSaDN6RDdpczRkMTVZL0ZBQVVrTDJ3PT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="Ant3"></p>
+<p>这样环境变量就配置好了，但前提你需要配置jdk的环境变量。如果你没有配置jdk的环境变量，那么请你先配置好jdk变量。jdk环境配置方法如下：</p>
+<p>(1)、安装JDk到其默认目录：C:\Program Files\Java\jdk1.5.0_05 （没有jdk去官方下载一个），C:\Program Files\Java\jdk1.5.0 ，作用：告诉系统JVM在什么地方</p>
+<p>(2)、右击我的电脑，选属性，高级，环境变量 <br><br>(3)、在系统变量栏点新建，出现新建系统变量对话框，在变量名中填上JAVA_HOME ,变量值：C:\Program Files\Java\jdk1.5.0_05  <br><br>(4)、确定后在系统变量(S)栏再新建一个环境变量CLASSPATH,变量值：.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar（开头的dot和;不能少） <br><br>(5)、确定后在系统变量(S)栏查找并选中变量为Path的选项，点编辑在变量值(V)的末尾添加： %JAVA_HOME%\bin  <br>  </p>
+<p>如果没有找到PATH变量，自己新建一个！ <br><br>如果你不想每次运行都要cmd到class所在目录然后执行java命令，可以把所有的class文件放到统一的目录组织下，然后将此目录也追加到CLASSPATH下。</p>
+<p>测试代码如下：</p>
+<pre><code>public class Test { 
+    public static void main(String[] args) { 
+          System.out.println(&quot;Hello World!&quot;); 
+    } 
+}
+</code></pre><p>用记事本编辑后存为Test.java（文件名与类名相同）文件，打开命令行窗口，<br><br>cd到文件所在目录下:  <br><br>javac Test.java                       //编译命令  <br><br>java Test                                //执行程序 <br><br>如果输出为：Hello World!       OK,配置完毕，否则，重新检查。 <br></p>
+<p><strong>四、测试Ant</strong></p>
+<p>在启动，运行cmd的dos窗口中输入ant，如图：</p>
+<p><img src="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU9RRTRpOFlqMkJuOGJCYnhUc1M4eTk3aE1rWTJHRVZsYnhKM01xNlZUYnZ3PT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="Ant4"></p>
+<p>如果出现这个，那么恭喜你安装成功了！否则就失败了，检查下前面的步骤有没有错误。上面命令会执行ant程序，ant默认执行build.xml中的任务，这里在Administrator目录中没有这个文件。</p>
+<p>如果安装失败，你看看是否存在一些情况：</p>
+<p>1、没有配置JAVA_HOME 或配置错误，并且JAVA_HOME\bin\java.exe存在</p>
+<p>2、没有配置ANT_HOEM 或配置错误，并且ANT_HOME\bin\ant.bat存在</p>
+<p>3、检查你的环境变量的path变量中，有没有配置…;%ANT_HOME%\bin;…</p>
+<p>%PATH%=…maybe-other-entries…;%ANT_HOME%\bin;…maybe-other-entries… </p>
+<p><strong>五、Ant的运行时环境</strong></p>
+<p>ant在运行命令的时候，有时候会出现一些公共的jar库。这些库会存在于每个ant工程中，那么这个时候我们可以把这个jar包放到ant_home\lib目录中作为全局的库使用。</p>
+<p>如果你不想“污染”原始的ant程序，那么你可以把jar包放在当前windows用户的目录下，具体位置应该是${user.home}/.ant/lib 下。没有以上目录可以手动建立。</p>
+<p>如果你只是临时要添加lib，又不想把lib添加到当前ant工程中。你可以在运行ant程序的时候指定依赖的lib参数。</p>
+<p><img src="http://imglf1.nosdn.127.net/img/NGVCMTB5YXRScU9RRTRpOFlqMkJuN2tWVEJuYWk2OWRjTGVyNkhuVTBvMkFsWExvTXVIekhRPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="Ant5"></p>
+<p>同时，你还可以在当前build工程的classpath目录中添加你的工程依赖jar包。</p>
+<p><strong>六、Ant命令</strong></p>
+<p><img src="http://imglf.nosdn.127.net/img/NGVCMTB5YXRScU9RRTRpOFlqMkJuK0VFTnJxRnBVaVFmNWVyeHBSNm4wL2t6c1lrK3Z1K1FRPT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="Ant6"></p>
+<p>语法元素说明如下：  <br><br>-help   <br><br>显示描述ant 命令及其选项的帮助信息   <br><br>-projecthelp   <br><br>显示包含在构建文件中的、所有用户编写的帮助文档。即为各个<target>中description 属性的文本，以及包含在<description>元素中的任何文本。将有description 属性的目标列为主目标（Main target），没有此属性的目标则列为子目标（Subtarget）。<br>-version   <br><br>要求ant 显示其版本信息，然后退出。   <br><br>-quiet   <br><br>抑制并非由构建文件中的echo 任务所产生的大多数消息。   <br><br>-verbose   <br><br>显示构建过程中每个操作的详细消息。此选项与-debug 选项只能选其一。   <br><br>-debug   <br><br>显示Ant 和任务开发人员已经标志为调试消息的消息。此选项与-verbose 只能选其一。   <br><br>-emacs   <br><br>对日志消息进行格式化，使它们能够很容易地由Emacs 的shell 模式（shellmode）所解析；也就是说，打印任务事件，但并不缩排，在其之前也没有[taskname]。   <br><br>-logfile filename   <br><br>将日志输出重定向到指定文件。   <br><br>-logger classname   <br><br>指定一个类来处理Ant 的日志记录。所指定的类必须实现了org.apache.tools.ant.BuildLogger 接口。   <br><br>-listener classname   <br><br>为Ant 声明一个监听类，并增加到其监听者列表中。在Ant与IDE或其他Java程序集成时，此选项非常有用。可以阅读第六章以了解有关监听者的更多信息。必须将所指定的监听类编写为可以处理Ant 的构建消息接发。  <br><br>-buildfile filename   <br><br>指定Ant 需要处理的构建文件。默认的构建文件为build.xml。   <br><br>-Dproperty=value   <br><br>在命令行上定义一个特性名－值对。   <br><br>-find filename   <br><br>指定Ant 应当处理的构建文件。与-buildfile 选项不同，如果所指定文件在当前目录中未找到，-find 就要求Ant 在其父目录中再进行搜索。这种搜索会继续在其祖先目录中进行，直至达到文件系统的根为止，在此如果文件还未找到，则构建失败。   <br><br>-atuoproxy jdk1.5以上的可以使用代理设置   <br><br>-nouserlib 运行ant时不使用用户lib中的jar包   <br><br>-nice 设计主线程优先级   <br><br>-logfile 使用指定的log日志   <br><br>-noinput 不允许交互输入   <br><br>-keep-going, -k 执行不依赖于所有目标   <br><br>-propertyfile 加载所有属性配置文件 -d 属性文件优先  <br></description></target></p>
+<pre><code>&lt;project default=&quot;all&quot;&gt;
+    &lt;property name=&quot;pro_a&quot; value=&quot;a value&quot; /&gt;
+    &lt;property name=&quot;pro_b&quot; value=&quot;b value&quot; /&gt;
+
+    &lt;path id=&quot;rt.path&quot;&gt;
+        &lt;pathelement location=&quot;${java.home}/jre/lib/rt.jar&quot; /&gt;
+    &lt;/path&gt;
+
+    &lt;target name=&quot;all&quot;&gt;
+        &lt;javac srcdir=&quot;.&quot;&gt;
+            &lt;classpath refid=&quot;a.path&quot; /&gt;
+        &lt;/javac&gt;
+    &lt;/target&gt;
+&lt;/project&gt;
+</code></pre><p>注意：  <br><br>● 所有构建文件都要有<project>元素，而且至少有一个<target> 元素。  <br><br>● 对于<project> 元素的default 属性并不一定需要默认值。  <br><br>● 构建文件并不一定要被命名为build.xml。不过build.xml 是ant 要搜索的默认文件名。  <br><br>● 每个构建文件只能有一个<project> 元素。 <br></project></project></target></project></p>
+<p>在cmd窗口中进入到当前build.xml目录</p>
+<p>ant  <br><br>在当前目录下的build.xml运行Ant，执行缺省的target。</p>
+<p>ant -buildfile build-test.xml  <br><br>在当前目录下的build-test.xml运行Ant，执行缺省的target。</p>
+<p>ant -buildfile build-test.xml clean  <br><br>在当前目录下的build-test.xml运行Ant，执行一个叫做clean的target。</p>
+<p>ant -buildfile build-test.xml -Dbuild=build/classes clean   <br><br>在当前目录下的build-test.xml运行Ant，执行一个叫做clean的target，并设定build属性的值为build/classes。</p>
+<p><strong>七、Ant脚本：使用节点、元素和属性、命令指令</strong></p>
+<p>1、project 节点元素</p>
+<p>project 元素是 Ant 构件文件的根元素， Ant 构件文件至少应该包含一个 project 元素，否则会发生错误。在每个 project 元素下，可包含多个 target 元素。接下来向读者展示一下 project 元素的各属性。  <br><br>● name 属性：用于指定 project 元素的名称。  <br><br>● default 属性：用于指定 project 默认执行时所执行的 target 的名称。  <br><br>● basedir 属性：用于指定基路径的位置。该属性没有指定时，使用 Ant 的构件文件的附目录作为基准目录。 </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;project name=&quot;ant-project&quot; default=&quot;print-dir&quot; basedir=&quot;.&quot;&gt;
+    &lt;target name=&quot;print-dir&quot;&gt;
+        &lt;echo message=&quot;The base dir is: ${basedir}&quot; /&gt;
+    &lt;/target&gt;
+&lt;/project&gt;
+</code></pre><p>从上例可以看出，在这里定义了default 属性的值为print-dir，即当运行ant 命令时，如果没有指明执行的target，则将执行默认的target（print-dir）。此外，还定义了basedir 属性的值为 “.” ，.表示当前目录，进入当前目录后运行ant 命令，得一下结果：</p>
+<p><img src="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU9RRTRpOFlqMkJuNkQ5dER3bnRRTzltcjRPTG1JbjNOejJvY2N0NEFBaWhBPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="Ant7"></p>
+<p>2、target节点元素</p>
+<p>target为ant的基本执行单元或是任务，它可以包含一个或多个具体的单元/任务。多个target 可以存在相互依赖关系。它有如下属性：   <br><br>● name 属性：指定 target 元素的名称，这个属性在一个 project 元素中是唯一的。我们可以通过指定 target 元素的名称来指定某个 target 。   <br><br>● depends 属性：用于描述 target 之间的依赖关系，若与多个 target 存在依赖关系时，需要以“,”间隔。 Ant 会依照 depends 属性中 target 出现的顺序依次执行每个 target ，被依赖的target 会先执行。  <br><br>● if 属性：用于验证指定的属性是存在，若不存在，所在 target 将不会被执行。  <br><br>● unless 属性：该属性的功能与 if 属性的功能正好相反，它也用于验证指定的属性是否存在，若不存在，所在 target 将会被执行。  <br><br>● description 属性：该属性是关于 target 功能的简短描述和说明。  <br><br>示例：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;project name=&quot;ant-target&quot; default=&quot;print&quot;&gt;
+    &lt;target name=&quot;version&quot; if=&quot;ant.java.version&quot;&gt;
+        &lt;echo message=&quot;Java Version: ${ant.java.version}&quot; /&gt;
+    &lt;/target&gt;
+    &lt;target name=&quot;print&quot; depends=&quot;version&quot; unless=&quot;docs&quot;&gt;
+        &lt;description&gt;
+            a depend example!
+            &lt;/description&gt;
+        &lt;echo message=&quot;The base dir is: ${basedir}&quot; /&gt;
+    &lt;/target&gt;
+&lt;/project&gt; 
+</code></pre><p>从以下结果后可以看到，我们运行的是名为 print的target ，由于它依赖于version这个target任务，所以 version将首先被执行，同时因为系统配置了JDK，所以 ant.java.version 属性存在，执行了version，输出信息：”[echo] Java Version: 1.6 “，version执行完毕后，接着执行 print，因为docs不存在，而unless属性是在不存在时进入所在target 的，由此可知 print得以执行，输出信息：”[echo] The base dir is:D:\Workspace\AntExample\build”。</p>
+<p><img src="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU9RRTRpOFlqMkJuOG1DdGJrWUJURDlmVFRuQmg2d0FyQ1R3SlRXT2tCQmRBPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="Ant8"></p>
+<p>3、property属性节点元素</p>
+<p>property元素可看作参量或者参数的定义，project 的属性可以通过 property 元素来设定，也可在 Ant 之外设定。若要在外部引入某文件，例如 build.properties 文件，可以通过如下内容将其引： </p>
+<pre><code>&lt;property file=&quot;build.properties&quot;/&gt;   
+</code></pre><p>property 元素可用作 task 的属性值。在 task 中是通过将属性名放在${属性名}之间，并放在 task 属性值的位置来实现的。  <br><br>Ant 提供了一些内置的属性，它能得到的系统属性的列表与 Java 文档中 System.getProperties() 方法得到的属性一致，这些系统属性可参考 sun 网站的说明。同时， Ant 还提供了一些它自己的内置属性，如下：  <br><br>basedir： project 基目录的绝对路径；    <br><br>ant.file： buildfile的绝对路径，上例中ant.file值为D:\Workspace\AntExample\build；  <br><br>ant.version： Ant 的版本信息，本文为1.8.1 ；  <br><br>ant.project.name： 当前指定的project的名字，即前文说到的project的name属性值；  <br><br>ant.java.version： Ant 检测到的JDK版本，本文为 1.6 。</p>
+<p>举例说明如下：</p>
+<pre><code>&lt;project name=&quot;ant-project&quot; default=&quot;example&quot;&gt;
+    &lt;property name=&quot;name&quot; value=&quot;jojo&quot; /&gt;
+    &lt;property name=&quot;age&quot; value=&quot;25&quot; /&gt;
+    &lt;target name=&quot;example&quot;&gt;
+        &lt;echo message=&quot;name: ${name}, age: ${age}&quot; /&gt;
+    &lt;/target&gt;
+&lt;/project&gt;
+</code></pre><p>上例中用户设置了名为name 和age的两个属性，这两个属性设置后，在下文中可以通过 ${name} 和 ${age} 分别取得这两个属性值。</p>
+<p>4、copy命令</p>
+<p>copy主要用来对文件和目录的复制功能。举例如下：   <br><br>● 复制单个文件：  </p>
+<pre><code>&lt;copy file=&quot;old.txt&quot; tofile=&quot;new.txt&quot;/&gt;
+</code></pre><p>● 对文件目录进行复制： </p>
+<pre><code>&lt;copy todir=&quot;../dest_dir&quot;&gt; 
+    &lt;fileset dir=&quot;src_dir&quot;/&gt; 
+&lt;/copy&gt;
+</code></pre><p>● 将文件复制到另外的目录： </p>
+<pre><code>&lt;copy file=&quot;src.txt&quot; todir=&quot;c:/base&quot;/&gt;
+</code></pre><p>5、delete命令</p>
+<p>对文件或目录进行删除，举例如下：</p>
+<p>● 删除某个文件：  </p>
+<pre><code>&lt;delete file=&quot;/res/image/cat.jpg&quot;/&gt;
+</code></pre><p>● 删除某个目录：    </p>
+<pre><code>&lt;delete dir=&quot;/res/image&quot;/&gt;
+</code></pre><p>● 删除所有的jar文件或空目录： </p>
+<pre><code>&lt;delete includeEmptyDirs=&quot;true&quot;&gt; 
+       &lt;fileset dir=&quot;.&quot; includes=&quot;**/*.jar&quot;/&gt; 
+&lt;/delete&gt;
+</code></pre><p>6、 mkdir 命令</p>
+<p>创建目录：</p>
+<pre><code>&lt;mkdir dir=&quot;/home/philander/build/classes&quot;/&gt;
+</code></pre><p>7、 move 命令</p>
+<p>移动文件或目录，举例如下： <br><br>● 移动单个文件：</p>
+<pre><code>&lt;move file=&quot;sourcefile&quot; tofile=”destfile”/&gt;
+</code></pre><p>● 移动单个文件到另一个目录： </p>
+<pre><code>&lt;move file=&quot;sourcefile&quot; todir=”movedir”/&gt;
+</code></pre><p>● 移动某个目录到另一个目录： </p>
+<pre><code>&lt;move todir=&quot;newdir&quot;&gt; 
+    &lt;fileset dir=&quot;olddir&quot;/&gt; 
+&lt;/move&gt;
+</code></pre><p>8、echo 命令</p>
+<p>该任务的作用是根据日志或监控器的级别输出信息。它包括 message 、 file 、 append 和 level 四个属性，举例如下 </p>
+<pre><code>&lt;echo message=&quot;ant message&quot; file=&quot;/logs/ant.log&quot; append=&quot;true&quot;&gt;
+</code></pre><p>9、jar 标签节点元素</p>
+<p>该标签用来生成一个JAR文件，其属性如下。  <br><br>● destfile表示JAR文件名。  <br><br>● basedir表示被归档的文件名。  <br><br>● includes表示别归档的文件模式。  <br><br>● exchudes表示被排除的文件模式。 <br><br>● compress表示是否压缩。</p>
+<p>示例：</p>
+<pre><code>&lt;jar destfile=&quot;${webRoot}/${ash_jar}&quot; level=&quot;9&quot; compress=&quot;true&quot; encoding=&quot;utf-8&quot; basedir=&quot;${dest}&quot;&gt;
+    &lt;manifest&gt;
+        &lt;attribute name=&quot;Implementation-Version&quot; value=&quot;Version: 2.2&quot;/&gt;
+    &lt;/manifest&gt;
+&lt;/jar&gt;
+</code></pre><p>上面的mainfest是jar包中的MEAT-INF中的MANIFEST.MF中的文件内容</p>
+<p>同样打包操作的的还有war、tgz，已经解压操作uzip</p>
+<pre><code>&lt;!-- 创建zip --&gt;
+&lt;zip basedir=&quot;${basedir}\classes&quot; zipfile=&quot;temp\output.zip&quot;/&gt; 
+&lt;!-- 创建tgz --&gt;
+&lt;gzip src=&quot;classes\**\*.class&quot; zipfile=&quot;output.class.gz&quot;/&gt;
+&lt;!-- 解压zip --&gt;
+&lt;unzip src=&quot;output.class.gz&quot; dest=&quot;extractDir&quot;/&gt;
+&lt;!-- 建立war包 --&gt;
+&lt;war destfile=&quot;${webRoot}/ash.war&quot; basedir=&quot;${basedir}/web&quot; webxml=&quot;${basedir}/web/WEB-INF/web.xml&quot;&gt;
+    &lt;exclude name=&quot;WEB-INF/classes/**&quot;/&gt;
+    &lt;exclude name=&quot;WEB-INF/lib/**&quot;/&gt;
+    &lt;exclude name=&quot;WEB-INF/work/_jsp/**&quot;/&gt;
+    &lt;lib dir=&quot;${lib.dir}&quot; includes=&quot;**/*.jar, **/*.so, **/*.dll&quot;&gt;
+        &lt;exclude name=&quot;${webRoot}\${helloworld_jar}&quot;/&gt;
+    &lt;/lib&gt;
+    &lt;lib file=&quot;${webRoot}/${helloworld_jar}&quot;/&gt;
+    &lt;classes dir=&quot;${dest}&quot; includes=&quot;**/*.xml, **/*.properites, **/*.xsd&quot;&gt; &lt;/classes&gt;
+&lt;/war&gt;
+</code></pre><p>10、javac 标签节点元素</p>
+<p>该标签用于编译一个或一组java文件，其属性如下。  <br><br>● srcdir表示源程序的目录。  <br><br>● destdir表示class文件的输出目录。  <br><br>● include表示被编译的文件的模式。  <br><br>● excludes表示被排除的文件的模式。  <br><br>● classpath表示所使用的类路径。  <br><br>● debug表示包含的调试信息。  <br><br>● optimize表示是否使用优化。  <br><br>● verbose 表示提供详细的输出信息。  <br><br>● fileonerror表示当碰到错误就自动停止。</p>
+<p>示例</p>
+<pre><code>&lt;javac srcdir=&quot;${src}&quot; destdir=&quot;${dest}&quot;/&gt;
+&lt;!-- 设置jvm内存
+&lt;javac srcdir=&quot;src&quot; fork=&quot;true&quot;/&gt; 
+&lt;javac srcdir=&quot;src&quot; fork=&quot;true&quot; executable=&quot;d:\sdk141\bin\javac&quot; 
+memoryMaximumSize=&quot;128m&quot;/&gt; 
+--&gt;
+</code></pre><p>11、java 标签节点元素</p>
+<p>该标签用来执行编译生成的.class文件，其属性如下。  <br><br>● classname 表示将执行的类名。  <br><br>● jar表示包含该类的JAR文件名。  <br><br>● classpath所表示用到的类路径。  <br><br>● fork表示在一个新的虚拟机中运行该类。  <br><br>● failonerror表示当出现错误时自动停止。  <br><br>● output 表示输出文件。  <br><br>● append表示追加或者覆盖默认文件。</p>
+<p>示例</p>
+<pre><code>&lt;java classname=&quot;com.hoo.test.HelloWorld&quot; classpath=&quot;${hello_jar}&quot;/&gt;
+</code></pre><p>12、arg 数据参数元素</p>
+<p>由Ant构建文件调用的程序，可以通过<arg>元素向其传递命令行参数，如apply,exec和java任务均可接受嵌套<arg>元素，可以为各自的过程调用指定参数。以下是<arg>的所有属性。  <br><br>● values 是一个命令参数。如果参数中有空格，但又想将它作为单独一个值，则使用此属性。  <br><br>● file 表示一个参数的文件名。在构建文件中，此文件名相对于当前的工作目录。  <br><br>● line 表示用空格分隔的多个参数列表。  <br><br>● 表示路径，一个作为单个命令行变量的path-like的字符串；或作为分隔符，Ant会将其转变为特定平台的分隔符。  <br><br>● pathref 引用的path（使用path元素节点定义path）的id  <br><br>● prefix 前缀  <br><br>● suffix 后缀</arg></arg></arg></p>
+<p>例子</p>
+<pre><code>&lt;arg value=&quot;-l -a&quot;/&gt;
+</code></pre><p>是一个含有空格的单个的命令行变量。</p>
+<pre><code>&lt;arg line=&quot;-l -a&quot;/&gt;  
+</code></pre><p>是两个空格分隔的命令行变量。 </p>
+<pre><code>&lt;arg path=&quot;/dir;/dir2:\dir3&quot;/&gt; 
+</code></pre><p>是一个命令行变量，其值在DOS系统上为\dir;\dir2;\dir3；在Unix系统上为/dir:/dir2:/dir3 。</p>
+<p>13、ervironment 类型</p>
+<p>由Ant构建文件调用的外部命令或程序，<env>元素制定了哪些环境变量要传递给正在执行的系统命令，<env>元素可以接受以下属性。  <br><br>● file表示环境变量值的文件名。此文件名要被转换位一个绝对路径。  <br><br>● path表示环境变量的路径。Ant会将它转换为一个本地约定。  <br><br>● value 表示环境变量的一个直接变量。  <br><br>● key 表示环境变量名。  <br><br>注意 file path 或 value只能取一个。</env></env></p>
+<p>14、filelist 文件集合列表</p>
+<p>filelist 是一个支持命名的文件列表的数据类型，包含在一个filelist类型中的文件不一定是存在的文件。以下是其所有的属性。  <br><br>● dir是用于计算绝对文件名的目录。  <br><br>● files 是用逗号分隔的文件名列表。  <br><br>● refid 是对某处定义的一个<filelist>的引用。  <br><br>注意 dir 和 files 都是必要的，除非指定了refid(这种情况下，dir和files都不允许使用)。</filelist></p>
+<p>示例</p>
+<pre><code>&lt;filelist id=&quot;docfiles&quot; dir=&quot;${doc.src}&quot; files=&quot;foo.xml,bar.xml&quot;/&gt; 文件集合 ${doc.src}/foo.xml和${doc.src}/bar.xml. 这些文件也许还是不存在的文件.
+&lt;filelist id=&quot;docfiles&quot; dir=&quot;${doc.src}&quot; files=&quot;foo.xml bar.xml&quot;/&gt; 
+
+&lt;filelist refid=&quot;docfiles&quot;/&gt; 
+
+&lt;filelist id=&quot;docfiles&quot; dir=&quot;${doc.src}&quot;&gt;
+    &lt;file name=&quot;foo.xml&quot;/&gt;
+    &lt;file name=&quot;bar.xml&quot;/&gt;
+&lt;/filelist&gt;
+</code></pre><p>15、fileset 文件类型</p>
+<p>fileset 数据类型定义了一组文件，并通常表示为<fileset>元素。不过，许多ant任务构建成了隐式的fileset,这说明他们支持所有的fileset属性和嵌套元素。以下为fileset 的属性列表。  <br><br>● dir表示fileset 的基目录。  <br><br>● casesensitive的值如果为false，那么匹配文件名时，fileset不是区分大小写的，其默认值为true.  <br><br>● defaultexcludes 用来确定是否使用默认的排除模式，默认为true。  <br><br>● excludes 是用逗号分隔的需要派出的文件模式列表。  <br><br>● excludesfile 表示每行包含一个排除模式的文件的文件名。  <br><br>● includes 是用逗号分隔的，需要包含的文件模式列表。  <br><br>● includesfile 表示每行包括一个包含模式的文件名。</fileset></p>
+<p>示例</p>
+<pre><code>&lt;fileset id=&quot;lib.runtime&quot; dir=&quot;${lib.path}/runtime&quot;&gt;
+    &lt;include name=&quot;**/*.jar&quot;/&gt;
+    &lt;include name=&quot;**/*.so&quot;/&gt;
+    &lt;include name=&quot;**/*.dll&quot;/&gt;
+&lt;/fileset&gt;
+
+&lt;fileset id=&quot;lib.container&quot; dir=&quot;${lib.path}/container&quot;&gt;
+    &lt;include name=&quot;**/*.jar&quot;/&gt;
+&lt;/fileset&gt;
+
+&lt;fileset id=&quot;lib.extras&quot; dir=&quot;${lib.path}&quot;&gt;
+    &lt;include name=&quot;test/**/*.jar&quot;/&gt;
+&lt;/fileset&gt;
+</code></pre><p>16、patternset 类型</p>
+<p>fileset 是对文件的分组，而patternset是对模式的分组，他们是紧密相关的概念。</p>
+<p><patternset>支持4个属性：includes、excludex、includexfile、excludesfile，这些与fileset相同。</patternset></p>
+<p>patternset 还允许以下嵌套元素：include,exclude,includefile 和 excludesfile.</p>
+<p>示例</p>
+<pre><code>&lt;!-- 黑白名单 --&gt;
+&lt;patternset id=&quot;non.test.sources&quot;&gt;
+    &lt;include name=&quot;**/*.java&quot;/&gt;
+    &lt;!-- 文件名包含Test的排除 --&gt;
+    &lt;exclude name=&quot;**/*Test*&quot;/&gt;
+&lt;/patternset&gt;
+&lt;patternset id=&quot;sources&quot;&gt;
+    &lt;include name=&quot;std/**/*.java&quot;/&gt;
+    &lt;!-- 判断条件 存在professional就引入 --&gt;
+    &lt;include name=&quot;prof/**/*.java&quot; if=&quot;professional&quot;/&gt;
+    &lt;exclude name=&quot;**/*Test*&quot;/&gt;
+&lt;/patternset&gt;
+&lt;!-- 一组文件 --&gt;
+&lt;patternset includesfile=&quot;some-file&quot;/&gt;
+&lt;patternset&gt;
+      &lt;includesfile name=&quot;some-file&quot;/&gt; 
+&lt;patternset/&gt; 
+&lt;patternset&gt;
+      &lt;includesfile name=&quot;some-file&quot;/&gt; 
+      &lt;includesfile name=&quot;${some-other-file}&quot; if=&quot;some-other-file&quot;/&gt; 
+&lt;patternset/&gt;
+</code></pre><p>17、filterset 类型</p>
+<p>filterset定义了一组过滤器，这些过滤器将在文件移动或复制时完成文件的文本替换。  <br><br>主要属性如下：  <br><br>● begintoken 表示嵌套过滤器所搜索的记号，这是标识其开始的字符串。  <br><br>● endtoken 表示嵌套过滤器所搜索的记号这是标识其结束的字符串。  <br><br>● id 是过滤器的唯一标志符。  <br><br>● refid 是对构建文件中某处定义一个过滤器的引用。</p>
+<p>示例</p>
+<pre><code>&lt;!-- 将目标文件build.dir目录中的version.txt文件内容中的@DATE@替换成TODAY当前日期的值，并把替换后的文件存放在dist.dir目录中 --&gt;
+ &lt;copy file=&quot;${build.dir}/version.txt&quot; toFile=&quot;${dist.dir}/version.txt&quot;&gt;
+  &lt;filterset&gt;
+    &lt;filter token=&quot;DATE&quot; value=&quot;${TODAY}&quot;/&gt;
+  &lt;/filterset&gt;
+&lt;/copy&gt;
+
+&lt;!-- 自定义变量的格式 --&gt;
+&lt;copy file=&quot;${build.dir}/version.txt&quot; toFile=&quot;${dist.dir}/version.txt&quot;&gt;
+  &lt;!-- 从version.txt中的%位置开始搜索，到*位置结束，进行替换内容中的@DATE@替换成TODAY当前日期的值--&gt;
+  &lt;filterset begintoken=&quot;%&quot; endtoken=&quot;*&quot;&gt;
+    &lt;filter token=&quot;DATE&quot; value=&quot;${TODAY}&quot;/&gt;
+  &lt;/filterset&gt;
+&lt;/copy&gt;
+
+&lt;!-- 使用外部的过滤定义文件 --&gt;
+&lt;copy toDir=&quot;${dist.dir}/docs&quot;&gt;
+  &lt;fileset dir=&quot;${build.dir}/docs&quot;&gt;
+    &lt;include name=&quot;**/*.html&quot;&gt;
+  &lt;/fileset&gt;
+  &lt;filterset begintoken=&quot;%&quot; endtoken=&quot;*&quot;&gt;
+    &lt;!-- 过来文件从外部引入，过来的属性和值配置在dist.properties文件中 --&gt; 
+    &lt;filtersfile file=&quot;${user.dir}/dist.properties&quot;/&gt;
+  &lt;/filterset&gt;
+ &lt;/copy&gt;
+
+&lt;!-- 使用引用方式，重复利用过滤集 --&gt;
+&lt;filterset id=&quot;myFilterSet&quot; begintoken=&quot;%&quot; endtoken=&quot;*&quot;&gt;
+      &lt;filter token=&quot;DATE&quot; value=&quot;${TODAY}&quot;/&gt;
+&lt;/filterset&gt;
+
+&lt;copy file=&quot;${build.dir}/version.txt&quot; toFile=&quot;${dist.dir}/version.txt&quot;&gt;
+      &lt;filterset refid=&quot;myFilterSet&quot;/&gt;
+&lt;/copy&gt;
+</code></pre><p>18、path类型</p>
+<p>path元素用来表示一个类路径，不过它还可以用于表示其他的路径。在用作几个属性时，路经中的各项用分号或冒号隔开。在构建的时候，此分隔符将代替当前平台中所有的路径分隔符，其拥有的属性如下。  <br><br>● location 表示一个文件或目录。Ant在内部将此扩展为一个绝对路径。  <br><br>● refid 是对当前构建文件中某处定义的一个path的引用。  <br><br>● path表示一个文件或路径名列表。</p>
+<p>示例</p>
+<pre><code>&lt;path id=&quot;buildpath&quot;&gt;
+    &lt;fileset refid=&quot;lib.runtime&quot;/&gt;
+    &lt;fileset refid=&quot;lib.container&quot;/&gt;
+    &lt;fileset refid=&quot;lib.extras&quot;/&gt;
+&lt;/path&gt;
+
+&lt;path id=&quot;src.paths&quot;&gt;
+    &lt;fileset id=&quot;srcs&quot; dir=&quot;.&quot;&gt;
+        &lt;include name=&quot;src/**/*.java&quot;/&gt;
+    &lt;/fileset&gt;
+&lt;/path&gt; 
+</code></pre><p><strong>八、Ant编译打包、运行工程</strong></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!-- name是当前工程的名称，default是默认执行的任务，basedir是工作目录（.代表当前根目录） --&gt;
+&lt;project name=&quot;HelloWorld&quot; default=&quot;run&quot; basedir=&quot;.&quot;&gt;
+&lt;!-- property类似于程序中定义简单的变量 --&gt;
+&lt;property name=&quot;src&quot; value=&quot;src&quot;/&gt;
+&lt;property name=&quot;dest&quot; value=&quot;classes&quot;/&gt;
+&lt;property name=&quot;hello_jar&quot; value=&quot;helloWorld.jar&quot;/&gt;
+&lt;!-- 
+target是一个事件、事情、任务， name是当前事情的名称，depends是依赖的上一件或是多件事情
+如果所依赖的事情没有执行，ant会先运行依赖事情，然后再运行当前事情
+--&gt;
+
+&lt;!-- 初始化 --&gt;
+&lt;target name=&quot;init&quot;&gt;
+    &lt;!-- 建立classes目录 --&gt;
+    &lt;mkdir dir=&quot;${dest}&quot;/&gt;
+    &lt;mkdir dir=&quot;temp&quot;/&gt;
+    &lt;mkdir dir=&quot;temp2&quot;/&gt;
+&lt;/target&gt;
+
+&lt;!-- 编译 --&gt;
+&lt;target name=&quot;compile&quot; depends=&quot;init&quot;&gt;
+    &lt;javac srcdir=&quot;${src}&quot; destdir=&quot;${dest}&quot;/&gt;
+    &lt;!-- 设置jvm内存
+    &lt;javac srcdir=&quot;src&quot; fork=&quot;true&quot;/&gt; 
+    &lt;javac srcdir=&quot;src&quot; fork=&quot;true&quot; executable=&quot;d:\sdk141\bin\javac&quot; 
+    memoryMaximumSize=&quot;128m&quot;/&gt; 
+    --&gt;
+&lt;/target&gt;
+
+&lt;!-- 建立jar包 --&gt;
+&lt;target name=&quot;build&quot; depends=&quot;compile&quot;&gt;
+    &lt;!-- 
+    &lt;jar jarfile=&quot;${hello_jar}&quot; basedir=&quot;${dest}&quot;/&gt;
+    创建一个名称是package.jar文件
+    &lt;jar destfile=&quot;package.jar&quot; basedir=&quot;classes&quot;/&gt; 
+    --&gt;
+    &lt;jar destfile=&quot;${hello_jar}&quot; basedir=&quot;classes&quot;&gt; 
+        &lt;!-- 向jar包中的main文件中添加内容 --&gt;
+        &lt;manifest&gt; 
+            &lt;attribute name=&quot;Built-By&quot; value=&quot;${user.name}&quot;/&gt; 
+            &lt;attribute name=&quot;Main-class&quot; value=&quot;package.Main&quot;/&gt; 
+        &lt;/manifest&gt; 
+    &lt;/jar&gt; 
+    &lt;!-- 复制jar文件  todir=&quot;复制到目录&quot;--&gt;
+    &lt;copy file=&quot;${hello_jar}&quot; tofile=&quot;${dest}\temp.jar&quot;/&gt; 
+    &lt;copy todir=&quot;temp&quot;&gt; 
+        &lt;!-- 不按照默认方式 defaultexcludes=&quot;&quot; --&gt;
+          &lt;fileset dir=&quot;src&quot;&gt; 
+            &lt;include name=&quot;**/*.java&quot;/&gt;
+          &lt;/fileset&gt; 
+    &lt;/copy&gt; 
+
+    &lt;copy todir=&quot;temp2&quot;&gt; 
+        &lt;fileset dir=&quot;src&quot;&gt;
+            &lt;and&gt;
+                &lt;contains text=&quot;main&quot;/&gt; 
+                &lt;size value=&quot;1&quot; when=&quot;more&quot;/&gt; 
+            &lt;/and&gt;
+        &lt;/fileset&gt;
+    &lt;/copy&gt; 
+
+    &lt;!-- 移动jar文件 --&gt;
+    &lt;move file=&quot;${dest}\temp.jar&quot; tofile=&quot;temp\move-temp.jar&quot;/&gt; 
+    &lt;!-- 创建zip --&gt;
+    &lt;zip basedir=&quot;${basedir}\classes&quot; zipfile=&quot;temp\output.zip&quot;/&gt; 
+    &lt;!-- 创建tgz --&gt;
+    &lt;gzip src=&quot;classes\**\*.class&quot; zipfile=&quot;output.class.gz&quot;/&gt;
+    &lt;!-- 解压zip --&gt;
+    &lt;unzip src=&quot;output.class.gz&quot; dest=&quot;extractDir&quot;/&gt; 
+    &lt;!--替换input.txt内容中的old为new
+    &lt;replace file=&quot;input.txt&quot; token=&quot;old&quot; value=&quot;new&quot;/&gt;
+    --&gt; 
+&lt;/target&gt;
+
+&lt;!-- 运行 --&gt;
+&lt;target name=&quot;run&quot; depends=&quot;build&quot;&gt;
+    &lt;java classname=&quot;com.hoo.test.HelloWorld&quot; classpath=&quot;${hello_jar}&quot;/&gt;
+&lt;/target&gt;
+
+&lt;!-- 清除 --&gt;
+&lt;target name=&quot;clean&quot;&gt;
+    &lt;!-- 删除生成的文件 --&gt;
+    &lt;delete dir=&quot;${dest}&quot;/&gt;
+    &lt;delete file=&quot;${hello_jar}&quot;/&gt;
+&lt;/target&gt;
+
+&lt;tstamp&gt; 
+   &lt;format property=&quot;OFFSET_TIME&quot; 
+           pattern=&quot;HH:mm:ss&quot; 
+           offset=&quot;10&quot; unit=&quot;minute&quot;/&gt; 
+&lt;/tstamp&gt;
+
+&lt;!-- 重新运行 --&gt;
+&lt;target name=&quot;rerun&quot; depends=&quot;clean,run&quot;&gt;
+    &lt;echo message=&quot;###${TSTAMP}#${TODAY}#${DSTAMP}###&quot;/&gt;
+    &lt;aunt target=&quot;clean&quot;/&gt;
+    &lt;aunt target=&quot;run&quot;/&gt;
+&lt;/target&gt;
+&lt;/project&gt;
+</code></pre><p>要说的的东西基本上就那么多，Ant还有很多内容没有提到，有兴趣的可以自己去研究研究。Ant不难，你用它就像是在docs控制台输入命令行一样，只不过Ant是将命令行转换为xml的脚本信息，可以进行重复的运行。在一定情况下，提高了效率和重复的工作。</p>
+<p>文章转载：<a href="http://www.cnblogs.com/hoojo/archive/2013/06/14/java_ant_project_target_task_run.html" target="_blank" rel="external">http://www.cnblogs.com/hoojo/archive/2013/06/14/java_ant_project_target_task_run.html</a></p>
+<p>[末]</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/AntIntroduce/" class="archive-article-date">
+  	<time datetime="2016-11-05T03:29:03.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-05</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ant/">Ant</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/自动化测试/">自动化测试</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/JMeterCI/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JMeter测试持续集成
+        
+      </div>
+    </a>
+  
+  
+    <a href="/JenkinsIntroduce/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Jenkins的使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="AntIntroduce" data-title="Ant的使用" data-url="http://josephmorgan.github.io/AntIntroduce/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"litten-hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Joseph Morgan
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/Ant/" style="font-size: 10px;">Ant</a> <a href="/tags/JMeter/" style="font-size: 20px;">JMeter</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/NexT/" style="font-size: 10px;">NexT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/SQL/" style="font-size: 12.5px;">SQL</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Selenium/" style="font-size: 15px;">Selenium</a> <a href="/tags/SoapUI/" style="font-size: 10px;">SoapUI</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/个人理解/" style="font-size: 10px;">个人理解</a> <a href="/tags/性能测试/" style="font-size: 17.5px;">性能测试</a> <a href="/tags/性能监控/" style="font-size: 10px;">性能监控</a> <a href="/tags/接口分析/" style="font-size: 10px;">接口分析</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">面朝大海，春暖花开&lt;br&gt;&lt;br&gt;从明天起，做一个幸福的人&lt;br&gt;喂马、劈柴，周游世界&lt;br&gt;从明天起，关心粮食和蔬菜&lt;br&gt;我有一所房子，面朝大海，春暖花开&lt;br&gt;从明天起，和每一个亲人通信&lt;br&gt;告诉他们我的幸福&lt;br&gt;那幸福的闪电告诉我的&lt;br&gt;我将告诉每一个人&lt;br&gt;给每一条河每一座山取一个温暖的名字&lt;br&gt;陌生人，我也为你祝福&lt;br&gt;愿你有一个灿烂的前程&lt;br&gt;愿你有情人终成眷属&lt;br&gt;愿你在尘世获得幸福&lt;br&gt;我只愿面朝大海，春暖花开&lt;br&gt;&lt;br&gt;         --海子《面朝大海，春暖花开》</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

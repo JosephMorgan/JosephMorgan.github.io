@@ -16,7 +16,7 @@
 <meta property="og:description" content="Postman的介绍Postman是一种网页调试与发送网页http请求的Chrome插件，可以模拟Get、Post或者其他方法的请求来调试接口，是http请求模拟工具。">
 <meta property="og:image" content="http://nos.netease.com/imglf2/img/NGVCMTB5YXRScVBud0E0VHpSMnlpSU5IUVZ1Q3B2MGI3TXF0M2UxQWNZU21JOTJaTDhzek9RPT0.png?imageView&thumbnail=1680x0">
 <meta property="og:image" content="http://imglf1.nosdn.127.net/img/NGVCMTB5YXRScVBud0E0VHpSMnlpQ2ZIQVB3R2VrR3c1dlhZTXBmVGsrTEdPNDRsT0JBOTF3PT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
-<meta property="og:updated_time" content="2016-11-06T12:18:54.647Z">
+<meta property="og:updated_time" content="2016-11-07T07:53:42.351Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Postman的使用">
 <meta name="twitter:description" content="Postman的介绍Postman是一种网页调试与发送网页http请求的Chrome插件，可以模拟Get、Post或者其他方法的请求来调试接口，是http请求模拟工具。">
@@ -161,8 +161,7 @@
       
         <p><strong>Postman的介绍</strong><br><a href="https://www.getpostman.com" target="_blank" rel="external">Postman</a>是一种网页调试与发送网页http请求的Chrome插件，可以模拟Get、Post或者其他方法的请求来调试接口，是http请求模拟工具。<br><a id="more"></a><br>使用Postman Collections可以有效的测试及集成工作流管理和组织API。 <br><br>根据创建的Clollections可自动生成API文档,并将其发布成规范的格式。</p>
 <p><strong>Postman的安装</strong><br>通过Chrome浏览器打开Chrome网上应用店直接添加到Chrome插件中，同时添加<strong>Postman Interceptor</strong>（能拦截http请求）。</p>
-<p><strong>Postman的使用</strong></p>
-<p>1、在Chrome浏览器中点<strong>Postman Interceptor</strong>，打开拦截功能并且填写filter规则，打开Postman，开始访问被测对象。 <br></p>
+<p><strong>Postman的使用</strong><br>1、在Chrome浏览器中点<strong>Postman Interceptor</strong>，打开拦截功能并且填写filter规则，打开Postman，开始访问被测对象 。</p>
 <p>2、在Postman的History可以看访问过的对象，可以进行回放。</p>
 <p>3、指定API请求，选择访问的方法，在URL框输入接口地址，在Params填写发送的参数，在Header设请求头，点<strong>Send</strong>,即可看到响应的数据。</p>
 <p>4、Post的Collection可以对API进行分类管理，如按模块、系统、类型，即把相应的API保存到对应的Collection中。</p>
@@ -172,10 +171,10 @@
 <p>7、Postman可以对接口的持久化保存，当你在别的地方登录你的Postman,你也可以获取你之前保存在Postman的接口测试用例。</p>
 <p>8、点击Runner打开接口运行区域，如下图所示，选择好要运行的模块或者接口后点击Start Test，可以批量运行接口的请求</p>
 <p><img src="http://imglf1.nosdn.127.net/img/NGVCMTB5YXRScVBud0E0VHpSMnlpQ2ZIQVB3R2VrR3c1dlhZTXBmVGsrTEdPNDRsT0JBOTF3PT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=" postman2 "></p>
-<p>9、Postman提供了Environments功能，可设置环境地址及环境中的不同数据，便于在跨环境后，相同API可快速使用，减少调整API的成本，如把cookie变量化，就用来代替用例中对应的参数。</p>
+<p>9、Postman提供了Environments功能，可设置环境地址及环境中的不同数据，便于在跨环境后，相同API可快速使用，减少调整API的成本，如把cookie变量化，就用 <strong>{ {cookie} }</strong> 来代替用例中对应的参数。</p>
 <p>10、Postman可以对用例进行导入和导出，导出的数据格式是json。</p>
 <p>11、直接使用<a href="https://www.npmjs.com/package/newman" target="_blank" rel="external">Newman</a>命令，快速把Postman与CI集成起来，如<a href="http://blog.getpostman.com/2015/09/03/how-to-write-powerful-automated-api-tests-with-postman-newman-and-jenkins/" target="_blank" rel="external">集成到Jenkins</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">newman -c demo.postman_collection --exitCode 1</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">newman -c D:\postman\json\Practise.postman_collection.json -o output_Practise.json</div></pre></td></tr></table></figure>
 <p>[末] <!-- http://blog.csdn.net/flowerspring/article/details/52774399 -->    <!-- http://www.jianshu.com/p/615f668d91a6 -->               </p>
 
       
@@ -328,7 +327,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/JMeter/" style="font-size: 20px;">JMeter</a> <a href="/tags/NexT/" style="font-size: 10px;">NexT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/SoapUI/" style="font-size: 10px;">SoapUI</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
+    				<a href="/tags/Ant/" style="font-size: 10px;">Ant</a> <a href="/tags/JMeter/" style="font-size: 20px;">JMeter</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/NexT/" style="font-size: 10px;">NexT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/SQL/" style="font-size: 12.5px;">SQL</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Selenium/" style="font-size: 15px;">Selenium</a> <a href="/tags/SoapUI/" style="font-size: 10px;">SoapUI</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/个人理解/" style="font-size: 10px;">个人理解</a> <a href="/tags/性能测试/" style="font-size: 17.5px;">性能测试</a> <a href="/tags/性能监控/" style="font-size: 10px;">性能监控</a> <a href="/tags/接口分析/" style="font-size: 10px;">接口分析</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
     			</div>
     	</section>
     

@@ -8,16 +8,32 @@
   <link rel="dns-prefetch" href="http://josephmorgan.github.io">
   <title>SoapUI的使用 | DAMON&#39;S BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="http://blog.csdn.net/redmoon729/article/details/44805979?locationNum=11&amp;amp;fps=1">
+  <meta name="description" content="SoapUI百科：SoapUI提供一个工具通过soap/http来检查，调用，实现Web Service和Web Service的功能/负载/符合性测试。该工具既可作为一个桌面应用软件使用，也可利用插件集成到IDE中使用。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SoapUI的使用">
 <meta property="og:url" content="http://josephmorgan.github.io/SoapUIApply/index.html">
 <meta property="og:site_name" content="DAMON'S BLOG">
-<meta property="og:description" content="http://blog.csdn.net/redmoon729/article/details/44805979?locationNum=11&amp;amp;fps=1">
-<meta property="og:updated_time" content="2016-11-06T14:15:22.696Z">
+<meta property="og:description" content="SoapUI百科：SoapUI提供一个工具通过soap/http来检查，调用，实现Web Service和Web Service的功能/负载/符合性测试。该工具既可作为一个桌面应用软件使用，也可利用插件集成到IDE中使用。">
+<meta property="og:image" content="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0L2gySTlmemtBRTdKMjAzMDhiaGc4VjE0Vk9tZlBYa1VnPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0eDZVZ3R0NzE3WDU4VlJOdk41QUM2L05uMUNZaGxaQW9nPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0eDJkWEdKdGk4c1d6ZXIxS1M0TGdmb05kSWhEVExQU0JRPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0d1pwaUYvVkU2RGEwdUI2a3c0Um1nVUorWUlvUVZsUnpRPT0.png?imageView&thumbnail=1000x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf1.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0eGp3Uy94bnFpNFJpd2d3bFA3ZzBSc2JURkZjTmtScW1RPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0NlA1N0FQTEo2bDFoVjN1WlQxNEhJSTQwZmJicFp5RG1RPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0eGNqN0NUeERLb0ZNQldyajhUUm9xTEh6WU5aQjlmdTJBPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0NmtVV3VXQ25mdVhLK2R3ZXZMVE5xVkRHSG12TmNaTVBRPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf1.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0NmtVV3VXQ25mdVhRenk4VGNCSDExNXNKdVhBU2JhUDRRPT0.png?imageView&thumbnail=1000x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0LzcvWTIyeWNteWkzTnRNaS82am0zUUVnQjF3Sk0xNEJ3PT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0eTJIQ2dsREtzM05sYVZ2L2lSUzRFWFFHRjdGaGhoVDh3PT0.png?imageView&thumbnail=1000x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0L3VYTHg0VnRVQ1ZySjdRRkFXUGJhNG8xQWtnYzhaeFRRPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0ODYzRlpxU05sWE5PSXFUTmhpaW42SE5Fb3VWcEdEWjB3PT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0enBFOCtNZDIxZ0UrS3NvaHNkQTdaaXRjZlZWQVI5MHNnPT0.png?imageView&thumbnail=1000x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf1.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0MFh3N2hXQVhRWWpTNTlmN3g1U3d0WWZoQms5d1VUNjF3PT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:updated_time" content="2016-11-07T07:42:25.127Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SoapUI的使用">
-<meta name="twitter:description" content="http://blog.csdn.net/redmoon729/article/details/44805979?locationNum=11&amp;amp;fps=1">
+<meta name="twitter:description" content="SoapUI百科：SoapUI提供一个工具通过soap/http来检查，调用，实现Web Service和Web Service的功能/负载/符合性测试。该工具既可作为一个桌面应用软件使用，也可利用插件集成到IDE中使用。">
+<meta name="twitter:image" content="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0L2gySTlmemtBRTdKMjAzMDhiaGc4VjE0Vk9tZlBYa1VnPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
   
     <link rel="alternative" href="/atom.xml" title="DAMON&#39;S BLOG" type="application/atom+xml">
   
@@ -156,8 +172,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="http://blog.csdn.net/redmoon729/article/details/44805979?locationNum=11&amp;fps=1" target="_blank" rel="external">http://blog.csdn.net/redmoon729/article/details/44805979?locationNum=11&amp;fps=1</a></p>
-
+        <p><strong>SoapUI百科：</strong><a href="https://www.soapui.org" target="_blank" rel="external">SoapUI</a>提供一个工具通过<a href="http://www.runoob.com/soap/soap-tutorial.html" target="_blank" rel="external">soap</a>/http来检查，调用，实现<a href="http://www.runoob.com/webservices/ws-intro.html" target="_blank" rel="external">Web Service</a>和Web Service的功能/负载/符合性测试。该工具既可作为一个桌面应用软件使用，也可利用插件集成到IDE中使用。<br><a id="more"></a><br><strong>新建项目</strong></p>
+<p>SoapUI 工具中的项目是由一个或多个 Web Service 组成的，这里以 WebXml 的<a href="http://www.webxml.com.cn/webservices/ChinaTVprogramWebService.asmx" target="_blank" rel="external">中国电视节目预告 Web 服务</a>为例，新建项目，点击File–&gt;New Soap Project ， 输入项目名称<strong>ChinaTVprogramWebService</strong>，填写WSDL，WSDL 可以是URL 也可以是wsdl 的静态文件，如下图：</p>
+<p><img src="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0L2gySTlmemtBRTdKMjAzMDhiaGc4VjE0Vk9tZlBYa1VnPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=" SoapUI1 "></p>
+<p><strong>一个请求的运行</strong></p>
+<p>SoapUI会解析WSDL文件获取服务接口，创建请求。如下图：该服务提供8个接口，并根据Soap的版本不同提供了两种。</p>
+<p><img src="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0eDZVZ3R0NzE3WDU4VlJOdk41QUM2L05uMUNZaGxaQW9nPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=" SoapUI2 "></p>
+<p>展开接口<strong>getTVstationDataSet</strong>的Soap请求<strong>Request 1</strong>，双击查看请求的SOAP消息，如下图：</p>
+<p><img src="http://imglf.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0eDJkWEdKdGk4c1d6ZXIxS1M0TGdmb05kSWhEVExQU0JRPT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=" SoapUI3 "></p>
+<p>我们看到的是服务请求Soap消息，其中的“? ”问号代表的是入参，将其修改为请求入参值“-1 ” （-1 代表中央电视），然后点击<strong>绿色箭头按钮</strong>运行，获得请求结果，如下图：</p>
+<p><img src="http://imglf.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0d1pwaUYvVkU2RGEwdUI2a3c0Um1nVUorWUlvUVZsUnpRPT0.png?imageView&amp;thumbnail=1000x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=" SoapUI4 "></p>
+<p>选择项目<strong>ChinaTVprogramWebService</strong>并右键，选择New TestSuite ，构建一个测试套件如下图：</p>
+<p><img src="http://imglf1.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0eGp3Uy94bnFpNFJpd2d3bFA3ZzBSc2JURkZjTmtScW1RPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=" SoapUI5 "></p>
+<p>然后，在 TestSuite 中右键，选择 New TestCase ，新建 TestCase 并将服务请求加入到TestCase 中，如下图：</p>
+<p><img src="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0NlA1N0FQTEo2bDFoVjN1WlQxNEhJSTQwZmJicFp5RG1RPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=" SoapUI6 "></p>
+<p>这样，就新建好了第一个测试用例，如下图：</p>
+<p><img src="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0eGNqN0NUeERLb0ZNQldyajhUUm9xTEh6WU5aQjlmdTJBPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=" SoapUI7 "></p>
+<p>前面已经设置了服务请求入参，所以这里双击 TestCase1 ，点击，可以直接运行，结果显示<strong>FINISHED</strong>加绿条，就表示运行成功，如下图：</p>
+<p><img src="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0NmtVV3VXQ25mdVhLK2R3ZXZMVE5xVkRHSG12TmNaTVBRPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=" SoapUI8 "></p>
+<p><strong>添加断言</strong></p>
+<p>打开服务请求getTVstationDataSet – Request 1 ，点击 ，添加断言，如下图：</p>
+<p><img src="http://imglf1.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0NmtVV3VXQ25mdVhRenk4VGNCSDExNXNKdVhBU2JhUDRRPT0.png?imageView&amp;thumbnail=1000x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=" SoapUI9 "></p>
+<p>断言有多种类型，这里选择的是包含“Contains ”并输入检查内容“中央电视台”，如下图：</p>
+<p><img src="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0LzcvWTIyeWNteWkzTnRNaS82am0zUUVnQjF3Sk0xNEJ3PT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=" SoapUI10 "></p>
+<p>运行服务请求getTVstationDataSet – Request 1 ，可以看到检查点是有效的：Contains-VALID ，如下图：</p>
+<p><img src="http://imglf0.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0eTJIQ2dsREtzM05sYVZ2L2lSUzRFWFFHRjdGaGhoVDh3PT0.png?imageView&amp;thumbnail=1000x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=" SoapUI11 "></p>
+<p><strong> 组织测试步骤</strong></p>
+<p>将getAreaDataSet（获得支持的省市（地区）和分类电视列表）、getTVstationDataSet（通过省市ID或分类电视ID获得电视台列表）、getTVchannelDataSet（通过电视台ID 获得该电视台频道列表）、getTVprogramDataSet（通过频道ID 获得该频道节目列表）依次加入到TestCase 1的测试步骤中去，然后组织测试步骤获取“CCTV-1 ”的节目列表。</p>
+<p>测试步骤：<br><br>1、 获得“中央电视”的分类ID “-1 ” <br><br>2、 获取“中央电视”类别中的“中央电视台”ID ：“39 ” <br><br>3、 获取“中央电视台”的频道“CCTV-1 ”ID ：“606 ” <br><br>4、 获取“CCTV-1 ”频道的节目列表，如下图： <br><br><img src="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0L3VYTHg0VnRVQ1ZySjdRRkFXUGJhNG8xQWtnYzhaeFRRPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=" SoapUI12 "></p>
+<p>需要将服务请求 getAreaDataSet 结果中的“中央电视”ID “-1 ”作为服务请求 getTVstationDataSet 入参，右键点击getAreaDataSet-Request 1 ，选择Insert Step -&gt; Property Transfer ，如下图：</p>
+<p><img src="http://imglf.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0ODYzRlpxU05sWE5PSXFUTmhpaW42SE5Fb3VWcEdEWjB3PT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=" SoapUI13 "></p>
+<p>这个 Property Transfer 用于两个服务请求间的交互，我们将其命名为：“AreaTransferStation ”，Source 中选择getAreaDataSet-Request 1 的Response ，Target 中选择getTVstationDataSet-Request 1 的Request ，并通过脚本选择服务请求getAreaDataSet 返回结果Soap消息中节点（AreaList[4] ）中（areaID[1] ）的值传递给服务请求getTVstationDataSet 作为入参（theAreaID[1] ）的值。其中：declare  namespace diffgr=”urn:schemas-microsoft-com:xml-diffgram-v1”; 用于声明命名空间，与SOAP 消息中的命名空间对应。如下图：</p>
+<p><img src="http://imglf2.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0enBFOCtNZDIxZ0UrS3NvaHNkQTdaaXRjZlZWQVI5MHNnPT0.png?imageView&amp;thumbnail=1000x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=" SoapUI14 "></p>
+<p>同样的操作步骤，组织好其他几个服务请求间的交互，就组织完成了一个完整的测试步骤，最后运行TestCase ，看到全部的运行结果：（绿色表示运行通过），如下图：</p>
+<p><img src="http://imglf1.nosdn.127.net/img/NGVCMTB5YXRScU5XVDd2YW8yM3Y0MFh3N2hXQVhRWWpTNTlmN3g1U3d0WWZoQms5d1VUNjF3PT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=" SoapUI15 "></p>
+<p>[末] <!-- http://www.cnblogs.com/s380774061/p/4624326.html -->  <!-- http://www.ibm.com/developerworks/cn/opensource/os-cn-soapui/index.html --> </p>
+<!-- http://so.csdn.net/so/search/s.do?ref=toolbar&q=soapui&ref=toolbar&q=soapui -->  <!-- http://blog.csdn.net/hai673580326/article/details/38716503 --> 
       
     </div>
     <div class="article-info article-info-index">
@@ -186,11 +236,11 @@
   
 <nav id="article-nav">
   
-    <a href="/SVN/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/JenkinsIntroduce/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          SVN的使用
+          Jenkins的使用
         
       </div>
     </a>
@@ -308,7 +358,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/JMeter/" style="font-size: 20px;">JMeter</a> <a href="/tags/NexT/" style="font-size: 10px;">NexT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/SoapUI/" style="font-size: 10px;">SoapUI</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
+    				<a href="/tags/Ant/" style="font-size: 10px;">Ant</a> <a href="/tags/JMeter/" style="font-size: 20px;">JMeter</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/NexT/" style="font-size: 10px;">NexT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/SQL/" style="font-size: 12.5px;">SQL</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Selenium/" style="font-size: 15px;">Selenium</a> <a href="/tags/SoapUI/" style="font-size: 10px;">SoapUI</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/个人理解/" style="font-size: 10px;">个人理解</a> <a href="/tags/性能测试/" style="font-size: 17.5px;">性能测试</a> <a href="/tags/性能监控/" style="font-size: 10px;">性能监控</a> <a href="/tags/接口分析/" style="font-size: 10px;">接口分析</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
     			</div>
     	</section>
     

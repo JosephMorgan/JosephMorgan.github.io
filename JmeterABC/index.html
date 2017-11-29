@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://josephmorgan.github.io/JmeterABC/index.html">
 <meta property="og:site_name" content="DAMON'S BLOG">
 <meta property="og:description" content="测试计划元件Test Plan(测试计划)：用来描述一个测试，包含与本次测试所有相关的功能，作用于整个测试。">
-<meta property="og:updated_time" content="2016-11-02T08:54:27.595Z">
+<meta property="og:updated_time" content="2016-12-23T06:40:39.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JMeter的基础概念">
 <meta name="twitter:description" content="测试计划元件Test Plan(测试计划)：用来描述一个测试，包含与本次测试所有相关的功能，作用于整个测试。">
@@ -187,6 +187,17 @@
 用于展示响应时间曲线的Response Times Over Time
 用于展示TPS曲线的Transactions per Second
 </code></pre><p><strong>集合点：</strong>请求—–&gt;定时器——-&gt;Synchronizing Timer，“Number of Simulated Users to Group by: 5”，表示并发量是5。也就是说，JMeter会等到5个线程都运行到此处时，这5个线程才开始执行后面的操作，先到达的线程将会在此等候。注意，这个值不能大于该线程组的线程数。</p>
+<h3 id="关联"><a href="#关联" class="headerlink" title="关联"></a>关联</h3><p>JMeter的关联方法有两种：后置处理器－正则表达式提取器与XPath Extractor。</p>
+<p>引用名称：下一个请求要引用的参数名称，如填写activityID，则可用${activityID}引用它。</p>
+<p>正则表达式：()括起来的部分就是要提取的。 .匹配任何字符串。*：零次或多次。+：一次或多次。?：不要太贪婪，零次或一次，在找到第一个匹配项后停止。</p>
+<p>模板：用$$引用起来，如果在正则表达式中有多个正则表达式（多个括号括起来的东东），则可以是$2$$3$等等，表示解析到的第几个值给title。如：$1$表示解析到的第1个值</p>
+<p>匹配数字：0代表随机取值，1代表全部取值，通常情况下填0，如果在LR中，取出的值是一个数组，还得处理一下，LR11版本用一个随机的函数就可以不用写大段的代码来处理数组。</p>
+<p>缺省值：如果参数没有取得到值，那默认给一个值让它取。</p>
+<p>XPath Extractor的设置</p>
+<p>Use Tidy：当需要处理的页面是HTML格式时，必须选中该选项，当需要处理的页面是XML或XHTML格式（例如，RSS返回）时，取消选中该选项。</p>
+<p>Reference Name：存放提取出的值的参数。</p>
+<p>XPath Query：用于提取值的XPath表达式。</p>
+<p>Default Value：参数的默认值。</p>
 <p>后续更新。。。</p>
 
       
@@ -339,7 +350,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/JMeter/" style="font-size: 20px;">JMeter</a> <a href="/tags/NexT/" style="font-size: 10px;">NexT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/SoapUI/" style="font-size: 10px;">SoapUI</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
+    				<a href="/tags/Ant/" style="font-size: 10px;">Ant</a> <a href="/tags/JMeter/" style="font-size: 20px;">JMeter</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/NexT/" style="font-size: 10px;">NexT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/SQL/" style="font-size: 12.5px;">SQL</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Selenium/" style="font-size: 15px;">Selenium</a> <a href="/tags/SoapUI/" style="font-size: 10px;">SoapUI</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/个人理解/" style="font-size: 10px;">个人理解</a> <a href="/tags/性能测试/" style="font-size: 17.5px;">性能测试</a> <a href="/tags/性能监控/" style="font-size: 10px;">性能监控</a> <a href="/tags/接口分析/" style="font-size: 10px;">接口分析</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
     			</div>
     	</section>
     

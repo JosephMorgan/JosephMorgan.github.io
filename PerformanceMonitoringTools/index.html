@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://josephmorgan.github.io">
+  <title>性能资源监控工具 | DAMON&#39;S BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1、JDK自带的JConsole">
+<meta property="og:type" content="article">
+<meta property="og:title" content="性能资源监控工具">
+<meta property="og:url" content="http://josephmorgan.github.io/PerformanceMonitoringTools/index.html">
+<meta property="og:site_name" content="DAMON'S BLOG">
+<meta property="og:description" content="1、JDK自带的JConsole">
+<meta property="og:updated_time" content="2016-11-14T09:00:54.761Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="性能资源监控工具">
+<meta name="twitter:description" content="1、JDK自带的JConsole">
+  
+    <link rel="alternative" href="/atom.xml" title="DAMON&#39;S BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Joseph Morgan</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Stay hungry,Stay foolish</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+		        
+					<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Joseph Morgan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Joseph Morgan</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Stay hungry,Stay foolish</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-PerformanceMonitoringTools" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      性能资源监控工具
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>1、</strong>JDK自带的JConsole<br><a id="more"></a><br><a href="http://jiajun.iteye.com/blog/810150" target="_blank" rel="external">JConsole</a> 是一个内置 Java 性能分析器。</p>
+<p><strong>2、</strong>JDK自带的JVisualVM</p>
+<p><a href="http://jiajun.iteye.com/blog/1180230" target="_blank" rel="external">JVisualVM</a> 是JConsole的升级。</p>
+<p><strong>3、</strong><a href="http://www.ibm.com/developerworks/cn/aix/library/analyze_aix/" target="_blank" rel="external">nmon</a></p>
+<p><a href="http://phpseyo.iteye.com/blog/1958502" target="_blank" rel="external">nmon</a> 是一个分析aix和linux性能的免费工具。</p>
+<p><strong>4、</strong><a href="http://blog.csdn.net/k_scott/article/details/8167018" target="_blank" rel="external">Spotlight on MySQL</a> </p>
+<p><a href="http://blog.sina.com.cn/s/blog_12ea8bfe70101e4fz.html" target="_blank" rel="external">Spotlight on MySQL</a> 是用于监控MySQL数据库性能的工具。</p>
+<p><strong>5、</strong>MONyog</p>
+<p><a href="http://blog.csdn.net/k_scott/article/details/8166579" target="_blank" rel="external">MONyog</a>是用于监控MySQL数据库性能的工具。</p>
+<p><strong>6、</strong>Spotlight on Unix</p>
+<p><a href="http://www.51testing.com/html/97/518697-2457660.html" target="_blank" rel="external">Spotlight on Unix</a>是监控linux的工具。</p>
+<p><strong>7、</strong>JavaMelody</p>
+<p><a href="http://www.cnblogs.com/xing901022/p/4116430.html" target="_blank" rel="external">JavaMelody</a>用于对Java应用或者应用服务器的监控。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/PerformanceMonitoringTools/" class="archive-article-date">
+  	<time datetime="2016-11-14T06:12:21.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-14</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能监控/">性能监控</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/性能测试/">性能测试</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/DesignPattern/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          设计模式介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/SeleniumCI/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Selenium的持续集成</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="PerformanceMonitoringTools" data-title="性能资源监控工具" data-url="http://josephmorgan.github.io/PerformanceMonitoringTools/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"litten-hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Joseph Morgan
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/Ant/" style="font-size: 10px;">Ant</a> <a href="/tags/JMeter/" style="font-size: 20px;">JMeter</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/NexT/" style="font-size: 10px;">NexT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/SQL/" style="font-size: 12.5px;">SQL</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Selenium/" style="font-size: 15px;">Selenium</a> <a href="/tags/SoapUI/" style="font-size: 10px;">SoapUI</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/个人理解/" style="font-size: 10px;">个人理解</a> <a href="/tags/性能测试/" style="font-size: 17.5px;">性能测试</a> <a href="/tags/性能监控/" style="font-size: 10px;">性能监控</a> <a href="/tags/接口分析/" style="font-size: 10px;">接口分析</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">面朝大海，春暖花开&lt;br&gt;&lt;br&gt;从明天起，做一个幸福的人&lt;br&gt;喂马、劈柴，周游世界&lt;br&gt;从明天起，关心粮食和蔬菜&lt;br&gt;我有一所房子，面朝大海，春暖花开&lt;br&gt;从明天起，和每一个亲人通信&lt;br&gt;告诉他们我的幸福&lt;br&gt;那幸福的闪电告诉我的&lt;br&gt;我将告诉每一个人&lt;br&gt;给每一条河每一座山取一个温暖的名字&lt;br&gt;陌生人，我也为你祝福&lt;br&gt;愿你有一个灿烂的前程&lt;br&gt;愿你有情人终成眷属&lt;br&gt;愿你在尘世获得幸福&lt;br&gt;我只愿面朝大海，春暖花开&lt;br&gt;&lt;br&gt;         --海子《面朝大海，春暖花开》</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

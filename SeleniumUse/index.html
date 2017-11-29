@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://josephmorgan.github.io">
+  <title>Selenium的使用 | DAMON&#39;S BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Selenium百科：Selenium包括Selenium1.0（即Selenium RC）和Selenium2.0（Selenium1.0+ WebDriver）。Selenium1.0是通过JS注入方式与浏览器进行交互的，而">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Selenium的使用">
+<meta property="og:url" content="http://josephmorgan.github.io/SeleniumUse/index.html">
+<meta property="og:site_name" content="DAMON'S BLOG">
+<meta property="og:description" content="Selenium百科：Selenium包括Selenium1.0（即Selenium RC）和Selenium2.0（Selenium1.0+ WebDriver）。Selenium1.0是通过JS注入方式与浏览器进行交互的，而">
+<meta property="og:updated_time" content="2016-11-10T07:49:35.287Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Selenium的使用">
+<meta name="twitter:description" content="Selenium百科：Selenium包括Selenium1.0（即Selenium RC）和Selenium2.0（Selenium1.0+ WebDriver）。Selenium1.0是通过JS注入方式与浏览器进行交互的，而">
+  
+    <link rel="alternative" href="/atom.xml" title="DAMON&#39;S BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Joseph Morgan</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Stay hungry,Stay foolish</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+		        
+					<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Joseph Morgan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Joseph Morgan</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Stay hungry,Stay foolish</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-SeleniumUse" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Selenium的使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Selenium百科：</strong>Selenium包括Selenium1.0（即Selenium RC）和Selenium2.0（Selenium1.0+ WebDriver）。Selenium1.0是通过JS注入方式与浏览器进行交互的，而<a id="more"></a>Selenium2.0中为了更好的模拟用户真实环境，它直接利用了浏览器的nativesupport来操作浏览器的。Selenium1.0和WebDriver原属于两个不同的测试工具， Selenium1.0与WebDriver合并后，Selenium1.0提供了WebDriver不具备的多浏览器支持，而WebDriver提供了Selenium1.0中不具备的键盘和鼠标等系统级的操作以及对对话框的支持。</p>
+<p><strong>Ant百科：</strong>Ant是一个常用的构建工具，我们自动化过程中工程的编译、执行、发邮件等操作都可以通过构建工具来执行；我们只需要在构建文件（一个xml文件）中进行下简单的配置便可通过Ant对我们的工程进行构建。</p>
+<p><strong>TestNG百科：</strong>TestNG是一个涵盖所有类型的测试：单元，功能，集成等的测试框架，选TestNG是因为相对于JUnit而言，TestNG具备了JUnit所有功能，而同时又拥有很多JUnit不具备的特点，主要包括：</p>
+<ul>
+<li>TestNG拥有一个xml配置文件，可以很方便的对所有用例进行管理、配置。</li>
+<li>TestNG支持依赖测试。</li>
+<li>TestNG参数化测试功能更加强大，既可以在case中指定参数，又可以通过配置文件进行传参。</li>
+</ul>
+<p><strong>Jenkins百科：</strong>Jenkins是一个持续集成工具，通过它可以监控自动化case代码变更情况、定时执行自动化测试脚本、生成测试报告、邮件通知负责人。</p>
+<p><strong>Selenium IDE百科：</strong>Selenium的IDE(集成开发环境)是一个易于使用的Firefox插件,用于开发Selenium测试用例。它提供了一个图形用户界面，用于记录使用Firefox浏览器，用来学习和使用Selenium用户操作，但它只能用于Firefox浏览器，不支持其它浏览器。它所记录的脚本可以被转换成多种编程语言的脚本，如Java、Python、C#等。</p>
+<h3 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h3><p><strong>1、</strong>安装JDK及配置JDK环境变量 <br><br><strong>2、</strong>Eclipse安装，直接下载可用的<a href="http://www.eclipse.org/downloads/index.php" target="_blank" rel="external">Eclipse</a>包即可。 <br><br><strong>3、</strong>Eclipse中安装TestNG插件，在Eclipse中选择help-&gt;install new software –&gt; Add -&gt; 弹出框中Name填TestNG（可填其它），Location填写<a href="http://beust.com/eclipse" target="_blank" rel="external">http://beust.com/eclipse</a> （此为插件地址）点击ok。 <br><br>点击ok后Eclipse会自动的检测TestNG的插件内容，勾选要加载的内容，点击next。<br><br>点击next后就开始安装该插件，完成后重启eclipse使生效。Eclipse启动后，选择file-&gt;new-&gt;other，弹框中出现TestNG字样，表示安装成功。 <br><br><strong>4、</strong>Selenium2.0下载，去selenium官网下载对应语言版本的<a href="http://docs.seleniumhq.org/download/" target="_blank" rel="external">Selenium  WebDriver</a>包即可。</p>
+<h3 id="新建工程"><a href="#新建工程" class="headerlink" title="新建工程"></a>新建工程</h3><p><strong>1、</strong>新建一个Java工程，并在工程根目录下新建一个lib文件夹用来存放工程所需要用的jar包。<br><br><strong>2、</strong>把下载的selenium2.0压缩包解压，将解压目录中的selenium-java-2.53.0.jar、selenium-java-2.53.0-srcs.jar和libs目录下所有jar文件复制到工程目录下的lib文件夹。 <br><br><strong>3、</strong>将lib文件夹中jar包添加到该工程build path中：选择所有jar包-&gt;右键后选择build path-&gt;点击add to build path完成jar包添加。 <br><br><strong>4、</strong>下载<a href="http://docs.seleniumhq.org/download/" target="_blank" rel="external">谷歌浏览器驱动程序</a>chromedriver.exe（若使用其它浏览器，下载对应浏览器的驱动程序即可），并将该exe程序放到C:\Windows\System32目录下。<br><br><strong>5、</strong>工程根目录下新建TestNG配置文件testng.xml（工程名右键，TestNG&gt;Convert to TestNG）。</p>
+<h3 id="编写用例"><a href="#编写用例" class="headerlink" title="编写用例"></a>编写用例</h3><p><strong>示例</strong></p>
+<p><strong>1、</strong>工程下新建一个包，并新建一个testng类，方法：右键包名-&gt;New-&gt;Other-&gt;testng-&gt;Testng Class，然后选择Next输入类名即可。<br><br><strong>2、</strong>写用例，建议用Page Object设计模式。<br><br><strong>3、</strong>用例写完后，可以看看效果。方法：鼠标放在要执行的用例的文件上右键，选择run as后，点击TestNG Test即可。<br></p>
+<h3 id="用TestNG"><a href="#用TestNG" class="headerlink" title="用TestNG"></a>用TestNG</h3><p><strong>1、</strong>如果写了很多用例，那么可以用TestNG的xml配置文件来管理用例，只需将用例在TestNG配置文件testng.xml中进行相关配置即可。配置文件说明：</p>
+<p>配置文件中suite标记一个测试单元，可以包含多个测试用例每个suite中的测试用例通过test标签来进行定义。参数parallel是多线程标记，通过thread-count来指定线程数,verbose是测试用例日志级别，包括0-10,0到10记录日志详细程度依次递增。classes标签中name值为前面所写的用例，配置规则：包名+“.”+类名。</p>
+<p><strong>2、</strong>TestNG配置文件执行，方法：鼠标放在testng.xml文件上右键，选择run as后，点击Testng Suite即可。<br><br><strong>3、</strong>查看运行结果，case执行完后，刷新当前工程，会发现在工程根目录下出现test-output目录，该目录是TestNG自动生成的目录，case运行结果可在该目录下查看。进入test-output通过浏览器打开emailable-report.html文件即可看到case运行详细结果。</p>
+<p>[末]</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/SeleniumUse/" class="archive-article-date">
+  	<time datetime="2016-11-10T07:39:03.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-10</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Selenium/">Selenium</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/自动化测试/">自动化测试</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/SeleniumAPI/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Selenium的基本操作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/PerformanceConcept/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">什么叫性能测试</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SeleniumUse" data-title="Selenium的使用" data-url="http://josephmorgan.github.io/SeleniumUse/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"litten-hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Joseph Morgan
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/Ant/" style="font-size: 10px;">Ant</a> <a href="/tags/JMeter/" style="font-size: 20px;">JMeter</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/NexT/" style="font-size: 10px;">NexT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/SQL/" style="font-size: 12.5px;">SQL</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Selenium/" style="font-size: 15px;">Selenium</a> <a href="/tags/SoapUI/" style="font-size: 10px;">SoapUI</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/个人理解/" style="font-size: 10px;">个人理解</a> <a href="/tags/性能测试/" style="font-size: 17.5px;">性能测试</a> <a href="/tags/性能监控/" style="font-size: 10px;">性能监控</a> <a href="/tags/接口分析/" style="font-size: 10px;">接口分析</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">面朝大海，春暖花开&lt;br&gt;&lt;br&gt;从明天起，做一个幸福的人&lt;br&gt;喂马、劈柴，周游世界&lt;br&gt;从明天起，关心粮食和蔬菜&lt;br&gt;我有一所房子，面朝大海，春暖花开&lt;br&gt;从明天起，和每一个亲人通信&lt;br&gt;告诉他们我的幸福&lt;br&gt;那幸福的闪电告诉我的&lt;br&gt;我将告诉每一个人&lt;br&gt;给每一条河每一座山取一个温暖的名字&lt;br&gt;陌生人，我也为你祝福&lt;br&gt;愿你有一个灿烂的前程&lt;br&gt;愿你有情人终成眷属&lt;br&gt;愿你在尘世获得幸福&lt;br&gt;我只愿面朝大海，春暖花开&lt;br&gt;&lt;br&gt;         --海子《面朝大海，春暖花开》</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

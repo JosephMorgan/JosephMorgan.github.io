@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://josephmorgan.github.io">
+  <title>SQL简单操作（一） | DAMON&#39;S BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SQL百科：SQL，指结构化查询语言，全称是 Structured Query Language。SQL 让您可以访问和处理数据库。SQL 是一种 ANSI（American National Standards Institute 美国国家标准化组织）标准的计算机语言。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL简单操作（一）">
+<meta property="og:url" content="http://josephmorgan.github.io/SQL1/index.html">
+<meta property="og:site_name" content="DAMON'S BLOG">
+<meta property="og:description" content="SQL百科：SQL，指结构化查询语言，全称是 Structured Query Language。SQL 让您可以访问和处理数据库。SQL 是一种 ANSI（American National Standards Institute 美国国家标准化组织）标准的计算机语言。">
+<meta property="og:updated_time" content="2016-12-07T08:28:58.448Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL简单操作（一）">
+<meta name="twitter:description" content="SQL百科：SQL，指结构化查询语言，全称是 Structured Query Language。SQL 让您可以访问和处理数据库。SQL 是一种 ANSI（American National Standards Institute 美国国家标准化组织）标准的计算机语言。">
+  
+    <link rel="alternative" href="/atom.xml" title="DAMON&#39;S BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Joseph Morgan</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Stay hungry,Stay foolish</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+		        
+					<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Joseph Morgan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Joseph Morgan</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Stay hungry,Stay foolish</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-SQL1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SQL简单操作（一）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>SQL百科</strong>：<br>SQL，指结构化查询语言，全称是 Structured Query Language。SQL 让您可以访问和处理数据库。SQL 是一种 ANSI（American National Standards Institute 美国国家标准化组织）标准的计算机语言。<br><a id="more"></a><br><strong>SQL可以</strong>：<br>1、面向数据库执行查询；<br>2、可从数据库取回数据；<br>3、可在数据库中插入新的记录；<br>4、可更新数据库中的数据；<br>5、可从数据库删除记录；<br>6、可创建新数据库；<br>7、可在数据库中创建新表；<br>8、可在数据库中创建存储过程；<br>9、可在数据库中创建视图；<br>10、可以设置表、存储过程和视图的权限；</p>
+<p>SELECT DISTINCT 语句用于返回唯一不同的值：SELECT DISTINCT country FROM Websites;</p>
+<p>SELECT * FROM Websites WHERE id=1;</p>
+<p>SELECT * FROM Websites WHERE country=’CN’ AND alexa &gt; 50;</p>
+<p>SELECT * FROM Websites WHERE alexa &gt; 15 AND (country=’CN’ OR country=’USA’);</p>
+<p>ORDER BY 关键字用于对结果集进行排序：SELECT column_name,column_name FROM table_name ORDER BY column_name,column_name ASC|DESC;</p>
+<p>DESC降序排序</p>
+<p>SELECT * FROM Websites ORDER BY alexa DESC;</p>
+<p>SELECT * FROM Websites ORDER BY country,alexa;</p>
+<p>INSERT INTO table_name VALUES (value1,value2,value3,…);</p>
+<p>INSERT INTO table_name (column1,column2,column3,…) VALUES (value1,value2,value3,…);</p>
+<p>INSERT INTO Websites (name, url, alexa, country) VALUES (‘百度’,’<a href="https://www.baidu.com/&#39;,&#39;4&#39;,&#39;CN" target="_blank" rel="external">https://www.baidu.com/&#39;,&#39;4&#39;,&#39;CN</a>‘);</p>
+<p>UPDATE table_name SET column1=value1,column2=value2,… WHERE some_column=some_value;</p>
+<p>UPDATE Websites SET alexa=’5000’, country=’USA’ WHERE name=’菜鸟教程’;</p>
+<p>DELETE FROM table_name WHERE some_column=some_value;</p>
+<p>DELETE FROM Websites WHERE name=’百度’ AND country=’CN’;</p>
+<p>SELECT TOP 子句用于规定要返回的记录的数目。</p>
+<p>SQL Server / MS Access 语法：SELECT TOP number|percent column_name(s) FROM table_name;</p>
+<p>MySQL 语法：SELECT column_name(s) FROM table_name LIMIT number;</p>
+<p>Oracle 语法：SELECT column_name(s) FROM table_name WHERE ROWNUM &lt;= number;</p>
+<p>LIKE 操作符用于在 WHERE 子句中搜索列中的指定模式。</p>
+<p>SELECT column_name(s) FROM table_name WHERE column_name LIKE pattern;</p>
+<p>选取 name 以字母 “G” 开始的所有客户：SELECT * FROM Websites WHERE name LIKE ‘G%’;</p>
+<p>选取 name 以字母 “k” 结尾的所有客户：SELECT * FROM Websites WHERE name LIKE ‘%k’;</p>
+<p>选取 name 包含模式 “oo” 的所有客户：SELECT * FROM Websites WHERE name LIKE ‘%oo%’;</p>
+<p>通过使用 NOT 关键字，您可以选取不匹配模式的记录。下面的 SQL 语句选取 name 不包含模式 “oo” 的所有客户：SELECT * FROM Websites WHERE name NOT LIKE ‘%oo%’;</p>
+<p>通配符可用于替代字符串中的任何其他字符，通配符与 SQL LIKE 操作符一起使用，可使用以下通配符：%，替代 0 个或多个字符；_，替代一个字符；[charlist]，字符列中的任何单一字符；[^charlist]或[!charlist]，不在字符列中的任何单一字符。</p>
+<p>选取 url 以字母 “https” 开始的所有网站：SELECT * FROM Websites WHERE url LIKE ‘https%’;</p>
+<p>选取 name 以一个任意字符开始，然后是 “oogle” 的所有客户：SELECT * FROM Websites WHERE name LIKE ‘_oogle’;</p>
+<p>选取 name 以 “G” 开始，然后是一个任意字符，然后是 “o”，然后是一个任意字符，然后是 “le” 的所有网站：SELECT * FROM Websites WHERE name LIKE ‘G_o_le’;</p>
+<p>MySQL 中使用 REGEXP 或 NOT REGEXP 运算符 (或 RLIKE 和 NOT RLIKE) 来操作正则表达式。</p>
+<p>选取 name 以 “G”、”F” 或 “s” 开始的所有网站：SELECT * FROM Websites WHERE name REGEXP ‘^[GFs]’;</p>
+<p>选取 name 以 A 到 H 字母开头的网站：SELECT * FROM Websites WHERE name REGEXP ‘^[A-H]’;</p>
+<p>选取 name 不以 A 到 H 字母开头的网站：SELECT * FROM Websites WHERE name REGEXP ‘^[^A-H]’;</p>
+<p>IN 操作符允许您在 WHERE 子句中规定多个值。SELECT column_name(s) FROM table_name WHERE column_name IN (value1,value2,…);</p>
+<p>选取 name 为 “Google” 或 “菜鸟教程” 的所有网站：SELECT * FROM Websites WHERE name IN (‘Google’,’菜鸟教程’);</p>
+<p>BETWEEN 操作符用于选取介于两个值之间的数据范围内的值。SELECT column_name(s) FROM table_name WHERE column_name BETWEEN value1 AND value2;</p>
+<p>选取 alexa 介于 1 和 20 之间的所有网站：SELECT * FROM Websites WHERE alexa BETWEEN 1 AND 20;</p>
+<p>选取alexa介于 1 和 20 之间但 country 不为 USA 和 IND 的所有网站：SELECT * FROM Websites WHERE (alexa BETWEEN 1 AND 20) AND NOT country IN (‘USA’, ‘IND’);</p>
+<p>选取 name 以介于 ‘A’ 和 ‘H’ 之间字母开始的所有网站：SELECT * FROM Websites WHERE name BETWEEN ‘A’ AND ‘H’;</p>
+<p>选取 name 不介于 ‘A’ 和 ‘H’ 之间字母开始的所有网站：SELECT * FROM Websites WHERE name NOT BETWEEN ‘A’ AND ‘H’;</p>
+<p>选取 date 介于 ‘2016-05-10’ 和 ‘2016-05-14’ 之间的所有访问记录：SELECT * FROM access_log WHERE date BETWEEN ‘2016-05-10’ AND ‘2016-05-14’;</p>
+<p>通过使用 SQL，可以为表名称或列名称指定别名。基本上，创建别名是为了让列名称的可读性更强。</p>
+<p>SELECT column_name AS alias_name FROM table_name;</p>
+<p>SELECT column_name(s) FROM table_name AS alias_name;</p>
+<p>指定了两个别名，一个是 name 列的别名，一个是 country 列的别名。提示：如果列名称包含空格，要求使用双引号或方括号：SELECT name AS n, country AS c FROM Websites;</p>
+<p>把四个列（name、url、alexa 和 country）结合在一起，并创建一个名为 “site_info” 的别名：SELECT name, CONCAT(url, ‘, ‘, alexa, ‘, ‘, country) AS site_info FROM Websites;</p>
+<p>使用 “Websites” 和 “access_log” 表，并分别为它们指定表别名 “w” 和 “a”（通过使用别名让 SQL 更简短）：SELECT w.name, w.url, a.count, a.date FROM Websites AS w, access_log AS a WHERE a.site_id=w.id and w.name=”菜鸟教程”;</p>
+<p>在下面的情况下，使用别名很有用：在查询中涉及超过一个表；在查询中使用了函数；列名称很长或者可读性差；需要把两个列或者多个列结合在一起。</p>
+<p>SQL JOIN 子句用于把来自两个或多个表的行结合起来，基于这些表之间的共同字段。最常见的 JOIN 类型：SQL INNER JOIN（简单的 JOIN）。 SQL INNER JOIN 从多个表中返回满足 JOIN 条件的所有行。</p>
+<p>Websites” 表中的 “id” 列指向 “access_log” 表中的字段 “site_id”。这两个表是通过 “site_id” 列联系起来的：SELECT Websites.id, Websites.name, access_log.count, access_log.date FROM Websites INNER JOIN access_log ON Websites.id=access_log.site_id;</p>
+<p>可以使用的不同的 SQL JOIN 类型：INNER JOIN：如果表中有至少一个匹配，则返回行 ；LEFT JOIN：即使右表中没有匹配，也从左表返回所有的行 ；RIGHT JOIN：即使左表中没有匹配，也从右表返回所有的行 ；FULL JOIN：只要其中一个表中存在匹配，则返回行。</p>
+<p>LEFT JOIN 关键字从左表（table1）返回所有的行，即使右表（table2）中没有匹配。如果右表中没有匹配，则结果为 NULL。</p>
+<p>SELECT column_name(s) FROM table1 LEFT JOIN table2 ON table1.column_name=table2.column_name;</p>
+<p>返回所有网站及他们的访问量（如果有的话）：SELECT Websites.name, access_log.count, access_log.date FROM Websites LEFT JOIN access_log ON Websites.id=access_log.site_id ORDER BY access_log.count DESC;</p>
+<p>RIGHT JOIN 关键字从右表（table2）返回所有的行，即使左表（table1）中没有匹配。如果左表中没有匹配，则结果为 NULL。</p>
+<p>SELECT column_name(s) FROM table1 RIGHT JOIN table2 ON table1.column_name=table2.column_name;</p>
+<p>将返回网站的访问记录。把 access_log 作为左表，Websites 作为右表：SELECT Websites.name, access_log.count, access_log.date FROM access_log RIGHT JOIN Websites ON access_log.site_id=Websites.id ORDER BY access_log.count DESC;</p>
+<p>FULL OUTER JOIN 关键字只要左表（table1）和右表（table2）其中一个表中存在匹配，则返回行。FULL OUTER JOIN 关键字结合了 LEFT JOIN 和 RIGHT JOIN 的结果。</p>
+<p>SELECT column_name(s) FROM table1 FULL OUTER JOIN table2 ON table1.column_name=table2.column_name;</p>
+<p>选取所有网站访问记录。MySQL中不支持 FULL OUTER JOIN，可以在 SQL Server 测试一下：SELECT Websites.name, access_log.count, access_log.date FROM Websites FULL OUTER JOIN access_log ON Websites.id=access_log.site_id ORDER BY access_log.count DESC;</p>
+<p>UNION 操作符用于合并两个或多个 SELECT 语句的结果集。请注意，UNION 内部的每个 SELECT 语句必须拥有相同数量的列。列也必须拥有相似的数据类型。同时，每个 SELECT 语句中的列的顺序必须相同。默认地，UNION 操作符选取不同的值。如果允许重复的值，请使用 UNION ALL。</p>
+<p>SELECT column_name(s) FROM table1 UNION SELECT column_name(s) FROM table2;</p>
+<p>SELECT column_name(s) FROM table1 UNION ALL SELECT column_name(s) FROM table2;</p>
+<p>从 “Websites” 和 “apps” 表中选取所有不同的country（只有不同的值）：SELECT country FROM Websites UNION SELECT country FROM apps ORDER BY country;</p>
+<p>使用 UNION ALL 从 “Websites” 和 “apps” 表中选取所有的中国(CN)的数据（也有重复的值）：SELECT country, name FROM Websites WHERE country=’CN’ UNION ALL SELECT country, app_name FROM apps WHERE country=’CN’ ORDER BY country;</p>
+<p>SELECT INTO 语句从一个表复制数据，然后把数据插入到另一个新表中。</p>
+<p>MySQL 数据库不支持 SELECT … INTO 语句，但支持 INSERT INTO … SELECT 。当然你可以使用以下语句来拷贝表结构及数据：CREATE TABLE 新表 SELECT * FROM 旧表 </p>
+<p>复制所有的列插入到新表中：SELECT * INTO newtable [IN externaldb] FROM table1;</p>
+<p>只复制希望的列插入到新表中：SELECT column_name(s) INTO newtable [IN externaldb] FROM table1;  新表将会使用 SELECT 语句中定义的列名称和类型进行创建。您可以使用 AS 子句来应用新名称。</p>
+<p>创建 Websites 的备份复件：SELECT * INTO WebsitesBackup2016 FROM Websites;</p>
+<p>使用 IN 子句来复制表到另一个数据库中：SELECT * INTO WebsitesBackup2016 IN ‘Backup.mdb’ FROM Websites;</p>
+<p>只复制一些列插入到新表中：SELECT name, url INTO WebsitesBackup2016 FROM Websites;</p>
+<p>只复制中国的网站插入到新表中：SELECT * INTO WebsitesBackup2016 FROM Websites WHERE country=’CN’;</p>
+<p>复制多个表中的数据插入到新表中：SELECT Websites.name, access_log.count, access_log.date INTO WebsitesBackup2016 FROM Websites LEFT JOIN access_log ON Websites.id=access_log.site_id;</p>
+<p>SELECT INTO 语句可用于通过另一种模式创建一个新的空表。只需要添加促使查询没有数据返回的 WHERE 子句即可：SELECT * INTO newtable FROM table1 WHERE 1=0;</p>
+<p>INSERT INTO SELECT 语句从一个表复制数据，然后把数据插入到一个已存在的表中。目标表中任何已存在的行都不会受影响。</p>
+<p>从一个表中复制所有的列插入到另一个已存在的表中：INSERT INTO table2 SELECT * FROM table1;</p>
+<p>只复制希望的列插入到另一个已存在的表中：INSERT INTO table2 (column_name(s)) SELECT column_name(s) FROM table1;</p>
+<p>复制 “apps” 中的数据插入到 “Websites” 中：INSERT INTO Websites (name, country) SELECT app_name, country FROM apps;</p>
+<p>只复 QQ 的 APP 到 “Websites” 中：INSERT INTO Websites (name, country) SELECT app_name, country FROM apps WHERE id=1;</p>
+<p>CREATE DATABASE 语句用于创建数据库。CREATE DATABASE dbname;  创建一个名为 “my_db” 的数据库：CREATE DATABASE my_db;</p>
+<p>CREATE TABLE 语句用于创建数据库中的表。表由行和列组成，每个表都必须有个表名。CREATE TABLE table_name (column_name1 data_type(size),column_name2 data_type(size),column_name3 data_type(size),….);</p>
+<p>column_name 参数规定表中列的名称。data_type 参数规定列的数据类型（例如 varchar、integer、decimal、date 等等）。size 参数规定表中列的最大长度。可使用 INSERT INTO 语句向空表写入数据。</p>
+<p>创建一个名为 “Persons” 的表，包含五列：PersonID、LastName、FirstName、Address 和 City：CREATE TABLE Persons (PersonID int,LastName varchar(255),FirstName varchar(255),Address varchar(255),City varchar(255));</p>
+<p>[末]</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/SQL1/" class="archive-article-date">
+  	<time datetime="2016-12-07T08:16:45.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-07</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/数据库/">数据库</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/SQL2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SQL简单操作（二）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/DesignPattern/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">设计模式介绍</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SQL1" data-title="SQL简单操作（一）" data-url="http://josephmorgan.github.io/SQL1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"litten-hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Joseph Morgan
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/Ant/" style="font-size: 10px;">Ant</a> <a href="/tags/JMeter/" style="font-size: 20px;">JMeter</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/NexT/" style="font-size: 10px;">NexT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/SQL/" style="font-size: 12.5px;">SQL</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Selenium/" style="font-size: 15px;">Selenium</a> <a href="/tags/SoapUI/" style="font-size: 10px;">SoapUI</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/个人理解/" style="font-size: 10px;">个人理解</a> <a href="/tags/性能测试/" style="font-size: 17.5px;">性能测试</a> <a href="/tags/性能监控/" style="font-size: 10px;">性能监控</a> <a href="/tags/接口分析/" style="font-size: 10px;">接口分析</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">面朝大海，春暖花开&lt;br&gt;&lt;br&gt;从明天起，做一个幸福的人&lt;br&gt;喂马、劈柴，周游世界&lt;br&gt;从明天起，关心粮食和蔬菜&lt;br&gt;我有一所房子，面朝大海，春暖花开&lt;br&gt;从明天起，和每一个亲人通信&lt;br&gt;告诉他们我的幸福&lt;br&gt;那幸福的闪电告诉我的&lt;br&gt;我将告诉每一个人&lt;br&gt;给每一条河每一座山取一个温暖的名字&lt;br&gt;陌生人，我也为你祝福&lt;br&gt;愿你有一个灿烂的前程&lt;br&gt;愿你有情人终成眷属&lt;br&gt;愿你在尘世获得幸福&lt;br&gt;我只愿面朝大海，春暖花开&lt;br&gt;&lt;br&gt;         --海子《面朝大海，春暖花开》</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

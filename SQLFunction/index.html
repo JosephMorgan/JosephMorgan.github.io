@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://josephmorgan.github.io">
+  <title>SQL函数简单操作 | DAMON&#39;S BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SQL Aggregate 函数计算从列中取得的值，返回一个单一的值。有用的 Aggregate 函数：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL函数简单操作">
+<meta property="og:url" content="http://josephmorgan.github.io/SQLFunction/index.html">
+<meta property="og:site_name" content="DAMON'S BLOG">
+<meta property="og:description" content="SQL Aggregate 函数计算从列中取得的值，返回一个单一的值。有用的 Aggregate 函数：">
+<meta property="og:updated_time" content="2016-12-08T06:05:22.693Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL函数简单操作">
+<meta name="twitter:description" content="SQL Aggregate 函数计算从列中取得的值，返回一个单一的值。有用的 Aggregate 函数：">
+  
+    <link rel="alternative" href="/atom.xml" title="DAMON&#39;S BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Joseph Morgan</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Stay hungry,Stay foolish</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+		        
+					<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Joseph Morgan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Joseph Morgan</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Stay hungry,Stay foolish</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-SQLFunction" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SQL函数简单操作
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>SQL Aggregate 函数计算从列中取得的值，返回一个单一的值。有用的 Aggregate 函数：<br><a id="more"></a><br>AVG() - 返回平均值； COUNT() - 返回行数； FIRST() - 返回第一个记录的值； LAST() - 返回最后一个记录的值； MAX() - 返回最大值； MIN() - 返回最小值； SUM() - 返回总和</p>
+<p>SQL Scalar 函数基于输入值，返回一个单一的值。有用的 Scalar 函数：</p>
+<p>UCASE() - 将某个字段转换为大写； LCASE() - 将某个字段转换为小写； MID() - 从某个文本字段提取字符； LEN() - 返回某个文本字段的长度； ROUND() - 对某个数值字段进行指定小数位数的四舍五入； NOW() - 返回当前的系统日期和时间；<br>FORMAT() - 格式化某个字段的显示方式</p>
+<p>AVG() 函数返回数值列的平均值：SELECT AVG(column_name) FROM table_name</p>
+<p>从 “access_log” 表的 “count” 列获取平均值： SELECT AVG(count) AS CountAverage FROM access_log;</p>
+<p>选择访问量高于平均访问量的 “site_id” 和 “count”： SELECT site_id, count FROM access_log WHERE count &gt; (select AVG(count) from access_log)<br>COUNT() 函数返回匹配指定条件的行数。</p>
+<p>COUNT(column_name) 函数返回指定列的值的数目（NULL 不计入）：<br>SELECT COUNT(column_name) FROM table_name;</p>
+<p>COUNT(<em>) 函数返回表中的记录数：SELECT COUNT(</em>) FROM table_name;</p>
+<p>COUNT(DISTINCT column_name) 函数返回指定列的不同值的数目：SELECT COUNT(DISTINCT column_name) FROM table_name;</p>
+<p>COUNT(DISTINCT) 适用于 ORACLE 和 Microsoft SQL Server，但是无法用于 Microsoft Access。</p>
+<p>返回指定的列中第一个记录的值。SQL Server：SELECT TOP 1 column_name FROM table_name ORDER BY column_name ASC;</p>
+<p>MySQL：SELECT column_name FROM table_name ORDER BY column_name ASC LIMIT 1;</p>
+<p>Oracle： SELECT column_name FROM table_name ORDER BY column_name ASC WHERE ROWNUM &lt;=1;</p>
+<p>返回指定的列中最后一个记录的值。在上面实例中，ASC换成DSEC 。</p>
+<p>MAX() 函数返回指定列的最大值 ： SELECT MAX(column_name) FROM table_name;</p>
+<p>MIN() 函数返回指定列的最小值 ： SELECT MIN(column_name) FROM table_name;</p>
+<p>SUM() 函数返回数值列的总数 ： SELECT SUM(column_name) FROM table_name;</p>
+<p>GROUP BY 语句用于结合聚合函数，根据一个或多个列对结果集进行分组： SELECT column_name, aggregate_function(column_name) FROM table_name WHERE column_name operator value GROUP BY column_name;</p>
+<p>统计 access_log 各个 site_id 的访问量：SELECT site_id, SUM(access_log.count) AS nums FROM access_log GROUP BY site_id;</p>
+<p>SQL GROUP BY 多表连接，统计所有网站的访问的记录数：SELECT Websites.name,COUNT(access_log.aid) AS nums FROM access_log LEFT JOIN Websites ON access_log.site_id=Websites.id GROUP BY Websites.name;</p>
+<p>查找总访问量大于 200 的网站：SELECT Websites.name, Websites.url, SUM(access_log.count) AS nums FROM (access_log INNER JOIN Websites ON access_log.site_id=Websites.id) GROUP BY Websites.name HAVING SUM(access_log.count) &gt; 200;</p>
+<p>查找总访问量大于 200 的网站，并且 alexa 排名小于 200：</p>
+<p>SELECT Websites.name, SUM(access_log.count) AS nums FROM Websites INNER JOIN access_log<br>ON Websites.id=access_log.site_id WHERE Websites.alexa &lt; 200  GROUP BY Websites.name HAVING SUM(access_log.count) &gt; 200;</p>
+<p>UCASE() 函数把字段的值转换为大写：SELECT UCASE(column_name) FROM table_name;</p>
+<p>SQL Server 的语法：SELECT UPPER(column_name) FROM table_name;</p>
+<p>LCASE() 函数把字段的值转换为小写：SELECT LCASE(column_name) FROM table_name;</p>
+<p>SQL Server 的语法：SELECT LOWER(column_name) FROM table_name;</p>
+<p>MID() 函数用于从文本字段中提取字符：SELECT MID(column_name,start[,length]) FROM table_name;</p>
+<p>column_name必需。要提取字符的字段。 start必需。规定开始位置（起始值是 1）。  length可选。要返回的字符数。如果省略，则 MID() 函数返回剩余文本。</p>
+<p>从 “Websites” 表的 “name” 列中提取前 4 个字符：SELECT MID(name,1,4) AS ShortTitle FROM Websites;</p>
+<p>LEN() 函数返回文本字段中值的长度：SELECT LEN(column_name) FROM table_name;</p>
+<p>MySQL 中函数为 LENGTH(): SELECT LENGTH(column_name) FROM table_name;</p>
+<p>SELECT name, LENGTH(url) as LengthOfURL FROM Websites;</p>
+<p>ROUND() 函数用于把数值字段舍入为指定的小数位数：SELECT ROUND(column_name,decimals) FROM table_name;     decimals必需。规定要返回的小数位数。</p>
+<p>NOW() 函数返回当前系统的日期和时间：SELECT NOW() FROM table_name;</p>
+<p>FORMAT() 函数用于对字段的显示进行格式化：SELECT FORMAT(column_name,format) FROM table_name;    column_name必需，要格式化的字段。format必需，规定格式。</p>
+<p>SELECT name, url, DATE_FORMAT(Now(),’%Y-%m-%d’) AS date FROM Websites;</p>
+<p>[末]</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/SQLFunction/" class="archive-article-date">
+  	<time datetime="2016-12-08T03:33:18.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-08</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/数据库/">数据库</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/SVN/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SVN的使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/SQL2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SQL简单操作（二）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SQLFunction" data-title="SQL函数简单操作" data-url="http://josephmorgan.github.io/SQLFunction/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"litten-hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Joseph Morgan
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/Ant/" style="font-size: 10px;">Ant</a> <a href="/tags/JMeter/" style="font-size: 20px;">JMeter</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/NexT/" style="font-size: 10px;">NexT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/SQL/" style="font-size: 12.5px;">SQL</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Selenium/" style="font-size: 15px;">Selenium</a> <a href="/tags/SoapUI/" style="font-size: 10px;">SoapUI</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/个人理解/" style="font-size: 10px;">个人理解</a> <a href="/tags/性能测试/" style="font-size: 17.5px;">性能测试</a> <a href="/tags/性能监控/" style="font-size: 10px;">性能监控</a> <a href="/tags/接口分析/" style="font-size: 10px;">接口分析</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">面朝大海，春暖花开&lt;br&gt;&lt;br&gt;从明天起，做一个幸福的人&lt;br&gt;喂马、劈柴，周游世界&lt;br&gt;从明天起，关心粮食和蔬菜&lt;br&gt;我有一所房子，面朝大海，春暖花开&lt;br&gt;从明天起，和每一个亲人通信&lt;br&gt;告诉他们我的幸福&lt;br&gt;那幸福的闪电告诉我的&lt;br&gt;我将告诉每一个人&lt;br&gt;给每一条河每一座山取一个温暖的名字&lt;br&gt;陌生人，我也为你祝福&lt;br&gt;愿你有一个灿烂的前程&lt;br&gt;愿你有情人终成眷属&lt;br&gt;愿你在尘世获得幸福&lt;br&gt;我只愿面朝大海，春暖花开&lt;br&gt;&lt;br&gt;         --海子《面朝大海，春暖花开》</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

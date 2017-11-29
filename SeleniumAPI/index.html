@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://josephmorgan.github.io">
+  <title>Selenium的基本操作 | DAMON&#39;S BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1、打开火狐浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Selenium的基本操作">
+<meta property="og:url" content="http://josephmorgan.github.io/SeleniumAPI/index.html">
+<meta property="og:site_name" content="DAMON'S BLOG">
+<meta property="og:description" content="1、打开火狐浏览器">
+<meta property="og:updated_time" content="2016-11-28T09:18:45.807Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Selenium的基本操作">
+<meta name="twitter:description" content="1、打开火狐浏览器">
+  
+    <link rel="alternative" href="/atom.xml" title="DAMON&#39;S BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Joseph Morgan</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Stay hungry,Stay foolish</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+		        
+					<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Joseph Morgan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Joseph Morgan</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Stay hungry,Stay foolish</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="https://raw.githubusercontent.com/JosephMorgan/JosephMorgan.github.io/master/img/Saber.jpg">相册</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/JosephMorgan" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/2006072205" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="http://www.uml.org.cn/Test/test.asp" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-SeleniumAPI" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Selenium的基本操作
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>1、打开火狐浏览器</strong><br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">System.setProperty(<span class="string">"webdriver.firefox.bin"</span>, <span class="string">"C:/Program Files/Mozilla firefox/firefox.exe"</span>); </div><div class="line">WebDriver driver = new FirefoxDriver();</div><div class="line">driver.manage().window().maximize();</div></pre></td></tr></table></figure></p>
+<p><strong>2、打开IE浏览器</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">DesiredCapabilities dc = DesiredCapabilities.internetExplorer();</div><div class="line">dc.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, <span class="literal">true</span>);</div><div class="line">//IE默认启动保护模式，可手动在浏览器的设置中关闭保护模式，也可在代码中加上这一句，即可</div><div class="line">dc.setCapability(<span class="string">"ignoreProtectedModeSettings"</span>, <span class="literal">true</span>);</div><div class="line">driver = new InternetExplorerDriver(dc);</div></pre></td></tr></table></figure></p>
+<p><strong>3、打开谷歌浏览器</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ChromeOptions options = new ChromeOptions();</div><div class="line">options.addArguments(<span class="string">"--test-type"</span>,<span class="string">"--start-maximized"</span>);</div><div class="line">driver = new ChromeDriver(options);</div></pre></td></tr></table></figure></p>
+<p><strong>4、打开测试页面</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">driver.get(<span class="string">"https://www.sogou.com/"</span>); </div><div class="line">//也可以用下面这个方法</div><div class="line">driver.navigate().to(<span class="string">"https://www.sogou.com/"</span>);</div></pre></td></tr></table></figure></p>
+<p><strong>5、元素定位</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">WebElement element = driver.findElement(By.id(<span class="string">"first"</span>));</div><div class="line">WebElement element = driver.findElement(By.name(<span class="string">"second"</span>));</div><div class="line">List&lt;WebElement&gt; elements = driver.findElements(By.className(<span class="string">"third"</span>));</div><div class="line">WebElement element = elements.get(index);</div><div class="line">WebElement element =driver.findElement(By.linkText(<span class="string">"你好"</span>));</div><div class="line">WebElement element = driver.findElement(By.cssSelector(<span class="string">"#sb_form_go"</span>));</div><div class="line">WebElement element = driver.findElement(By.xpath(<span class="string">"//*[@id='sb_form_go']"</span>));</div><div class="line">WebElement element = driver.findElement(By.tagName(<span class="string">"button"</span>));</div><div class="line">WebElement element = driver.findElement(By.partialLinkText(<span class="string">"你们"</span>));</div></pre></td></tr></table></figure></p>
+<p><strong>6、输入框</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">WebElement element = driver.findElement(By.partialLinkText(<span class="string">"你们"</span>));</div><div class="line">element.clear();//清空</div><div class="line">element.sendKeys(<span class="string">"first"</span>);//输入内容</div><div class="line">element.getText();//获取文本内容</div></pre></td></tr></table></figure></p>
+<p><strong>7、下拉菜单</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Select select = new Select(driver.findElement(By.id(<span class="string">"first"</span>)));</div><div class="line">select.selectByVisibleText(<span class="string">"你好"</span>);//或者用selectByIndex、selectByValue</div><div class="line">select.deselectAll();//不选择</div><div class="line">select.deselectByValue(<span class="string">"first"</span>);</div><div class="line">select.getAllSelectedOptions();//获取选项的值</div></pre></td></tr></table></figure></p>
+<p><strong>8、单选框(Radio Box)</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">WebElement radio = driver.findElement(By.id(<span class="string">"first"</span>));</div><div class="line">raido.click();</div><div class="line">radio.clear();</div><div class="line">radio.isSelected();</div></pre></td></tr></table></figure></p>
+<p><strong>9、复选框(checkbox)</strong> <br><br>和单选框差不多。<br><br><strong>10、按钮</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">WebElement button = driver.findElement(By.id(<span class="string">"first"</span>));</div><div class="line">button.click();</div><div class="line">button.isEnabled ();</div></pre></td></tr></table></figure></p>
+<p><strong>11、弹出框</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Alert alert = driver.switchTo().alert();</div><div class="line">alert.accept();</div><div class="line">alert.dismiss();</div><div class="line">alert.getText();</div></pre></td></tr></table></figure></p>
+<p><strong>12、上传附件</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">WebElement upload = driver.findElement(By.id(<span class="string">"first"</span>)).sendKeys(<span class="string">"D:/123.txt"</span>);</div><div class="line">//也可以用AutoIt</div></pre></td></tr></table></figure></p>
+<p><strong>13、窗口或frame切换</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">driver.switchTo().defaultContent();//切换到默认的frame</div><div class="line">driver.switchTo().frame(<span class="string">"left"</span>);</div><div class="line">driver.switchTo().window(<span class="string">"windowName"</span>);</div></pre></td></tr></table></figure></p>
+<p><strong>14、导航</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">driver.navigate().forward();</div><div class="line">driver.navigate().back();</div><div class="line">driver.navigate().refresh();</div></pre></td></tr></table></figure></p>
+<p><strong>15、使用java script</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 滚动条滚动到指定位置</div><div class="line">WebElement element = driver.findElement(By.id(<span class="string">"first"</span>));</div><div class="line">JavascriptExecutor scroll = (JavascriptExecutor) driver;</div><div class="line">scroll.executeScript(<span class="string">"arguments[0].scrollIntoView();"</span>, element);</div></pre></td></tr></table></figure></p>
+<p><strong>16、使用Actions模拟</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Actions action = new Actions(driver);</div><div class="line">action.moveToElement(element).build.perform();</div><div class="line">action.sendKeys(Keys.END).perform();//滚动条到底部</div><div class="line">action.sendKeys(Keys.HOME).perform();//滚动条到顶部</div></pre></td></tr></table></figure></p>
+<p><strong>17、时间等待</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//显式等待</div><div class="line">Wait <span class="built_in">wait</span> = new <span class="function"><span class="title">Wait</span></span>()&#123;</div><div class="line">@Override</div><div class="line">public boolean <span class="function"><span class="title">until</span></span>() &#123;</div><div class="line"><span class="built_in">return</span> webElement.isDisplayed();</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">new WebDriverWait(driver,10).until(ExpectedConditions.presenceOfElementLocated(By.id(<span class="string">"first"</span>)));</div><div class="line">//隐式等待</div><div class="line">driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);</div><div class="line">//线程休眠</div><div class="line">Thread.sleep(10);</div></pre></td></tr></table></figure></p>
+<p><strong>18、对表格的操作</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">driver.findElements(By.tagName(<span class="string">"tr"</span>)).get(1).findElements(By.tagName(<span class="string">"td"</span>)).get(1).getText();</div></pre></td></tr></table></figure></p>
+<p><strong>19、用ExpectedConditions类来判断元素出现</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">WebDriverWait <span class="built_in">wait</span> = new WebDriverWait(driver,10);</div><div class="line">ExpectedCondition&lt;WebElement&gt; element = ExpectedConditions.visibilityOf(driver.findElement(By.id(<span class="string">"first"</span>)));</div><div class="line">wait.until(element)；</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/SeleniumAPI/" class="archive-article-date">
+  	<time datetime="2016-11-11T05:51:15.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-11</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Selenium/">Selenium</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/自动化测试/">自动化测试</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/SeleniumWebsite/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Selenium学习的网站
+        
+      </div>
+    </a>
+  
+  
+    <a href="/SeleniumUse/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Selenium的使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SeleniumAPI" data-title="Selenium的基本操作" data-url="http://josephmorgan.github.io/SeleniumAPI/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"litten-hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Joseph Morgan
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/Ant/" style="font-size: 10px;">Ant</a> <a href="/tags/JMeter/" style="font-size: 20px;">JMeter</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/NexT/" style="font-size: 10px;">NexT</a> <a href="/tags/Postman/" style="font-size: 10px;">Postman</a> <a href="/tags/SQL/" style="font-size: 12.5px;">SQL</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Selenium/" style="font-size: 15px;">Selenium</a> <a href="/tags/SoapUI/" style="font-size: 10px;">SoapUI</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/个人理解/" style="font-size: 10px;">个人理解</a> <a href="/tags/性能测试/" style="font-size: 17.5px;">性能测试</a> <a href="/tags/性能监控/" style="font-size: 10px;">性能监控</a> <a href="/tags/接口分析/" style="font-size: 10px;">接口分析</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">面朝大海，春暖花开&lt;br&gt;&lt;br&gt;从明天起，做一个幸福的人&lt;br&gt;喂马、劈柴，周游世界&lt;br&gt;从明天起，关心粮食和蔬菜&lt;br&gt;我有一所房子，面朝大海，春暖花开&lt;br&gt;从明天起，和每一个亲人通信&lt;br&gt;告诉他们我的幸福&lt;br&gt;那幸福的闪电告诉我的&lt;br&gt;我将告诉每一个人&lt;br&gt;给每一条河每一座山取一个温暖的名字&lt;br&gt;陌生人，我也为你祝福&lt;br&gt;愿你有一个灿烂的前程&lt;br&gt;愿你有情人终成眷属&lt;br&gt;愿你在尘世获得幸福&lt;br&gt;我只愿面朝大海，春暖花开&lt;br&gt;&lt;br&gt;         --海子《面朝大海，春暖花开》</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
