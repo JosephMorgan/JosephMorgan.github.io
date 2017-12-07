@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://josephmorgan.github.io">
-  <title>Tag: 性能监控 | DAMON&#39;S BLOG</title>
+  <title>搭建RobotFramework的环境 | DAMON&#39;S BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Start from zero">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DAMON'S BLOG">
-<meta property="og:url" content="http://josephmorgan.github.io/tags/性能监控/index.html">
+  <meta name="description" content="1.Windows下安装Python首先访问官网下载需要的python版本。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建RobotFramework的环境">
+<meta property="og:url" content="http://josephmorgan.github.io/Build-a-RobotFramework-Environment/index.html">
 <meta property="og:site_name" content="DAMON'S BLOG">
-<meta property="og:description" content="Start from zero">
+<meta property="og:description" content="1.Windows下安装Python首先访问官网下载需要的python版本。">
+<meta property="og:updated_time" content="2017-12-07T15:40:08.614Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DAMON'S BLOG">
-<meta name="twitter:description" content="Start from zero">
+<meta name="twitter:title" content="搭建RobotFramework的环境">
+<meta name="twitter:description" content="1.Windows下安装Python首先访问官网下载需要的python版本。">
   
     <link rel="alternative" href="/atom.xml" title="DAMON&#39;S BLOG" type="application/atom+xml">
   
@@ -137,59 +138,114 @@
 </nav>
 
       <div class="body-wrap">
+        <article id="post-Build-a-RobotFramework-Environment" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/PerformanceMonitoringTools/" class="archive-article-date">
-  	<time datetime="2016-11-14T06:12:21.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/PerformanceMonitoringTools/">性能资源监控工具</a>
+    <h1 class="article-title" itemprop="name">
+      搭建RobotFramework的环境
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-Windows下安装Python"><a href="#1-Windows下安装Python" class="headerlink" title="1.Windows下安装Python"></a>1.Windows下安装Python</h3><p>首先访问<a href="http://www.python.org/download/" target="_blank" rel="external">官网下载</a>需要的python版本。<br><a id="more"></a><br>32位系统下载Windows x86 MSI installer，64位系统下载Windows x86-64 MSI installer 。<br><br>安装下载包，双击msi文件，按提示安装即可。<br><br>把python的安装目录添加到<strong>环境变量-&gt;系统变量Path</strong>中。<br><br>验证是否安装成功,在cmd中输入命令行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python --version</div></pre></td></tr></table></figure></p>
+<h3 id="2-Linux下安装Python"><a href="#2-Linux下安装Python" class="headerlink" title="2.Linux下安装Python"></a>2.Linux下安装Python</h3><p>首先访问<a href="http://www.python.org/download/" target="_blank" rel="external">官网下载</a>需要的python版本。<br><br>或在Linux服务器下下载安装包，wget “<a href="https://www.python.org/ftp/python/2.7.14/Python-2.7.14.tgz" target="_blank" rel="external">https://www.python.org/ftp/python/2.7.14/Python-2.7.14.tgz</a>“<br><br>解压安装包，需要root权限，tar -zxvf Python-2.7.14.tgz<br><br>解压后进入Python-2.7.14目录,cd Python-2.7.14<br><br>安装,输入./configure<br><br>补:configure命令执行完之后，会生成一个Makefile文件，这个Makefile主要是被下一步的make命令所使用。打开Makefile你就会发现，里边制定了构建的顺序，Linux需要按照Makefile所指定的顺序来构建(build)程序组件。<br><br>执行命令make，make实际上编译你的源代码，并生成执行文件。<br><br>再执行make install命令<br><br>make install实际上是把生成的执行文件拷贝到linux系统中必要的目录下，比如拷贝到/usr/local/bin目录下，这样所有user就都能运行这个程序了。<br><br>到这里Python就算安装完成了。需要说的是，其实其他的linux软件安装也是大同小异的，基本都需要走configure&gt;make&gt;make install这么一个过程。<br><br>把安装的python变成默认版本，执行python命令，仍旧是指向旧的版本<br><br>在命令行输入python2.7,这样就会执行到我们新的python版本了。<br><br>如果想在命令行输入python就能找到python2.7，可以在/usr/bin目录下做个软链：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /usr/bin   <span class="comment">#打开全局命令的目录</span></div><div class="line">rm -rf python    <span class="comment">#删掉之前的python软链</span></div><div class="line">ln <span class="_">-s</span> /usr/<span class="built_in">local</span>/bin/python2.7 python   <span class="comment">#创建python2.7的软链</span></div></pre></td></tr></table></figure></p>
+<h3 id="3-安装RobotFramework"><a href="#3-安装RobotFramework" class="headerlink" title="3.安装RobotFramework"></a>3.安装RobotFramework</h3><p>官方地址：<a href="http://robotframework.org/" target="_blank" rel="external">http://robotframework.org/</a><br><br><strong>pip安装:</strong><br>打开python的安装目录，会发现该目录下存在一个叫Scripts的文件夹，点开Scripts，会发现里面有一系列和easy_install有关的文件。<br><br>cd到<strong>easy_install.exe</strong>的根目录下，执行命令：easy_install.exe pip<br><br>则Scripts文件夹下会出现一系列和pip有关的文件，其中有pip.exe<br><br>将pip.exe的路径也添加到环境变量PATH中，在cmd下输入“pip”，如果能识别”pip”指令，则说明pip安装成功了。<br><br><strong>pip安装RobotFramework:</strong><br>执行命令：pip install robotframework<br><br>在cmd中输入命令行验证是否安装成功：pybot –version，如成功显示版本号，则表示robot安装成功。<br></p>
+<h3 id="4-安装wxPython"><a href="#4-安装wxPython" class="headerlink" title="4.安装wxPython"></a>4.安装wxPython</h3><p><strong>注意：</strong>安装wxPython.exe注意ride不支持2.8.12.1以上的。<br><br><a href="http://sourceforge.net/projects/wxpython/files/wxPython/2.8.12.1/" target="_blank" rel="external">http://sourceforge.net/projects/wxpython/files/wxPython/2.8.12.1/</a><br><br>32位系统装win32,64位系统装win64。<br></p>
+<h3 id="5-安装Ride"><a href="#5-安装Ride" class="headerlink" title="5.安装Ride"></a>5.安装Ride</h3><p>手动： <a href="https://pypi.python.org/pypi/robotframework-ride" target="_blank" rel="external">https://pypi.python.org/pypi/robotframework-ride</a> <br><br>命令： pip install robotframework-ride <br><br>然后到 python安装目录/Scripts 目录下，点击ride.py即可。<br><br>ride.py 运行是会闪动一会命令行窗口，如果不想出现这个窗口。可以把 ride.py 改为 ride.pyw，就解决了。<br></p>
+<h3 id="6-添加库"><a href="#6-添加库" class="headerlink" title="6.添加库"></a>6.<a href="http://robotframework.org/#libraries" target="_blank" rel="external">添加库</a></h3><p>selenium库： pip install –upgrade robotframework-seleniumlibrary <br><br>建议火狐浏览器版本不要超过46<br></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/Build-a-RobotFramework-Environment/" class="archive-article-date">
+  	<time datetime="2017-12-04T15:30:16.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-12-04</time>
+</a>
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能监控/">性能监控</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RobotFramework/">RobotFramework</a></li></ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/性能测试/">性能测试</a>
+	<a class="article-category-link" href="/categories/自动化测试/">自动化测试</a>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+  
+<nav id="article-nav">
+  
+  
+    <a href="/Personal-understanding-on-performance-testing/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于性能测试的个人理解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Build-a-RobotFramework-Environment" data-title="搭建RobotFramework的环境" data-url="http://josephmorgan.github.io/Build-a-RobotFramework-Environment/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"litten-hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 
       </div>
@@ -212,9 +268,9 @@
 		mathjax: false,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		root: "/",
